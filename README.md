@@ -1,36 +1,42 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Jondrea One
 
-## Getting Started
+Sitio corporativo de **Jondrea** (software factory) + panel admin multi-producto.
 
-First, run the development server:
+## Stack
+
+- Next.js 15 (App Router)
+- TypeScript
+- CSS con design tokens (`styles/tokens.css`)
+
+## Arranque
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+cd C:\JondreA\jondrea-one
+cp .env.example .env
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abrí [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Admin: [http://localhost:3000/admin](http://localhost:3000/admin) → `admin` / `admin`.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Para métricas de CareMe necesitás la API CareMe arriba (`pnpm --filter @careme/api dev` en el monorepo CareMe) y que `CAREME_ADMIN_ANALYTICS_KEY` coincida con `ADMIN_ANALYTICS_KEY` de la API.
 
-## Learn More
+## Rutas
 
-To learn more about Next.js, take a look at the following resources:
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Home |
+| `/sobre-nosotros` | Sobre nosotros |
+| `/contactanos` | Contacto (email / IG / LinkedIn) |
+| `/productos` | Portfolio |
+| `/productos/careme` | Página de producto CareMe |
+| `/admin` | Métricas CareMe + placeholder CasaOs |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Personalización rápida
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Marca / tipografía / colores: `styles/tokens.css`
+- Contacto: `lib/site.ts`
+- Productos: `lib/products.ts`
+- Logo tipográfico: `components/JondreaLogo.tsx` (reemplazable)

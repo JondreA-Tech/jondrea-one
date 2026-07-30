@@ -1,0 +1,68 @@
+/**
+ * Design tokens — Jondrea (marca corporativa).
+ * Cambiá acá tipografía, colores y espaciado; el resto del sitio hereda.
+ */
+:root {
+  /* Brand */
+  --font-display: "Sora", system-ui, sans-serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+
+  /* Palette — software factory (ink + teal) */
+  --color-bg: #070b12;
+  --color-bg-elevated: #0d131c;
+  --color-surface: #121a26;
+  --color-surface-2: #182233;
+  --color-border: #243044;
+  --color-border-strong: #334155;
+  --color-text: #eef2f7;
+  --color-text-muted: #8b97a8;
+  --color-text-soft: #c5ced9;
+  --color-accent: #2ec4b6;
+  --color-accent-hover: #3dd9ca;
+  --color-accent-muted: rgba(46, 196, 182, 0.14);
+  --color-warm: #f4a261;
+  --color-danger: #f87171;
+  --color-success: #34d399;
+
+  /* Gradients */
+  --gradient-hero: radial-gradient(1200px 600px at 12% -10%, rgba(46, 196, 182, 0.18), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, rgba(244, 162, 97, 0.1), transparent 50%),
+    linear-gradient(180deg, #070b12 0%, #0a1018 100%);
+  --gradient-accent: linear-gradient(135deg, #2ec4b6 0%, #4da8ff 100%);
+  --gradient-card: linear-gradient(160deg, rgba(24, 34, 51, 0.9), rgba(18, 26, 38, 0.95));
+
+  /* Layout */
+  --container: 1120px;
+  --header-h: 72px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 180ms;
+  --duration: 320ms;
+
+  /* Shadows */
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.35);
+  --shadow-glow: 0 0 0 1px rgba(46, 196, 182, 0.25), 0 12px 40px rgba(46, 196, 182, 0.12);
+}
+
+/**
+ * Tokens del producto CareMe (solo página /productos/careme).
+ */
+.theme-careme {
+  --cm-bg: #0f172a;
+  --cm-surface: #1e293b;
+  --cm-primary: #6c5ce7;
+  --cm-secondary: #ff7eb6;
+  --cm-accent: #4da8ff;
+  --cm-success: #2dd4bf;
+  --cm-text: #f8fafc;
+  --cm-muted: #94a3b8;
+  --cm-border: #334155;
+  --cm-gradient: linear-gradient(135deg, #6c5ce7, #ff7eb6);
+  --cm-calm: linear-gradient(135deg, #4da8ff, #2dd4bf);
+  --font-careme: "Poppins", var(--font-body);
+}
