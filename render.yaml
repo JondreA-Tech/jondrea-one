@@ -1,0 +1,26 @@
+# Jondrea One — Blueprint Render (plan free).
+# Alternativa a Vercel. Dashboard: New → Blueprint → este repo, branch develop.
+# Completar a mano las env sync:false.
+
+services:
+  - type: web
+    name: jondrea-one
+    runtime: node
+    plan: free
+    region: oregon
+    branch: develop
+    rootDir: .
+    buildCommand: pnpm install --frozen-lockfile && pnpm run build
+    startCommand: pnpm run start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: CAREME_API_URL
+        sync: false
+      - key: CAREME_ADMIN_ANALYTICS_KEY
+        sync: false
