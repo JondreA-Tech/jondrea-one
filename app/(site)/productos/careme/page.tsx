@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { betaMailto, site } from "../../../../lib/site";
 import "./careme.css";
 
 export const metadata: Metadata = {
@@ -28,8 +29,8 @@ const features = [
     body: "Mirada amable de continuidad para sostener el avance."
   },
   {
-    title: "En beta",
-    body: "Producto vivo: iteramos con testers reales y feedback honesto."
+    title: "Beta Android",
+    body: "Por ahora solo en Android. Pedí acceso por correo y te enviamos el APK."
   }
 ];
 
@@ -52,7 +53,7 @@ export default function CareMeProductPage() {
           </div>
 
           <div className="careme-cta-row">
-            <a className="careme-btn careme-btn-primary" href="mailto:careme.futureyou@gmail.com">
+            <a className="careme-btn careme-btn-primary" href={betaMailto("CareMe")}>
               Pedir acceso a la beta
             </a>
             <Link className="careme-btn careme-btn-ghost" href="/productos">
@@ -61,9 +62,9 @@ export default function CareMeProductPage() {
           </div>
 
           <div className="careme-pills" aria-label="Disponibilidad">
-            <span className="careme-pill">Beta activa</span>
-            <span className="careme-pill">App Store · próximamente</span>
-            <span className="careme-pill">Google Play · próximamente</span>
+            <span className="careme-pill">Beta Android</span>
+            <span className="careme-pill">Acceso por correo</span>
+            <span className="careme-pill">iOS · próximamente</span>
           </div>
         </section>
 
@@ -94,8 +95,10 @@ export default function CareMeProductPage() {
 
         <div className="careme-banner">
           <h2>Sumate a la beta</h2>
-          <p>Escribinos para acceso anticipado a testers internos.</p>
-          <a href="mailto:careme.futureyou@gmail.com">Probar ahora</a>
+          <p>
+            Solo Android por ahora. Escribinos a {site.contact.email} y te damos acceso.
+          </p>
+          <a href={betaMailto("CareMe")}>Pedir acceso</a>
         </div>
       </div>
     </div>

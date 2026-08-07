@@ -13,8 +13,7 @@ export default function ProductsPage() {
       <span className="eyebrow">Portfolio</span>
       <h1>Productos</h1>
       <p className="lead">
-        Tres líneas de producto. Hoy CareMe está en beta; CasaOs y TurnosPets se muestran como
-        próximas apuestas.
+        CareMe y Nido están en beta (solo Android, acceso por correo). TurnosPets viene después.
       </p>
       <div className="product-grid">
         {products.map((product) => (

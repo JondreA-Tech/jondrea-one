@@ -1,42 +1,47 @@
 /**
- * Design tokens — Jondrea (marca corporativa).
- * Cambiá acá tipografía, colores y espaciado; el resto del sitio hereda.
+ * Design tokens — JondreA Tech (marca corporativa).
+ * Paleta clara profesional: slate + teal (alineada al logo).
+ * CareMe usa `.theme-careme` y Nido usa `.theme-nido` (identidad propia).
  */
 :root {
-  /* Brand */
-  --font-display: "Sora", system-ui, sans-serif;
-  --font-body: "Manrope", system-ui, sans-serif;
+  color-scheme: light;
 
-  /* Palette — software factory (ink + teal) */
-  --color-bg: #070b12;
-  --color-bg-elevated: #0d131c;
-  --color-surface: #121a26;
-  --color-surface-2: #182233;
-  --color-border: #243044;
-  --color-border-strong: #334155;
-  --color-text: #eef2f7;
-  --color-text-muted: #8b97a8;
-  --color-text-soft: #c5ced9;
-  --color-accent: #2ec4b6;
-  --color-accent-hover: #3dd9ca;
-  --color-accent-muted: rgba(46, 196, 182, 0.14);
-  --color-warm: #f4a261;
-  --color-danger: #f87171;
-  --color-success: #34d399;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, sans-serif;
+  --logo-teal: #0f7a72;
 
-  /* Gradients */
-  --gradient-hero: radial-gradient(1200px 600px at 12% -10%, rgba(46, 196, 182, 0.18), transparent 55%),
-    radial-gradient(900px 500px at 90% 0%, rgba(244, 162, 97, 0.1), transparent 50%),
-    linear-gradient(180deg, #070b12 0%, #0a1018 100%);
-  --gradient-accent: linear-gradient(135deg, #2ec4b6 0%, #4da8ff 100%);
-  --gradient-card: linear-gradient(160deg, rgba(24, 34, 51, 0.9), rgba(18, 26, 38, 0.95));
+  /* Palette — slate + teal */
+  --color-bg: #f3f5f7;
+  --color-bg-elevated: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-2: #e8ecf0;
+  --color-border: #d4dae2;
+  --color-border-strong: #b8c2ce;
+  --color-text: #12151a;
+  --color-text-muted: #5a6573;
+  --color-text-soft: #2e3640;
+  --color-accent: #0f7a72;
+  --color-accent-hover: #0c635c;
+  --color-accent-2: #1a9b8e;
+  --color-accent-muted: rgba(15, 122, 114, 0.1);
+  --color-warm: #3d5a5a;
+  --color-danger: #c45c4a;
+  --color-success: #2a9d6e;
+
+  /* Gradients — atmósfera sutil, sin glow */
+  --gradient-hero: radial-gradient(900px 480px at 8% -5%, rgba(15, 122, 114, 0.09), transparent 55%),
+    radial-gradient(700px 420px at 96% 8%, rgba(18, 21, 26, 0.04), transparent 50%),
+    linear-gradient(180deg, #f7f8fa 0%, #eef1f4 100%);
+  --gradient-accent: linear-gradient(135deg, #0f7a72 0%, #1a9b8e 100%);
+  --gradient-card: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+  --gradient-glow: radial-gradient(circle, rgba(15, 122, 114, 0.12), transparent 70%);
 
   /* Layout */
   --container: 1120px;
-  --header-h: 72px;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 22px;
+  --header-h: 78px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
   --radius-pill: 999px;
 
   /* Motion */
@@ -45,8 +50,10 @@
   --duration: 320ms;
 
   /* Shadows */
-  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.35);
-  --shadow-glow: 0 0 0 1px rgba(46, 196, 182, 0.25), 0 12px 40px rgba(46, 196, 182, 0.12);
+  --shadow-soft: 0 8px 28px rgba(18, 21, 26, 0.06);
+  --shadow-glow: 0 0 0 1px rgba(15, 122, 114, 0.18), 0 10px 28px rgba(18, 21, 26, 0.06);
+  --header-bg: rgba(247, 248, 250, 0.86);
+  --footer-bg: #ffffff;
 }
 
 /**
@@ -65,4 +72,22 @@
   --cm-gradient: linear-gradient(135deg, #6c5ce7, #ff7eb6);
   --cm-calm: linear-gradient(135deg, #4da8ff, #2dd4bf);
   --font-careme: "Poppins", var(--font-body);
+}
+
+/**
+ * Tokens del producto Nido (solo página /productos/nido).
+ */
+.theme-nido {
+  --nido-bg: #f7f3ee;
+  --nido-bg-soft: #efe8df;
+  --nido-surface: #ffffff;
+  --nido-primary: #c46b3a;
+  --nido-primary-to: #d4894a;
+  --nido-on-primary: #ffffff;
+  --nido-text: #2c241b;
+  --nido-muted: #6b5e52;
+  --nido-border: #e2d6c8;
+  --nido-success: #3d8b6e;
+  --nido-gradient: linear-gradient(135deg, #c46b3a, #d4894a);
+  --font-nido: "Nunito", var(--font-body);
 }

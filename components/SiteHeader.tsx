@@ -36,7 +36,7 @@ export function SiteHeader() {
         </button>
 
         <nav className={`site-header__nav ${open ? "is-open" : ""}`} aria-label="Principal">
-          {NAV.map((item) => {
+          {NAV.filter((item) => item.href !== "/contactanos").map((item) => {
             const active =
               item.href === "/"
                 ? pathname === "/"
@@ -52,6 +52,13 @@ export function SiteHeader() {
               </Link>
             );
           })}
+          <Link
+            href="/contactanos"
+            className="btn btn-primary site-header__cta"
+            onClick={() => setOpen(false)}
+          >
+            Contactanos
+          </Link>
         </nav>
       </div>
     </header>

@@ -22,7 +22,7 @@ type Summary = {
   };
 };
 
-type ProductKey = "careme" | "casaos";
+type ProductKey = "careme" | "nido";
 
 /** Primer valor de search param. */
 function firstParam(value: string | string[] | undefined) {
@@ -94,7 +94,7 @@ async function getCareMeSummary(searchParams?: SearchParams) {
 
 const PERIOD_OPTIONS = [7, 14, 30];
 
-/** Dashboard admin multi-producto (CareMe activo, CasaOs placeholder). */
+/** Dashboard admin multi-producto (CareMe activo, Nido placeholder). */
 export default async function AdminPage({
   searchParams
 }: {
@@ -114,7 +114,7 @@ export default async function AdminPage({
             Métricas Jondrea
           </h1>
           <p style={{ margin: 0, color: "var(--color-text-muted)" }}>
-            CareMe + CasaOs. TurnosPets queda fuera (WordPress).
+            CareMe + Nido. TurnosPets queda fuera (WordPress).
           </p>
         </div>
         <form method="post" action="/admin/logout">
@@ -133,10 +133,10 @@ export default async function AdminPage({
             CareMe
           </Link>
           <Link
-            href={`/admin?product=casaos&days=${selectedDays}`}
-            className={`admin-tab ${product === "casaos" ? "is-active" : ""}`}
+            href={`/admin?product=nido&days=${selectedDays}`}
+            className={`admin-tab ${product === "nido" ? "is-active" : ""}`}
           >
-            CasaOs
+            Nido
           </Link>
         </div>
         {product === "careme" ? (
@@ -154,10 +154,10 @@ export default async function AdminPage({
         ) : null}
       </div>
 
-      {product === "casaos" ? (
+      {product === "nido" ? (
         <div className="admin-empty">
-          CasaOs todavía no tiene API de analytics. Cuando el producto exista, este tab mostrará
-          métricas equivalentes.
+          Nido todavía no tiene API de analytics. Cuando el producto exponga métricas, este tab
+          mostrará datos equivalentes.
         </div>
       ) : null}
 

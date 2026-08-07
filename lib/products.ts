@@ -1,4 +1,4 @@
-export type ProductStatus = "live" | "development";
+export type ProductStatus = "beta" | "development";
 
 export type Product = {
   id: string;
@@ -19,28 +19,30 @@ export const products: Product[] = [
     shortName: "CareMe",
     blurb:
       "Bienestar personal con continuidad diaria: emoción, hábitos, objetivos y tu Future You.",
-    status: "live",
+    status: "beta",
     href: "/productos/careme",
     accent: "#6C5CE7",
     logoSrc: "/logo-careme.png"
   },
   {
-    id: "casaos",
-    name: "CasaOs",
-    shortName: "CasaOs",
-    blurb: "Sistema operativo para el hogar digital. En desarrollo.",
-    status: "development",
-    href: null,
-    accent: "#2EC4B6"
+    id: "nido",
+    name: "Nido",
+    shortName: "Nido",
+    blurb:
+      "El hub de tu hogar: miembros, gastos, rutinas y compras compartidos en un solo lugar.",
+    status: "beta",
+    href: "/productos/nido",
+    accent: "#C46B3A",
+    logoSrc: "/logo-nido.png"
   },
   {
     id: "turnospets",
     name: "TurnosPets",
     shortName: "TurnosPets",
-    blurb: "Turnos y gestión para mascotas. En desarrollo (WordPress).",
+    blurb: "Turnos y gestión para mascotas. En desarrollo.",
     status: "development",
     href: null,
-    accent: "#F4A261"
+    accent: "#2A9D8F"
   }
 ];
 

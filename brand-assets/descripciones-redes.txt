@@ -1,0 +1,48 @@
+JondreA Tech — Copy redes sociales
+=================================
+
+INSTAGRAM (bio)
+---------------
+Software factory · Productos digitales con identidad propia
+CareMe · Nido · Beta Android
+✉️ jondreatech@gmail.com
+
+INSTAGRAM (descripción / about ampliada)
+----------------------------------------
+JondreA Tech diseña y construye productos digitales con foco en experiencia real.
+
+Hoy en beta (solo Android):
+• CareMe — bienestar personal, hábitos y tu Future You
+• Nido — el hub de tu hogar: miembros, gastos, rutinas y compras
+
+Pedí acceso escribiendo a jondreatech@gmail.com
+
+
+LINKEDIN (tagline / headline)
+-----------------------------
+Software factory · CareMe & Nido · Beta Android
+
+
+LINKEDIN (About)
+----------------
+JondreA Tech es una software factory que diseña y construye productos digitales con identidad propia.
+
+Nuestros productos actuales:
+• CareMe — app de bienestar personal con continuidad diaria (emoción, hábitos, objetivos y Future You).
+• Nido — hub familiar compartido: miembros, gastos, rutinas y compras en un solo lugar.
+
+Ambas están en beta, por el momento solo disponibles en Android. Para pedir acceso escribinos a jondreatech@gmail.com.
+
+Instagram: @jondrea.tech
+Web: (tu dominio)
+
+
+ASSETS EN ESTA CARPETA
+----------------------
+logo-jondrea.png          → Logo empresa (wordmark + monograma)
+logo-jondrea-mark.png     → Monograma JA
+logo-careme.png           → Logo CareMe (versión redes)
+logo-nido.png             → Logo Nido (versión redes)
+logo-careme-original.png  → Logo CareMe del repo mobile
+logo-nido-original.png    → Logo Nido del repo mobile
+header-jondrea-social.png → Header / cover Instagram + LinkedIn (16:9)

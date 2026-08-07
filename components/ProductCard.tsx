@@ -5,7 +5,13 @@ type ProductCardProps = {
   product: Product;
 };
 
-/** Card de producto: CareMe navega; el resto muestra estado en desarrollo. */
+/** Etiqueta de estado visible en la card. */
+function statusLabel(status: Product["status"]) {
+  if (status === "beta") return "Beta Android";
+  return "En desarrollo";
+}
+
+/** Card de producto: con href navega; sin href muestra estado en desarrollo. */
 export function ProductCard({ product }: ProductCardProps) {
   const inner = (
     <>
@@ -23,9 +29,9 @@ export function ProductCard({ product }: ProductCardProps) {
           </span>
         )}
         <span
-          className={`product-card__badge ${product.status === "live" ? "is-live" : "is-dev"}`}
+          className={`product-card__badge ${product.status === "beta" ? "is-live" : "is-dev"}`}
         >
-          {product.status === "live" ? "Disponible" : "En desarrollo"}
+          {statusLabel(product.status)}
         </span>
       </div>
       <h3>{product.name}</h3>
@@ -46,9 +52,5 @@ export function ProductCard({ product }: ProductCardProps) {
     );
   }
 
-  return (
-    <article className="product-card">
-      {inner}
-    </article>
-  );
+  return <article className="product-card">{inner}</article>;
 }

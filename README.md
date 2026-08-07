@@ -32,7 +32,8 @@ Para métricas de CareMe necesitás la API CareMe arriba y que `CAREME_ADMIN_ANA
 | `/contactanos` | Contacto (email / IG / LinkedIn) |
 | `/productos` | Portfolio |
 | `/productos/careme` | Página de producto CareMe |
-| `/admin` | Métricas CareMe + placeholder CasaOs |
+| `/productos/nido` | Página de producto Nido |
+| `/admin` | Métricas CareMe + placeholder Nido |
 
 ## Despliegue beta (gratis)
 

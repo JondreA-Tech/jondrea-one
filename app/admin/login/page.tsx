@@ -1,3 +1,5 @@
+import { JondreaLogo } from "../../../components/JondreaLogo";
+
 type SearchParams = Record<string, string | string[] | undefined>;
 
 /** Devuelve el primer valor de un search param. */
@@ -18,9 +20,12 @@ export default async function AdminLoginPage({
   return (
     <div className="admin-shell">
       <div className="admin-card">
-        <span className="eyebrow">Panel interno</span>
+        <JondreaLogo size="sm" />
+        <span className="eyebrow" style={{ marginTop: "1rem" }}>
+          Panel interno
+        </span>
         <h1>Ingreso administrador</h1>
-        <p>Accedé a métricas de CareMe y CasaOs.</p>
+        <p>Accedé a métricas de CareMe y Nido.</p>
         <form method="post" action="/admin/login/submit" className="admin-form">
           <input type="hidden" name="next" value={nextPath} />
           <label>
