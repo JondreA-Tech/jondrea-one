@@ -37,12 +37,14 @@ Instagram: @jondrea.tech
 Web: (tu dominio)
 
 
-ASSETS EN ESTA CARPETA
-----------------------
-logo-jondrea.png          → Logo empresa (wordmark + monograma)
-logo-jondrea-mark.png     → Monograma JA
-logo-careme.png           → Logo CareMe (versión redes)
-logo-nido.png             → Logo Nido (versión redes)
-logo-careme-original.png  → Logo CareMe del repo mobile
-logo-nido-original.png    → Logo Nido del repo mobile
-header-jondrea-social.png → Header / cover Instagram + LinkedIn (16:9)
+ASSETS EN ESTA CARPETA (actualizados)
+-------------------------------------
+avatar-jondrea-social.png → Foto de perfil Instagram / LinkedIn (cuadrado)
+header-jondrea-social.png → Portada / banner Instagram + LinkedIn (16:9)
+logo-jondrea.png          → Logo empresa horizontal (wordmark)
+logo-jondrea-mark.png     → Monograma JA (mismo que avatar)
+favicon-jondrea.png       → Favicon / icono app
+logo-careme.png           → Logo CareMe nuevo (también en /public para la landing)
+logo-nido.png             → Logo Nido nuevo (también en /public para la landing)
+logo-careme-original.png  → Backup logo CareMe anterior
+logo-nido-original.png    → Backup logo Nido anterior
