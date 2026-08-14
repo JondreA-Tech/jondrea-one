@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import "../styles/tokens.css";
 
 *,
@@ -24,6 +26,10 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+html, body {
+  background: var(--color-bg);
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -44,7 +50,29 @@ input {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background: var(--gradient-hero);
+  background: var(--color-bg);
+}
+
+.site-header__brand,
+.site-header__link,
+.site-header__cta,
+.site-header__burger,
+.site-header__burger span,
+.site-footer,
+.site-footer__label,
+.site-footer__social a,
+.site-footer__cols a,
+.site-footer__muted,
+.site-footer__legal p,
+.page-hero h1,
+.section-title,
+.section h2,
+.approach-list strong,
+.approach-list span,
+.btn-ghost,
+.btn-primary,
+.inline-link {
+  color: var(--color-text);
 }
 
 .site-main {
@@ -92,8 +120,8 @@ input {
 .site-header__link {
   padding: 0.45rem 0.75rem;
   border-radius: var(--radius-sm);
-  color: var(--color-text-muted);
-  font-family: var(--font-display);
+  color: #e2e8f0;
+  font-family: "Inter", sans-serif;
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -102,11 +130,28 @@ input {
 
 .site-header__link:hover,
 .site-header__link.is-active {
-  color: var(--color-text);
+  color: #ffffff;
   background: transparent;
 }
 
+@media (max-width: 860px) {
+  .site-header__link:hover {
+    color: #22b6a8;
+  }
+}
+
+@media (min-width: 765px) {
+  /* tablet and up: header nav links use accent color on hover */
+  .site-header__link:hover {
+    color: #22b6a8;
+  }
+}
+
 .site-header__link.is-active {
+  color: var(--color-accent);
+}
+
+.page-hero h1 {
   color: var(--color-accent);
 }
 
@@ -125,7 +170,7 @@ input {
   border: 1px solid var(--color-border);
   border-radius: 12px;
   background: var(--color-surface);
-  padding: 12px 10px;
+  padding: 10px 9px;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
@@ -134,7 +179,7 @@ input {
 .site-header__burger span {
   display: block;
   height: 2px;
-  background: var(--color-text);
+  background: #ffffff;
   border-radius: 2px;
 }
 
@@ -170,12 +215,14 @@ input {
   .site-header__cta {
     margin-left: 0;
     width: 100%;
+    min-height: 40px;
+    padding: 0.55rem 0.9rem;
   }
 }
 
 /* ——— Logo ——— */
 .jondrea-logo {
-  --logo-teal: #0f7a72;
+  --logo-teal: #22b6a8;
   display: inline-flex;
   align-items: center;
   color: var(--color-text);
@@ -198,7 +245,7 @@ input {
 }
 
 .jondrea-logo__word {
-  font-family: var(--font-display);
+  font-family: "Times New Roman", Georgia, serif;
   font-weight: 700;
   letter-spacing: -0.04em;
   color: var(--color-text);
@@ -230,6 +277,25 @@ input {
   height: 2.15rem;
 }
 
+/* Footer-specific: make the small horizontal logo a bit larger in the footer */
+.site-footer .jondrea-logo--horizontal.jondrea-logo--sm .jondrea-logo__word {
+  font-size: 1.45rem;
+}
+.site-footer .jondrea-logo--horizontal.jondrea-logo--sm .jondrea-logo__mark {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+/* larger horizontal logo (used in hero with size="lg") */
+.jondrea-logo--horizontal.jondrea-logo--lg .jondrea-logo__word {
+  font-size: 2.1rem;
+}
+
+.jondrea-logo--horizontal.jondrea-logo--lg .jondrea-logo__mark {
+  width: 2.6rem;
+  height: 2.6rem;
+}
+
 .jondrea-logo--stacked {
   flex-direction: column;
   align-items: flex-start;
@@ -258,7 +324,7 @@ input {
 
 /* ——— Footer ——— */
 .site-footer {
-  margin-top: 5rem;
+  margin-top: 3.5rem;
   border-top: 1px solid var(--color-border);
   background: var(--footer-bg);
 }
@@ -266,41 +332,90 @@ input {
 .site-footer__inner {
   width: min(100% - 2rem, var(--container));
   margin-inline: auto;
-  padding: 3rem 0 2rem;
+  padding: 2.4rem 0 2rem;
   display: grid;
   grid-template-columns: 1.4fr 1fr;
   gap: 2rem;
+  align-items: center;
+  justify-items: start;
 }
 
 .site-footer__brand p {
-  margin: 0.85rem 0 0;
+  margin: 0;
+  padding-top: 0;
   max-width: 28rem;
   color: var(--color-text-muted);
-  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
   font-weight: 500;
 }
 
 .site-footer__social {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.85rem 1.15rem;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 0.5rem 0.8rem;
   margin-top: 1.15rem;
 }
 
 .site-footer__social a {
   color: var(--color-text-soft);
-  font-size: 0.92rem;
-  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
 }
 
 .site-footer__social a:hover {
   color: var(--color-accent);
 }
 
+.site-footer__social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.site-footer__social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--color-text-soft);
+}
+
+.site-footer__social-icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.site-footer__social-icon:hover {
+  color: var(--color-accent);
+}
+
+
 .site-footer__cols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* keep column widths predictable; align the group to the start so content sits at the left of the container */
+  grid-template-columns: repeat(2, minmax(180px, 260px));
   gap: 1.5rem;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+}
+
+.site-footer__cols > div {
+  width: auto; /* let the column size be determined by the minmax above */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* left-align content inside each column */
+  text-align: left;
 }
 
 .site-footer__cols a,
@@ -308,7 +423,9 @@ input {
   display: block;
   margin-top: 0.55rem;
   color: var(--color-text-soft);
-  font-size: 0.92rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .site-footer__cols a:hover {
@@ -321,12 +438,12 @@ input {
 
 .site-footer__label {
   margin: 0;
-  font-family: var(--font-display);
-  font-size: 0.74rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: #22b6a8;
 }
 
 .site-footer__legal {
@@ -338,7 +455,10 @@ input {
   width: min(100% - 2rem, var(--container));
   margin: 0 auto;
   color: var(--color-text-muted);
+  font-family: "Inter", sans-serif;
   font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
 }
 
 @media (max-width: 760px) {
@@ -359,7 +479,7 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: 4rem 3.5rem;
+  padding-block: 2.25rem 2.25rem;
 }
 
 .page-hero--home::before {
@@ -368,7 +488,7 @@ input {
   inset: 0 auto auto 0;
   width: min(560px, 70vw);
   height: min(360px, 48vw);
-  background: var(--gradient-glow);
+  background: transparent;
   pointer-events: none;
   z-index: 0;
 }
@@ -376,6 +496,25 @@ input {
 .page-hero--home > * {
   position: relative;
   z-index: 1;
+}
+
+/* About page: keep hero heading left-aligned */
+.page-hero__title--left {
+  width: 100%;
+  text-align: left;
+  margin-inline: 0;
+}
+
+/* reduce top padding specifically for About page hero */
+.page-hero--about {
+  padding-top: 3rem;
+}
+
+@media (max-width: 765px) {
+  /* reduce hero min-height slightly on smaller screens so content doesn't feel too spaced */
+  .page-hero--home {
+    min-height: calc(85svh - var(--header-h));
+  }
 }
 
 .eyebrow {
@@ -395,76 +534,136 @@ input {
 
 .page-hero h1 {
   margin: 0.35rem 0 1.1rem;
-  font-family: var(--font-display);
-  font-size: clamp(2.65rem, 6.4vw, 4.35rem);
+  font-family: "Inter", sans-serif;
+  font-size: clamp(2.25rem, 5vw, 3.6rem);
   font-weight: 800;
-  line-height: 1.02;
+  line-height: 1.07;
   letter-spacing: -0.04em;
+  color: #ffffff;
 }
 
 .page-hero--home h1 {
-  max-width: 15ch;
+  width: 100%;
+  max-width: 100%;
 }
 
 .hero-break {
   display: block;
-  color: var(--color-text-muted);
-  font-weight: 600;
+  color: #22b6a8;
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
 }
 
+/* Accent for Apps label on products page */
+.text-accent-apps {
+  color: #22b6ab;
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+}
 .lead {
   margin: 0;
-  max-width: 34rem;
+  max-width: 46rem;
   color: var(--color-text-muted);
-  font-size: clamp(1.12rem, 1.8vw, 1.28rem);
-  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.1rem);
+  font-weight: 400;
   line-height: 1.6;
   letter-spacing: -0.015em;
 }
 
+.btn {
+  font-family: "Inter", sans-serif;
+}
+
+@media (max-width: 765px) {
+  .page-hero--home {
+    align-items: center;
+    margin-inline: 15px;
+  }
+
+  /* also apply the slightly smaller horizontal margin for other hero variants on mobile */
+  .page-hero--about {
+    margin-inline: 15px;
+  }
+
+  .page-hero h1 {
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .lead {
+    max-width: 40rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .btn {
+    min-height: 44px;
+    padding: 0.6rem 1rem;
+  }
+}
+
 .section {
-  padding: 4.5rem 0;
+  padding: 2.8rem 0 2.2rem;
 }
 
 .section-label {
-  margin: 0 0 0.85rem;
-  color: var(--color-accent);
-  font-family: var(--font-display);
+  margin: 0 auto 1rem;
+  color: #22b6a8;
+  font-family: "Poppins", sans-serif;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.42rem 0.75rem;
+  border: 1px solid #22b6a8;
+  border-radius: 999px;
 }
 
 .section-title {
-  margin: 0 0 1rem;
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 2.85rem);
+  margin: 0 auto 1.35rem;
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: -0.035em;
-  max-width: 18ch;
+  text-align: center;
 }
 
 .section-title__muted {
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   font-weight: 600;
 }
 
 .section-lead {
-  margin: 0;
+  margin: 0 auto;
   max-width: 38rem;
   color: var(--color-text-muted);
-  font-size: 1.12rem;
-  font-weight: 500;
-  line-height: 1.65;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
   letter-spacing: -0.01em;
+  text-align: center;
 }
 
 .section h2 {
   margin: 0 0 0.75rem;
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.2vw, 2.85rem);
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
   font-weight: 700;
   letter-spacing: -0.035em;
   line-height: 1.08;
@@ -483,7 +682,6 @@ input {
   padding: 0;
   display: grid;
   gap: 0;
-  border-top: 1px solid var(--color-border);
 }
 
 .approach-list li {
@@ -492,21 +690,65 @@ input {
   gap: 1rem 1.5rem;
   padding: 1.35rem 0;
   border-bottom: 1px solid var(--color-border);
-  align-items: baseline;
+  align-items: center;
 }
 
-.approach-list strong {
-  font-family: var(--font-display);
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+@media (min-width: 765px) {
+  /* center the approach-list as a group on tablet and larger */
+  .approach-list {
+    justify-content: center;
+  }
+
+  /* Hero adjustments for tablet and above: add left padding and left-align actions */
+  .page-hero--home {
+    /* Move main hero content slightly away from the left edge */
+    padding-inline-start: 3rem;
+    /* Reduce the hero height more on tablet+ so content feels less spaced */
+    min-height: calc(75svh - var(--header-h));
+  }
+
+  /* Ensure hero action buttons sit to the left (not centered) on tablet+/desktop */
+  .page-hero--home .hero-actions {
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  /* Keep buttons at a reasonable fixed min width on larger screens */
+  .page-hero--home .hero-actions .btn {
+    width: auto;
+    min-width: 12rem;
+  }
+}
+
+.approach-item__title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
   color: var(--color-text);
 }
 
-.approach-list span {
+.approach-item__title::before {
+  content: "";
+  display: inline-block;
+  width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: rgba(34, 182, 168, 0.12);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3E%3Cpath d='M5 10.5L8.3 13.8L15 7.1' stroke='%2322b6a8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px 14px;
+}
+
+.approach-list > li > span:not(.approach-item__title) {
   color: var(--color-text-muted);
-  font-size: 1.05rem;
-  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
   line-height: 1.55;
 }
 
@@ -522,12 +764,19 @@ input {
   max-width: 42rem;
 }
 
+.section p.section-label {
+  display: block;
+  width: fit-content;
+  margin-inline: auto;
+  color: #22b6a8;
+}
+
 .section--cta {
   padding-bottom: 5rem;
 }
 
 .cta-band {
-  padding: 2.75rem 2rem;
+  padding: 1.9rem 1.4rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
   background: var(--color-surface);
@@ -535,7 +784,6 @@ input {
 }
 
 .cta-band .section-title {
-  max-width: 16ch;
 }
 
 .btn {
@@ -543,30 +791,31 @@ input {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  min-height: 50px;
-  padding: 0.8rem 1.45rem;
+  min-height: 46px;
+  padding: 0.68rem 1.15rem;
   border-radius: var(--radius-md);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 0.98rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
   letter-spacing: -0.02em;
   transition: transform var(--duration-fast) var(--ease-out), background var(--duration-fast),
     border-color var(--duration-fast), filter var(--duration-fast);
 }
 
 .btn:hover {
-  transform: translateY(-1px);
+  transform: none;
 }
 
 .btn-primary {
-  background: var(--color-accent);
+  background: #1c9f94;
   color: #ffffff;
   border: none;
   box-shadow: 0 6px 20px rgba(15, 122, 114, 0.22);
 }
 
 .btn-primary:hover {
-  filter: brightness(1.06);
+  background: #22b6a8;
+  filter: none;
 }
 
 .btn-ghost {
@@ -583,8 +832,13 @@ input {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
+  gap: 0.6rem;
+  margin-top: 1.35rem;
+  justify-content: center;
+}
+
+.hero-actions .btn {
+  min-width: 180px;
 }
 
 .feature-grid,
@@ -645,13 +899,25 @@ input {
 }
 
 .feature-card p,
-.contact-card p,
-.about-block p {
+.contact-card p {
   margin: 0;
   color: var(--color-text-muted);
   font-size: 1.02rem;
   font-weight: 500;
   line-height: 1.6;
+}
+
+.about-block p {
+  margin: 0;
+  color: #CBD5E1;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.about-block {
+  padding: 1.1rem 1rem;
 }
 
 .stats-grid {
@@ -681,19 +947,20 @@ input {
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  padding: 1.4rem;
+  padding: 1.35rem 1.25rem 1.2rem;
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
-  background: var(--color-surface);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
   min-height: 250px;
   transition: border-color var(--duration) var(--ease-out), transform var(--duration) var(--ease-out),
     box-shadow var(--duration) var(--ease-out);
 }
 
+.product-card:hover,
 .product-card--link:hover {
-  border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+  border-color: var(--color-border);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 10px 30px rgba(34,182,168,0.12), var(--shadow-soft);
 }
 
 .product-card__top {
@@ -722,7 +989,7 @@ input {
 }
 
 .product-card__badge {
-  font-family: var(--font-display);
+  font-family: "Inter", sans-serif;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -743,8 +1010,8 @@ input {
 
 .product-card h3 {
   margin: 0.4rem 0 0;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-family: "Inter", sans-serif;
+  font-size: 25px;
   font-weight: 700;
   letter-spacing: -0.03em;
 }
@@ -753,23 +1020,42 @@ input {
   margin: 0;
   color: var(--color-text-muted);
   flex: 1;
-  font-size: 1rem;
-  font-weight: 500;
-  line-height: 1.55;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
 }
 
 .product-card__cta {
   margin-top: 0.5rem;
-  font-family: var(--font-display);
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 15px;
   letter-spacing: -0.02em;
   color: var(--color-accent);
+  transition: color var(--duration-fast) var(--ease-out), background-color var(--duration-fast) var(--ease-out), border-color var(--duration-fast) var(--ease-out);
+}
+
+.product-card__cta:hover {
+  background-color: rgba(34, 182, 171, 0.08);
+  border-color: rgba(34, 182, 171, 0.35);
+  color: #22b6ab;
 }
 
 .product-card__cta.is-disabled {
   color: var(--color-text-muted);
   font-weight: 600;
+}
+
+.product-card__cta.is-disabled:hover {
+  background-color: transparent;
+  color: var(--color-text-muted);
 }
 
 .contact-grid {
@@ -779,9 +1065,102 @@ input {
   margin-top: 1.75rem;
 }
 
+/* Compact contact row: icon + label */
+.contact-quick {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: 1.75rem;
+  flex-wrap: wrap;
+}
+
+.contact-quick__item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  min-width: 220px;
+  max-width: 360px;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.03);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+}
+
+.contact-quick__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(34,182,168,0.08);
+}
+
+.contact-quick__icon {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(34,182,168,0.06);
+  color: #22b6ab;
+}
+
+.contact-quick__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-primary {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  color: #22b6ab;
+}
+
+.contact-sub {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+/* Short CTA line under contact icons */
+.contact-ask {
+  text-align: center;
+  margin-top: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--color-text-muted);
+}
+
+.contact-ask .text-accent-apps {
+  color: #22b6ab;
+}
+
+@media (max-width: 900px) {
+  .contact-quick__item {
+    min-width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+.contact-card h3 {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.contact-card p {
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  color: var(--color-text-muted);
+  margin: 0 0 0.5rem;
+}
+
 .contact-card a {
   color: var(--color-accent);
   font-weight: 700;
+  font-family: "Poppins", sans-serif;
   word-break: break-word;
 }
 
@@ -792,11 +1171,19 @@ input {
 }
 
 .about-block__title {
-  margin: 0 0 0.55rem;
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  margin: 0 0 1rem;
+  color: #22b6a8;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.42rem 0.75rem;
+  border: 1px solid #22b6a8;
+  border-radius: 999px;
 }
 
 @media (max-width: 900px) {
@@ -805,6 +1192,57 @@ input {
   .stats-grid,
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Arrange about page blocks (cards) side-by-side on desktop */
+  .about-stack {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  /* Give each about block some internal spacing for balance on large screens */
+  .about-block {
+    padding: 25px;
+  }
+
+  /* Desktop: make the About page H1 larger and center it with its description */
+  .page-hero--about .page-hero__title--left {
+    font-size: 50px;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .page-hero--about .lead {
+    font-size: 1.1rem; /* ~17.6px */
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  /* Desktop: make the Products page main title match About (50px) */
+  .page-hero--products h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  /* Desktop: center the lead paragraph on Products page */
+  .page-hero--products .lead {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  /* Desktop: center title and description on Contact page */
+  .page-hero--contact h1 {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  .page-hero--contact .lead {
+    text-align: center;
+    margin-inline: auto;
   }
 }
 
@@ -994,4 +1432,18 @@ input {
   .admin-metrics {
     grid-template-columns: 1fr;
   }
+}
+
+/* Header: make the Contactanos CTA use the visual styles of the "Pedir acceso a la beta" hover state as its base */
+.site-header__cta {
+  /* base: ghost-hover styles */
+  background: var(--color-accent-muted) !important;
+  color: #ffffff;
+  border: 1px solid var(--color-accent) !important;
+  box-shadow: none !important;
+}
+
+/* keep a subtle hover effect (slightly stronger) */
+.site-header__cta:hover {
+  background: var(--color-accent) !important;
 }

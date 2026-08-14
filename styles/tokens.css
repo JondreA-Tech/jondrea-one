@@ -4,44 +4,44 @@
  * CareMe usa `.theme-careme` y Nido usa `.theme-nido` (identidad propia).
  */
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 
-  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
-  --font-body: "Figtree", system-ui, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Poppins", system-ui, sans-serif;
   --logo-teal: #0f7a72;
 
   /* Palette — slate + teal */
-  --color-bg: #f3f5f7;
-  --color-bg-elevated: #ffffff;
-  --color-surface: #ffffff;
-  --color-surface-2: #e8ecf0;
-  --color-border: #d4dae2;
-  --color-border-strong: #b8c2ce;
-  --color-text: #12151a;
-  --color-text-muted: #5a6573;
-  --color-text-soft: #2e3640;
-  --color-accent: #0f7a72;
-  --color-accent-hover: #0c635c;
-  --color-accent-2: #1a9b8e;
-  --color-accent-muted: rgba(15, 122, 114, 0.1);
-  --color-warm: #3d5a5a;
+  --color-bg: #1e293b;
+  --color-bg-elevated: #1f2a3a;
+  --color-surface: #243244;
+  --color-surface-2: #2d3c4f;
+  --color-border: rgba(148, 163, 184, 0.2);
+  --color-border-strong: rgba(148, 163, 184, 0.35);
+  --color-text: #f8fafc;
+  --color-text-muted: #cbd5e1;
+  --color-text-soft: #e2e8f0;
+  --color-accent: #22b6a8;
+  --color-accent-hover: #1c9f94;
+  --color-accent-2: #22b6a8;
+  --color-accent-muted: rgba(34, 182, 168, 0.12);
+  --color-warm: #94a3b8;
   --color-danger: #c45c4a;
   --color-success: #2a9d6e;
 
   /* Gradients — atmósfera sutil, sin glow */
-  --gradient-hero: radial-gradient(900px 480px at 8% -5%, rgba(15, 122, 114, 0.09), transparent 55%),
-    radial-gradient(700px 420px at 96% 8%, rgba(18, 21, 26, 0.04), transparent 50%),
-    linear-gradient(180deg, #f7f8fa 0%, #eef1f4 100%);
+  --gradient-hero: radial-gradient(900px 480px at 8% -5%, rgba(15, 122, 114, 0.14), transparent 55%),
+    radial-gradient(700px 420px at 96% 8%, rgba(148, 163, 184, 0.08), transparent 50%),
+    linear-gradient(180deg, #1e293b 0%, #111827 100%);
   --gradient-accent: linear-gradient(135deg, #0f7a72 0%, #1a9b8e 100%);
-  --gradient-card: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
-  --gradient-glow: radial-gradient(circle, rgba(15, 122, 114, 0.12), transparent 70%);
+  --gradient-card: linear-gradient(180deg, #243244 0%, #1d2a39 100%);
+  --gradient-glow: radial-gradient(circle, rgba(15, 122, 114, 0.18), transparent 70%);
 
   /* Layout */
   --container: 1120px;
   --header-h: 78px;
-  --radius-sm: 6px;
-  --radius-md: 12px;
-  --radius-lg: 18px;
+  --radius-sm: 5px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-pill: 999px;
 
   /* Motion */
@@ -50,10 +50,10 @@
   --duration: 320ms;
 
   /* Shadows */
-  --shadow-soft: 0 8px 28px rgba(18, 21, 26, 0.06);
-  --shadow-glow: 0 0 0 1px rgba(15, 122, 114, 0.18), 0 10px 28px rgba(18, 21, 26, 0.06);
-  --header-bg: rgba(247, 248, 250, 0.86);
-  --footer-bg: #ffffff;
+  --shadow-soft: 0 8px 28px rgba(15, 23, 42, 0.28);
+  --shadow-glow: 0 0 0 1px rgba(15, 122, 114, 0.26), 0 10px 28px rgba(15, 23, 42, 0.26);
+  --header-bg: rgba(15, 23, 42, 0.88);
+  --footer-bg: #111827;
 }
 
 /**

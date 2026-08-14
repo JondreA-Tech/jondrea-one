@@ -9,11 +9,10 @@ export const metadata: Metadata = {
 /** Listado de productos Jondrea. */
 export default function ProductsPage() {
   return (
-    <section className="container page-hero">
-      <span className="eyebrow">Portfolio</span>
-      <h1>Productos</h1>
+    <section className="container page-hero page-hero--products">
+      <h1>Nuestras <span className="text-accent-apps">Apps</span></h1>
       <p className="lead">
-        CareMe y Nido están en beta (solo Android, acceso por correo). TurnosPets viene después.
+        CareMe y Nido están en beta (disponible en android, acceso por correo). TurnosPets proximamente.
       </p>
       <div className="product-grid">
         {products.map((product) => (

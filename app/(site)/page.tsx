@@ -10,7 +10,7 @@ export default function HomePage() {
     <>
       <section className="container page-hero page-hero--home">
         <div className="hero-brand rise">
-          <JondreaLogo size="lg" />
+          <JondreaLogo size="lg" layout="horizontal" />
         </div>
         <h1 className="rise rise-delay-1">
           Productos digitales
@@ -28,11 +28,11 @@ export default function HomePage() {
       </section>
 
       <section className="container section">
-        <p className="section-label">Productos</p>
+        <p className="section-label">Nuestros productos</p>
         <h2 className="section-title">Apps en beta, con problema real</h2>
         <p className="section-lead">
-          CareMe y Nido ya se pueden probar. Por el momento la beta es solo para Android y se
-          solicita por correo.
+          Dos apps en beta para problemas cotidianos: bienestar personal y gestión del hogar. Cada
+          una con su propia identidad, lista para probarse.
         </p>
         <div className="product-grid">
           {products.map((product) => (
@@ -48,20 +48,20 @@ export default function HomePage() {
           <span className="section-title__muted"> Sin teatro.</span>
         </h2>
         <p className="section-lead">
-          Producto, diseño e ingeniería en el mismo equipo. Iteramos con usuarios reales desde la
-          beta.
+          Producto, diseño e ingeniería en el mismo equipo. Medimos uso real y ajustamos antes de
+          sumar más features.
         </p>
         <ol className="approach-list">
           <li>
-            <strong>Producto con foco</strong>
+            <span className="approach-item__title">Producto con foco</span>
             <span>Definimos el loop diario del usuario antes de sumar features.</span>
           </li>
           <li>
-            <strong>Diseño con sistema</strong>
+            <span className="approach-item__title">Diseño con sistema</span>
             <span>Tokens, tipografía y motion listos para escalar.</span>
           </li>
           <li>
-            <strong>Ingeniería sólida</strong>
+            <span className="approach-item__title">Ingeniería sólida</span>
             <span>APIs, mobile y despliegues pensados para beta real.</span>
           </li>
         </ol>
@@ -72,7 +72,7 @@ export default function HomePage() {
           <p className="section-label">Beta Android</p>
           <h2 className="section-title">Probá CareMe o Nido</h2>
           <p className="section-lead">
-            Ambas betas están disponibles solo en Android por ahora. Escribinos a{" "}
+            Ambas betas están disponibles solo en Android. Escribinos a{" "}
             <a className="inline-link" href={`mailto:${site.contact.email}`}>
               {site.contact.email}
             </a>{" "}

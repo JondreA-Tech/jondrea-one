@@ -4,7 +4,7 @@ export const site = {
   legalName: "JondreA Tech",
   tagline: "Productos digitales con identidad propia.",
   description:
-    "Diseñamos y construimos aplicaciones móviles con foco en experiencia real. CareMe y Nido ya están en beta — por ahora solo en Android.",
+    "Diseñamos y construimos aplicaciones móviles con foco en experiencia real. CareMe y Nido ya están en beta — disponible solo en Android.",
   contact: {
     email: "jondreatech@gmail.com",
     instagram: "https://instagram.com/jondrea.tech",

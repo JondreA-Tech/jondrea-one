@@ -7,9 +7,8 @@ export const metadata: Metadata = {
 /** Página Sobre nosotros. */
 export default function AboutPage() {
   return (
-    <section className="container page-hero">
-      <span className="eyebrow">JondreA Tech</span>
-      <h1>Sobre nosotros</h1>
+    <section className="container page-hero page-hero--about">
+      <h1 className="page-hero__title--left">Sobre <span className="text-accent-apps">nosotros</span></h1>
       <p className="lead">
         Somos una software factory familiar: construimos productos digitales con criterio de
         producto, diseño cuidado y ingeniería práctica.

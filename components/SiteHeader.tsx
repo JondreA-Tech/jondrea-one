@@ -33,6 +33,7 @@ export function SiteHeader() {
         >
           <span />
           <span />
+          <span />
         </button>
 
         <nav className={`site-header__nav ${open ? "is-open" : ""}`} aria-label="Principal">
