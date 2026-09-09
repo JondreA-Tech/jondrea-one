@@ -61,8 +61,11 @@
  */
 .theme-careme {
   --cm-bg: #0f172a;
+  --cm-bg-end: #1e293b;
   --cm-surface: #1e293b;
+  --cm-surface-elevated: #273549;
   --cm-primary: #6c5ce7;
+  --cm-primary-dark: #a78bfa;
   --cm-secondary: #ff7eb6;
   --cm-accent: #4da8ff;
   --cm-success: #2dd4bf;
@@ -71,6 +74,8 @@
   --cm-border: #334155;
   --cm-gradient: linear-gradient(135deg, #6c5ce7, #ff7eb6);
   --cm-calm: linear-gradient(135deg, #4da8ff, #2dd4bf);
+  --cm-radius-md: 16px;
+  --cm-radius-lg: 24px;
   --font-careme: "Poppins", var(--font-body);
 }
 
@@ -81,6 +86,7 @@
   --nido-bg: #f7f3ee;
   --nido-bg-soft: #efe8df;
   --nido-surface: #ffffff;
+  --nido-surface-elevated: #fffcf8;
   --nido-primary: #c46b3a;
   --nido-primary-to: #d4894a;
   --nido-on-primary: #ffffff;
@@ -88,6 +94,13 @@
   --nido-muted: #6b5e52;
   --nido-border: #e2d6c8;
   --nido-success: #3d8b6e;
+  --nido-accent-home: #d4894a;
+  --nido-accent-members: #4f8f6e;
+  --nido-accent-expenses: #c9a227;
+  --nido-accent-routines: #4a7fb5;
+  --nido-accent-shopping: #c45c4a;
   --nido-gradient: linear-gradient(135deg, #c46b3a, #d4894a);
+  --nido-radius-md: 14px;
+  --nido-radius-lg: 20px;
   --font-nido: "Nunito", var(--font-body);
 }

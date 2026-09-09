@@ -1,14 +1,20 @@
 import Link from "next/link";
-import { products } from "../../lib/products";
-import { ProductCard } from "../../components/ProductCard";
+import { CustomWorkCta } from "../../components/CustomWorkCta";
 import { JondreaLogo } from "../../components/JondreaLogo";
-import { site, betaMailto } from "../../lib/site";
+import { ProductCard } from "../../components/ProductCard";
+import { products } from "../../lib/products";
+import { publicRelease } from "../../lib/release";
+import { site } from "../../lib/site";
 
-/** Home corporativa: marca, productos y acceso a betas Android. */
+/** Home corporativa: marca, productos, método y servicios a medida. */
 export default function HomePage() {
   return (
     <>
       <section className="container page-hero page-hero--home">
+        <div className="hero-aurora" aria-hidden="true">
+          <span className="hero-orb hero-orb--a" />
+          <span className="hero-orb hero-orb--b" />
+        </div>
         <div className="hero-brand rise">
           <JondreaLogo size="lg" layout="horizontal" />
         </div>
@@ -21,18 +27,19 @@ export default function HomePage() {
           <Link href="/productos" className="btn btn-primary">
             Ver productos
           </Link>
-          <a href={betaMailto("CareMe o Nido")} className="btn btn-ghost">
-            Pedir acceso a la beta
-          </a>
+          <Link href="/#servicios" className="btn btn-ghost">
+            Consultar un proyecto
+          </Link>
         </div>
       </section>
 
       <section className="container section">
-        <p className="section-label">Nuestros productos</p>
-        <h2 className="section-title">Apps en beta, con problema real</h2>
+        <p className="section-label">Productos</p>
+        <h2 className="section-title">CareMe y Nido · {publicRelease.label}</h2>
         <p className="section-lead">
-          Dos apps en beta para problemas cotidianos: bienestar personal y gestión del hogar. Cada
-          una con su propia identidad, lista para probarse.
+          CareMe está orientada al bienestar personal. Nido, a la gestión del hogar. Ambas se
+          encuentran en {publicRelease.label} para Android. La APK está próxima a publicarse en cada
+          ficha de producto. {publicRelease.ios}.
         </p>
         <div className="product-grid">
           {products.map((product) => (
@@ -42,49 +49,47 @@ export default function HomePage() {
       </section>
 
       <section className="container section">
-        <p className="section-label">Cómo construimos</p>
+        <p className="section-label">Cómo trabajamos</p>
         <h2 className="section-title">
-          De la idea al producto en uso.
-          <span className="section-title__muted"> Sin teatro.</span>
+          Del diseño a la publicación.
         </h2>
         <p className="section-lead">
-          Producto, diseño e ingeniería en el mismo equipo. Medimos uso real y ajustamos antes de
-          sumar más features.
+          Producto, diseño e ingeniería en el mismo equipo. Definimos el uso cotidiano, construimos
+          y publicamos versiones que se pueden instalar y medir.
         </p>
         <ol className="approach-list">
           <li>
-            <span className="approach-item__title">Producto con foco</span>
-            <span>Definimos el loop diario del usuario antes de sumar features.</span>
+            <span className="approach-item__title">Definición de producto</span>
+            <span>Establecemos el recorrido diario del usuario antes de ampliar funcionalidades.</span>
           </li>
           <li>
-            <span className="approach-item__title">Diseño con sistema</span>
-            <span>Tokens, tipografía y motion listos para escalar.</span>
+            <span className="approach-item__title">Identidad y sistema</span>
+            <span>Cada aplicación conserva su identidad visual; el sistema de diseño permite escalar con consistencia.</span>
           </li>
           <li>
-            <span className="approach-item__title">Ingeniería sólida</span>
-            <span>APIs, mobile y despliegues pensados para beta real.</span>
+            <span className="approach-item__title">Ingeniería y publicación</span>
+            <span>API, aplicación móvil y panel de seguimiento para uso real en etapa beta.</span>
           </li>
         </ol>
       </section>
 
+      <CustomWorkCta />
+
       <section className="container section section--cta">
         <div className="cta-band">
-          <p className="section-label">Beta Android</p>
-          <h2 className="section-title">Probá CareMe o Nido</h2>
+          <p className="section-label">Android</p>
+          <h2 className="section-title">{publicRelease.label}</h2>
           <p className="section-lead">
-            Ambas betas están disponibles solo en Android. Escribinos a{" "}
-            <a className="inline-link" href={`mailto:${site.contact.email}`}>
-              {site.contact.email}
-            </a>{" "}
-            y te enviamos el acceso.
+            La APK de CareMe y de Nido está próxima a publicarse en cada ficha de producto.{" "}
+            {publicRelease.ios}.
           </p>
-          <div className="hero-actions">
-            <a href={betaMailto("CareMe")} className="btn btn-primary">
-              Beta CareMe
-            </a>
-            <a href={betaMailto("Nido")} className="btn btn-ghost">
-              Beta Nido
-            </a>
+          <div className="hero-actions hero-actions--center">
+            <Link href="/productos/careme#descargar" className="btn btn-primary">
+              CareMe
+            </Link>
+            <Link href="/productos/nido#descargar" className="btn btn-ghost">
+              Nido
+            </Link>
           </div>
         </div>
       </section>

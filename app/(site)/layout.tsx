@@ -1,5 +1,6 @@
 import { SiteFooter } from "../../components/SiteFooter";
 import { SiteHeader } from "../../components/SiteHeader";
+import { SiteMotion } from "../../components/SiteMotion";
 
 /** Layout marketing: header + footer corporativos. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -8,6 +9,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <SiteHeader />
       <main className="site-main">{children}</main>
       <SiteFooter />
+      <SiteMotion />
     </div>
   );
 }

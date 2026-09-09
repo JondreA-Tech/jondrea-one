@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { publicRelease } from "../lib/release";
 import type { Product } from "../lib/products";
 
 type ProductCardProps = {
@@ -7,7 +8,7 @@ type ProductCardProps = {
 
 /** Etiqueta de estado visible en la card. */
 function statusLabel(status: Product["status"]) {
-  if (status === "beta") return "Beta Android";
+  if (status === "apk") return publicRelease.label;
   return "En desarrollo";
 }
 
@@ -29,7 +30,7 @@ export function ProductCard({ product }: ProductCardProps) {
           </span>
         )}
         <span
-          className={`product-card__badge ${product.status === "beta" ? "is-live" : "is-dev"}`}
+          className={`product-card__badge ${product.status === "development" ? "is-dev" : "is-live"}`}
         >
           {statusLabel(product.status)}
         </span>
@@ -46,11 +47,11 @@ export function ProductCard({ product }: ProductCardProps) {
 
   if (product.href) {
     return (
-      <Link href={product.href} className="product-card product-card--link">
+      <Link href={product.href} className={`product-card product-card--link product-card--${product.id}`}>
         {inner}
       </Link>
     );
   }
 
-  return <article className="product-card">{inner}</article>;
+  return <article className={`product-card product-card--${product.id}`}>{inner}</article>;
 }

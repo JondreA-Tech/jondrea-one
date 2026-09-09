@@ -2,7 +2,7 @@ import Link from "next/link";
 import { site } from "../lib/site";
 import { JondreaLogo } from "./JondreaLogo";
 
-/** Footer corporativo con navegación, redes y copyright. */
+/** Footer corporativo con navegación, productos, servicios y redes. */
 export function SiteFooter() {
   const year = new Date().getFullYear();
   return (
@@ -51,12 +51,14 @@ export function SiteFooter() {
             <Link href="/sobre-nosotros">Sobre nosotros</Link>
             <Link href="/productos">Productos</Link>
             <Link href="/contactanos">Contactanos</Link>
+            <Link href="/#servicios">Servicios a medida</Link>
           </div>
           <div>
             <p className="site-footer__label">Productos</p>
             <Link href="/productos/careme">CareMe</Link>
             <Link href="/productos/nido">Nido</Link>
-            <span className="site-footer__muted">TurnosPets · pronto</span>
+            <Link href="/productos/careme#descargar">Descargar CareMe</Link>
+            <Link href="/productos/nido#descargar">Descargar Nido</Link>
           </div>
         </div>
       </div>

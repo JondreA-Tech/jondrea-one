@@ -7,7 +7,7 @@ function firstParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
 }
 
-/** Login del panel admin Jondrea. */
+/** Login del panel admin JondreA. */
 export default async function AdminLoginPage({
   searchParams
 }: {
@@ -25,27 +25,21 @@ export default async function AdminLoginPage({
           Panel interno
         </span>
         <h1>Ingreso administrador</h1>
-        <p>Accedé a métricas de CareMe y Nido.</p>
+        <p>Métricas de uso de CareMe y Nido cuando se publican las APKs.</p>
         <form method="post" action="/admin/login/submit" className="admin-form">
           <input type="hidden" name="next" value={nextPath} />
           <label>
             Usuario
-            <input name="username" autoComplete="username" required defaultValue="admin" />
+            <input name="username" autoComplete="username" required />
           </label>
           <label>
             Contraseña
-            <input
-              name="password"
-              type="password"
-              autoComplete="current-password"
-              required
-              defaultValue="admin"
-            />
+            <input name="password" type="password" autoComplete="current-password" required />
           </label>
           <button type="submit" className="btn btn-primary">
             Entrar
           </button>
-          {hasError ? <p className="admin-error">Credenciales inválidas. Probá de nuevo.</p> : null}
+          {hasError ? <p className="admin-error">Credenciales inválidas. Vuelva a intentarlo.</p> : null}
         </form>
       </div>
     </div>

@@ -1,201 +1,196 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
-.careme-page {
+.product-shell--careme {
   font-family: var(--font-careme);
   color: var(--cm-text);
   background:
-    radial-gradient(900px 420px at 15% -5%, rgba(108, 92, 231, 0.28), transparent 55%),
-    radial-gradient(700px 380px at 90% 10%, rgba(255, 126, 182, 0.16), transparent 50%),
-    var(--cm-bg);
-  margin: -0.1px 0 0;
-  padding-bottom: 4rem;
+    linear-gradient(160deg, #0c1224 0%, #121a33 42%, #0f172a 72%, #15102e 100%);
 }
 
-.careme-wrap {
-  width: min(100% - 2rem, 980px);
-  margin-inline: auto;
+.site-main:has(.product-shell--careme) {
+  background: #0c1224;
 }
 
-.careme-hero {
-  padding: 4rem 0 2.5rem;
-  text-align: center;
+.product-shell--careme .product-aurora__orb--a {
+  background: rgba(108, 92, 231, 0.42);
+  opacity: 0.55;
 }
 
-.careme-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
+.product-shell--careme .product-aurora__orb--b {
+  background: rgba(255, 126, 182, 0.28);
+  opacity: 0.5;
 }
 
-.careme-brand img {
-  width: min(180px, 42vw);
-  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
-  animation: careme-float 4.5s ease-in-out infinite;
+.product-shell--careme .product-aurora__orb--c {
+  background: rgba(77, 168, 255, 0.22);
+  opacity: 0.45;
 }
 
-@keyframes careme-float {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-8px);
-  }
+.product-shell--careme .product-hero-logo {
+  filter: drop-shadow(0 12px 32px rgba(108, 92, 231, 0.35));
 }
 
-.careme-brand__title {
-  margin: 0;
-  font-size: clamp(2rem, 5vw, 2.6rem);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  display: flex;
-  justify-content: center;
+.product-shell--careme .product-brand-title {
+  font-family: var(--font-careme);
 }
 
-.careme-brand__care {
+.product-shell--careme .product-brand-title__care {
   color: var(--cm-text);
 }
 
-.careme-brand__me {
-  background: linear-gradient(90deg, #ff7eb6, #4da8ff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+.product-shell--careme .product-brand-title__me {
+  color: var(--cm-secondary);
 }
 
-.careme-tagline {
-  margin: 0.35rem auto 0;
-  max-width: 28rem;
+.product-shell--careme .product-kicker {
+  font-family: var(--font-careme);
+  color: var(--cm-primary-dark);
+}
+
+.product-shell--careme .product-label {
+  color: var(--cm-accent);
+  border: 1px solid var(--cm-accent);
+  font-family: var(--font-careme);
+}
+
+.product-shell--careme .product-title,
+.product-shell--careme .section-title {
+  font-family: var(--font-careme);
+  color: var(--cm-text);
+}
+
+.product-shell--careme .product-lead,
+.product-shell--careme .section-lead,
+.product-shell--careme .product-install-steps {
+  font-family: var(--font-careme);
   color: var(--cm-muted);
+}
+
+.product-shell--careme .product-pills li {
+  border-color: var(--cm-border);
+  background: rgba(30, 41, 59, 0.72);
+  color: var(--cm-muted);
+  font-family: var(--font-careme);
+}
+
+.product-shell--careme .btn {
+  font-family: var(--font-careme);
   font-weight: 500;
-  line-height: 1.45;
-}
-
-.careme-cta-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-top: 1.75rem;
-}
-
-.careme-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+  font-size: 1rem;
+  border-radius: var(--cm-radius-md);
   min-height: 48px;
-  padding: 0.7rem 1.25rem;
-  border-radius: 16px;
-  font-weight: 600;
-  transition: transform 180ms ease, opacity 180ms ease;
 }
 
-.careme-btn:hover {
-  transform: translateY(-1px);
-}
-
-.careme-btn-primary {
+.product-shell--careme .btn-primary {
   background: var(--cm-gradient);
   color: #fff;
+  border: none;
+  box-shadow: 0 10px 28px rgba(108, 92, 231, 0.32);
+  animation: product-cta-pulse 3.6s ease-in-out infinite;
 }
 
-.careme-btn-ghost {
+.product-shell--careme .btn-primary:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+}
+
+.product-shell--careme .btn-ghost {
+  background: transparent;
   border: 1px solid var(--cm-border);
   color: var(--cm-text);
 }
 
-.careme-pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-top: 1.25rem;
+.product-shell--careme .btn-ghost:hover {
+  border-color: var(--cm-primary);
+  background: rgba(108, 92, 231, 0.16);
 }
 
-.careme-pill {
-  padding: 0.4rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--cm-border);
-  background: rgba(30, 41, 59, 0.7);
+.product-shell--careme .btn.is-disabled {
+  animation: none;
+}
+
+.product-shell--careme .product-feature-card {
+  background: linear-gradient(160deg, rgba(39, 53, 73, 0.92), rgba(30, 41, 59, 0.96));
+  border-color: var(--cm-border);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+.product-shell--careme .product-feature-card:hover {
+  border-color: color-mix(in srgb, var(--feature-accent) 55%, var(--cm-border));
+  box-shadow: 0 14px 32px rgba(108, 92, 231, 0.18);
+}
+
+.product-shell--careme .product-feature-card h3 {
+  font-family: var(--font-careme);
+  color: var(--cm-text);
+}
+
+.product-shell--careme .product-feature-card p {
+  font-family: var(--font-careme);
   color: var(--cm-muted);
-  font-size: 0.85rem;
-  font-weight: 500;
 }
 
-.careme-section {
-  margin-top: 2.5rem;
+.product-shell--careme .approach-list li {
+  border-bottom-color: var(--cm-border);
 }
 
-.careme-section h2 {
-  margin: 0 0 0.65rem;
-  font-size: 1.45rem;
-  font-weight: 700;
+.product-shell--careme .approach-item__title {
+  font-family: var(--font-careme);
+  color: var(--cm-text);
 }
 
-.careme-section > p {
-  margin: 0 0 1rem;
+.product-shell--careme .approach-list > li > span:not(.approach-item__title) {
+  font-family: var(--font-careme);
   color: var(--cm-muted);
-  max-width: 40rem;
 }
 
-.careme-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.85rem;
-}
-
-.careme-card {
-  border: 1px solid var(--cm-border);
-  border-radius: 20px;
-  background: linear-gradient(160deg, rgba(39, 53, 73, 0.85), rgba(30, 41, 59, 0.95));
-  padding: 1.15rem 1.2rem;
-}
-
-.careme-card h3 {
-  margin: 0 0 0.4rem;
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.careme-card p {
-  margin: 0;
-  color: var(--cm-muted);
-  font-size: 0.95rem;
-}
-
-.careme-banner {
-  margin-top: 2.5rem;
-  padding: 1.5rem;
-  border-radius: 22px;
+.product-shell--careme .product-cta {
   background: var(--cm-calm);
   color: #0f172a;
-  text-align: center;
+  box-shadow: 0 16px 40px rgba(77, 168, 255, 0.18);
 }
 
-.careme-banner h2 {
-  margin: 0 0 0.4rem;
-  font-size: 1.35rem;
+.product-shell--careme .product-cta .product-label {
+  color: #0f172a;
+  border-color: rgba(15, 23, 42, 0.28);
 }
 
-.careme-banner p {
-  margin: 0 0 1rem;
-  opacity: 0.9;
+.product-shell--careme .product-cta .product-title {
+  color: #0f172a;
 }
 
-.careme-banner a {
-  display: inline-flex;
-  min-height: 44px;
-  align-items: center;
-  padding: 0.55rem 1.1rem;
-  border-radius: 14px;
+.product-shell--careme .product-cta .product-lead,
+.product-shell--careme .product-cta .product-install-steps {
+  color: rgba(15, 23, 42, 0.78);
+}
+
+.product-shell--careme .product-cta .inline-link {
+  color: #1e293b;
+}
+
+.product-shell--careme .product-cta .btn-primary {
   background: #0f172a;
-  color: #f8fafc;
-  font-weight: 600;
+  box-shadow: none;
+  animation: none;
 }
 
-@media (max-width: 720px) {
-  .careme-grid {
-    grid-template-columns: 1fr;
-  }
+.product-shell--careme .product-cta .btn-ghost {
+  border-color: rgba(15, 23, 42, 0.22);
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.product-shell--careme .section p.section-label {
+  color: var(--cm-accent);
+  border-color: var(--cm-accent);
+  font-family: var(--font-careme);
+}
+
+.product-shell--careme .section p.section-lead {
+  color: var(--cm-muted);
+  font-family: var(--font-careme);
+}
+
+.product-shell--careme .inline-link {
+  color: var(--cm-accent);
 }
