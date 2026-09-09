@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
 .product-shell--careme {
-  font-family: var(--font-careme);
   color: var(--cm-text);
   background:
     linear-gradient(160deg, #0c1224 0%, #121a33 42%, #0f172a 72%, #15102e 100%);
@@ -30,10 +27,6 @@
   filter: drop-shadow(0 12px 32px rgba(108, 92, 231, 0.35));
 }
 
-.product-shell--careme .product-brand-title {
-  font-family: var(--font-careme);
-}
-
 .product-shell--careme .product-brand-title__care {
   color: var(--cm-text);
 }
@@ -43,26 +36,22 @@
 }
 
 .product-shell--careme .product-kicker {
-  font-family: var(--font-careme);
   color: var(--cm-primary-dark);
 }
 
 .product-shell--careme .product-label {
   color: var(--cm-accent);
   border: 1px solid var(--cm-accent);
-  font-family: var(--font-careme);
 }
 
 .product-shell--careme .product-title,
 .product-shell--careme .section-title {
-  font-family: var(--font-careme);
   color: var(--cm-text);
 }
 
 .product-shell--careme .product-lead,
 .product-shell--careme .section-lead,
 .product-shell--careme .product-install-steps {
-  font-family: var(--font-careme);
   color: var(--cm-muted);
 }
 
@@ -70,15 +59,10 @@
   border-color: var(--cm-border);
   background: rgba(30, 41, 59, 0.72);
   color: var(--cm-muted);
-  font-family: var(--font-careme);
 }
 
 .product-shell--careme .btn {
-  font-family: var(--font-careme);
-  font-weight: 500;
-  font-size: 1rem;
   border-radius: var(--cm-radius-md);
-  min-height: 48px;
 }
 
 .product-shell--careme .btn-primary {
@@ -121,12 +105,10 @@
 }
 
 .product-shell--careme .product-feature-card h3 {
-  font-family: var(--font-careme);
   color: var(--cm-text);
 }
 
 .product-shell--careme .product-feature-card p {
-  font-family: var(--font-careme);
   color: var(--cm-muted);
 }
 
@@ -135,12 +117,10 @@
 }
 
 .product-shell--careme .approach-item__title {
-  font-family: var(--font-careme);
   color: var(--cm-text);
 }
 
 .product-shell--careme .approach-list > li > span:not(.approach-item__title) {
-  font-family: var(--font-careme);
   color: var(--cm-muted);
 }
 
@@ -183,12 +163,10 @@
 .product-shell--careme .section p.section-label {
   color: var(--cm-accent);
   border-color: var(--cm-accent);
-  font-family: var(--font-careme);
 }
 
 .product-shell--careme .section p.section-lead {
   color: var(--cm-muted);
-  font-family: var(--font-careme);
 }
 
 .product-shell--careme .inline-link {

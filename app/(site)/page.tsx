@@ -38,8 +38,8 @@ export default function HomePage() {
         <h2 className="section-title">CareMe y Nido · {publicRelease.label}</h2>
         <p className="section-lead">
           CareMe está orientada al bienestar personal. Nido, a la gestión del hogar. Ambas se
-          encuentran en {publicRelease.label} para Android. La APK está próxima a publicarse en cada
-          ficha de producto. {publicRelease.ios}.
+          encuentran en {publicRelease.label} para Android y se descargan desde cada ficha de
+          producto. {publicRelease.ios}.
         </p>
         <div className="product-grid">
           {products.map((product) => (
@@ -80,7 +80,7 @@ export default function HomePage() {
           <p className="section-label">Android</p>
           <h2 className="section-title">{publicRelease.label}</h2>
           <p className="section-lead">
-            La APK de CareMe y de Nido está próxima a publicarse en cada ficha de producto.{" "}
+            La APK de CareMe y de Nido ya puede descargarse en cada ficha de producto.{" "}
             {publicRelease.ios}.
           </p>
           <div className="hero-actions hero-actions--center">

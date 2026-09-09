@@ -1,19 +1,32 @@
 import Link from "next/link";
+import { AdminBars } from "../../components/admin/AdminBars";
+import { AdminFunnel } from "../../components/admin/AdminFunnel";
+import { AdminKpis } from "../../components/admin/AdminKpis";
+import { AdminNotice } from "../../components/admin/AdminNotice";
+import { AdminProductCard } from "../../components/admin/AdminProductCard";
+import { AdminSection } from "../../components/admin/AdminSection";
+import { JondreaLogo } from "../../components/JondreaLogo";
 import {
+  apkPublishedLabel,
   careMeEventLabel,
   fetchApiHealth,
   firstParam,
+  formatAdminRange,
   getCareMeSummary,
   getNidoSummary,
   isLaunchEmpty,
   publishedApkVersion,
+  ratioPercent,
   type ProductKey,
   type SearchParams
 } from "../../lib/admin";
+import { getCareMeApk } from "../../lib/caremeRelease";
+import { getNidoApk } from "../../lib/nidoRelease";
+import { getProduct } from "../../lib/products";
 
 const PERIOD_OPTIONS = [7, 14, 30];
 
-/** Dashboard admin multi-producto para el lanzamiento de APKs. */
+/** Dashboard admin multi-producto para el seguimiento de CareMe y Nido. */
 export default async function AdminPage({
   searchParams
 }: {
@@ -24,6 +37,12 @@ export default async function AdminPage({
   const selectedDays = firstParam(params?.days) ?? "7";
   const caremeUrl = process.env.CAREME_API_URL ?? "http://localhost:3001";
   const nidoUrl = process.env.NIDO_API_URL ?? "http://localhost:3002";
+  const caremeProduct = getProduct("careme");
+  const nidoProduct = getProduct("nido");
+  const caremeApk = getCareMeApk();
+  const nidoApk = getNidoApk();
+  const caremeVersion = publishedApkVersion("careme");
+  const nidoVersion = publishedApkVersion("nido");
 
   const [careme, nido, caremeHealth, nidoHealth] = await Promise.all([
     getCareMeSummary(params),
@@ -32,241 +51,279 @@ export default async function AdminPage({
     fetchApiHealth(nidoUrl, "Nido API")
   ]);
 
+  const range =
+    product === "careme"
+      ? formatAdminRange(careme.summary.from, careme.summary.to)
+      : formatAdminRange(nido.summary.from, nido.summary.to);
+  const caremeActiveRate = ratioPercent(careme.summary.activeUsers, careme.summary.registeredUsers);
+  const nidoMembersPerHome =
+    nido.summary.households > 0
+      ? (nido.summary.activeMemberships / nido.summary.households).toFixed(1)
+      : "0";
+
   return (
-    <div className="admin-shell">
-      <div className="admin-top">
-        <div>
-          <span className="eyebrow">Panel interno</span>
-          <h1 className="admin-title">Uso de las apps</h1>
-          <p className="admin-lead">
-            Métricas de CareMe y Nido cuando la gente instala las APKs. Ventana de {selectedDays}{" "}
-            días.
-          </p>
-        </div>
-        <form method="post" action="/admin/logout">
-          <button type="submit" className="btn btn-ghost">
-            Cerrar sesión
-          </button>
-        </form>
+    <div className={`admin-app admin-app--${product}`}>
+      <div className="admin-aurora" aria-hidden="true">
+        <span className="admin-orb admin-orb--a" />
+        <span className="admin-orb admin-orb--b" />
       </div>
-
-      <section className="admin-overview" aria-label="Resumen de productos">
-        <article className="admin-overview__card">
-          <div className="admin-overview__head">
-            <strong>CareMe</strong>
-            <span className={`admin-status ${caremeHealth.ok ? "is-ok" : "is-down"}`}>
-              {caremeHealth.ok ? "API ok" : "API caído"}
-            </span>
-          </div>
-          <p className="admin-overview__meta">APK {publishedApkVersion("careme")}</p>
-          <p className="admin-overview__stat">
-            {careme.summary.registeredUsers} usuarios · {careme.summary.activeUsers} activos
-          </p>
-        </article>
-        <article className="admin-overview__card">
-          <div className="admin-overview__head">
-            <strong>Nido</strong>
-            <span className={`admin-status ${nidoHealth.ok ? "is-ok" : "is-down"}`}>
-              {nidoHealth.ok ? "API ok" : "API caído"}
-            </span>
-          </div>
-          <p className="admin-overview__meta">APK {publishedApkVersion("nido")}</p>
-          <p className="admin-overview__stat">
-            {nido.summary.registeredUsers} usuarios · {nido.summary.households} hogares
-          </p>
-        </article>
-      </section>
-
-      <div className="admin-top admin-top--tabs">
-        <div className="admin-tabs">
-          <Link
-            href={`/admin?product=careme&days=${selectedDays}`}
-            className={`admin-tab ${product === "careme" ? "is-active" : ""}`}
-          >
-            CareMe
-          </Link>
-          <Link
-            href={`/admin?product=nido&days=${selectedDays}`}
-            className={`admin-tab ${product === "nido" ? "is-active" : ""}`}
-          >
-            Nido
-          </Link>
-        </div>
-        <div className="admin-filters">
-          {PERIOD_OPTIONS.map((period) => (
-            <Link
-              key={period}
-              href={`/admin?product=${product}&days=${period}`}
-              className={`admin-tab ${selectedDays === String(period) ? "is-active" : ""}`}
-            >
-              Últimos {period} días
+      <header className="admin-header">
+        <div className="admin-header__inner">
+          <div className="admin-header__brand">
+            <Link href="/admin" className="admin-header__home">
+              <JondreaLogo size="sm" />
             </Link>
-          ))}
+            <span className="admin-header__badge">Panel</span>
+          </div>
+          <div className="admin-header__tools">
+            <div className="admin-seg" role="navigation" aria-label="Ventana">
+              {PERIOD_OPTIONS.map((period) => (
+                <Link
+                  key={period}
+                  href={`/admin?product=${product}&days=${period}`}
+                  className={`admin-seg__item ${selectedDays === String(period) ? "is-active" : ""}`}
+                  aria-current={selectedDays === String(period) ? "page" : undefined}
+                >
+                  {period} días
+                </Link>
+              ))}
+            </div>
+            <Link href="/" className="admin-header__link">
+              Sitio
+            </Link>
+            <form method="post" action="/admin/logout">
+              <button type="submit" className="btn btn-ghost admin-header__logout">
+                Cerrar sesión
+              </button>
+            </form>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {product === "careme" ? (
-        <>
-          {!careme.ok ? (
-            <div className="admin-empty">
-              No se pudo hablar con la API de CareMe. Revisá CAREME_API_URL, que Nest esté arriba y
-              que CAREME_ADMIN_ANALYTICS_KEY coincida con ADMIN_ANALYTICS_KEY de la API.
-            </div>
-          ) : null}
-
-          {isLaunchEmpty(careme.ok, careme.summary.registeredUsers, careme.summary.totalEvents) ? (
-            <div className="admin-empty">
-              Todavía no hay uso. Cuando la gente instale el APK de CareMe, acá van a aparecer
-              registros y el funnel de activación.
-            </div>
-          ) : null}
-
-          <p className="admin-section-title">
-            Ventana: {new Date(careme.summary.from).toLocaleDateString("es-AR")} –{" "}
-            {new Date(careme.summary.to).toLocaleDateString("es-AR")} · APK{" "}
-            {publishedApkVersion("careme")}
+      <main className="admin-main">
+        <section className="admin-hero">
+          <p className="admin-kicker">Panel interno</p>
+          <h1>Uso de las aplicaciones</h1>
+          <p className="admin-lead">
+            Indicadores de CareMe y Nido a partir de las APKs publicadas. Ventana de{" "}
+            {selectedDays} días · {range}.
           </p>
+        </section>
 
-          <section className="admin-metrics" aria-label="KPIs CareMe">
-            <article className="admin-metric">
-              <span>Usuarios registrados</span>
-              <strong>{careme.summary.registeredUsers}</strong>
-              <small>Cuentas totales en la API.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Usuarios activos</span>
-              <strong>{careme.summary.activeUsers}</strong>
-              <small>Personas con eventos en la ventana.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Altas en la ventana</span>
-              <strong>{careme.summary.registeredUsersInRange}</strong>
-              <small>Registros nuevos en estos días.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Eventos</span>
-              <strong>{careme.summary.totalEvents}</strong>
-              <small>Check-ins, Future You, semanal, etc.</small>
-            </article>
-          </section>
+        <section className="admin-switch" aria-label="Productos">
+          <AdminProductCard
+            href={`/admin?product=careme&days=${selectedDays}`}
+            active={product === "careme"}
+            theme="careme"
+            name="CareMe"
+            category={caremeProduct?.category ?? "Bienestar personal"}
+            logoSrc={caremeProduct?.logoSrc}
+            apiOk={caremeHealth.ok}
+            apkAvailable={caremeApk.available}
+            apkVersion={caremeVersion}
+            stat={`${careme.summary.registeredUsers} usuarios · ${careme.summary.activeUsers} activos`}
+            detail={
+              careme.summary.registeredUsers > 0
+                ? `${caremeActiveRate}% de las cuentas con eventos en la ventana.`
+                : "Sin cuentas registradas todavía."
+            }
+          />
+          <AdminProductCard
+            href={`/admin?product=nido&days=${selectedDays}`}
+            active={product === "nido"}
+            theme="nido"
+            name="Nido"
+            category={nidoProduct?.category ?? "Gestión del hogar"}
+            logoSrc={nidoProduct?.logoSrc}
+            apiOk={nidoHealth.ok}
+            apkAvailable={nidoApk.available}
+            apkVersion={nidoVersion}
+            stat={`${nido.summary.registeredUsers} usuarios · ${nido.summary.households} hogares`}
+            detail={
+              nido.summary.households > 0
+                ? `${nidoMembersPerHome} miembros activos por hogar.`
+                : "Sin hogares creados todavía."
+            }
+          />
+        </section>
 
-          <p className="admin-section-title">Funnel de activación</p>
-          <section className="admin-metrics" aria-label="Funnel CareMe">
-            <article className="admin-metric">
-              <span>Altas</span>
-              <strong>{careme.summary.funnel.signup}</strong>
-              <small>Usuarios nuevos en la ventana.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Future You</span>
-              <strong>
-                {careme.summary.funnel.futureSelfSaved} (
-                {careme.summary.funnel.conversionSignupToFutureSelf}%)
-              </strong>
-              <small>De alta a perfil Future You.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Primer check-in</span>
-              <strong>
-                {careme.summary.funnel.firstCheckin} (
-                {careme.summary.funnel.conversionFutureSelfToCheckin}%)
-              </strong>
-              <small>De Future You a check-in.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Resumen semanal</span>
-              <strong>
-                {careme.summary.funnel.weeklyOpened} (
-                {careme.summary.funnel.conversionCheckinToWeekly}%)
-              </strong>
-              <small>De check-in a mirar la semana.</small>
-            </article>
-          </section>
+        {product === "careme" ? (
+          <div className="admin-board admin-board--careme">
+            {!careme.ok ? (
+              <AdminNotice
+                tone="error"
+                title="No se pudo conectar con CareMe"
+                body="Verifique CAREME_API_URL, que el servicio esté en ejecución y que CAREME_ADMIN_ANALYTICS_KEY coincida con ADMIN_ANALYTICS_KEY de la API."
+              />
+            ) : null}
 
-          <p className="admin-section-title">Eventos más frecuentes</p>
-          <section className="admin-events">
-            {careme.summary.eventsByName.length === 0 ? (
-              <div className="admin-empty">Aún no hay eventos registrados.</div>
-            ) : (
-              careme.summary.eventsByName.map((item) => (
-                <article key={item.name} className="admin-event">
-                  <strong>{careMeEventLabel(item.name)}</strong>
-                  <span className="admin-event__count">{item.count}</span>
-                </article>
-              ))
-            )}
-          </section>
-        </>
-      ) : (
-        <>
-          {!nido.ok ? (
-            <div className="admin-empty">
-              No se pudo hablar con la API de Nido. Revisá NIDO_API_URL, que Nest esté arriba y que
-              NIDO_ADMIN_ANALYTICS_KEY coincida con ADMIN_ANALYTICS_KEY de Nido.
-            </div>
-          ) : null}
+            {isLaunchEmpty(careme.ok, careme.summary.registeredUsers, careme.summary.totalEvents) ? (
+              <AdminNotice
+                tone="empty"
+                title="Todavía no hay actividad"
+                body="Cuando se instale la APK de CareMe, aparecerán registros y el funnel de activación."
+              />
+            ) : null}
 
-          {isLaunchEmpty(nido.ok, nido.summary.registeredUsers, nido.summary.households) ? (
-            <div className="admin-empty">
-              Todavía no hay hogares. Cuando la gente instale el APK de Nido, acá van a aparecer
-              usuarios, hogares y actividad de los módulos.
-            </div>
-          ) : null}
+            <p className="admin-window">
+              {range} · {apkPublishedLabel(caremeApk.available)} · {caremeVersion}
+            </p>
 
-          <p className="admin-section-title">
-            Ventana: {new Date(nido.summary.from).toLocaleDateString("es-AR")} –{" "}
-            {new Date(nido.summary.to).toLocaleDateString("es-AR")} · APK{" "}
-            {publishedApkVersion("nido")}
-          </p>
+            <AdminSection title="Indicadores" kicker="CareMe">
+              <AdminKpis
+                label="KPIs CareMe"
+                items={[
+                  {
+                    label: "Usuarios registrados",
+                    value: careme.summary.registeredUsers,
+                    hint: "Cuentas totales en la API."
+                  },
+                  {
+                    label: "Usuarios activos",
+                    value: careme.summary.activeUsers,
+                    hint: "Personas con eventos en la ventana."
+                  },
+                  {
+                    label: "Altas en la ventana",
+                    value: careme.summary.registeredUsersInRange,
+                    hint: "Registros nuevos en estos días."
+                  },
+                  {
+                    label: "Eventos",
+                    value: careme.summary.totalEvents,
+                    hint: "Check-ins, Future You, resumen semanal."
+                  }
+                ]}
+              />
+            </AdminSection>
 
-          <section className="admin-metrics" aria-label="KPIs Nido">
-            <article className="admin-metric">
-              <span>Usuarios registrados</span>
-              <strong>{nido.summary.registeredUsers}</strong>
-              <small>Cuentas totales en la API.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Altas en la ventana</span>
-              <strong>{nido.summary.registeredUsersInRange}</strong>
-              <small>Registros nuevos en estos días.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Hogares</span>
-              <strong>{nido.summary.households}</strong>
-              <small>Casas creadas.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Miembros activos</span>
-              <strong>{nido.summary.activeMemberships}</strong>
-              <small>Personas dentro de un hogar.</small>
-            </article>
-          </section>
+            <AdminSection title="Funnel de activación" kicker="Del alta al resumen semanal">
+              <AdminFunnel
+                label="Funnel CareMe"
+                steps={[
+                  {
+                    label: "Altas",
+                    value: careme.summary.funnel.signup,
+                    hint: "Usuarios nuevos en la ventana."
+                  },
+                  {
+                    label: "Future You",
+                    value: careme.summary.funnel.futureSelfSaved,
+                    conversion: careme.summary.funnel.conversionSignupToFutureSelf,
+                    hint: "De alta a perfil Future You."
+                  },
+                  {
+                    label: "Primer check-in",
+                    value: careme.summary.funnel.firstCheckin,
+                    conversion: careme.summary.funnel.conversionFutureSelfToCheckin,
+                    hint: "De Future You a check-in."
+                  },
+                  {
+                    label: "Resumen semanal",
+                    value: careme.summary.funnel.weeklyOpened,
+                    conversion: careme.summary.funnel.conversionCheckinToWeekly,
+                    hint: "De check-in a mirar la semana."
+                  }
+                ]}
+              />
+            </AdminSection>
 
-          <p className="admin-section-title">Actividad de módulos</p>
-          <section className="admin-metrics" aria-label="Módulos Nido">
-            <article className="admin-metric">
-              <span>Invitaciones</span>
-              <strong>{nido.summary.invitations}</strong>
-              <small>Invites creados (todos los estados).</small>
-            </article>
-            <article className="admin-metric">
-              <span>Gastos</span>
-              <strong>{nido.summary.expenses}</strong>
-              <small>Egresos mensuales cargados.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Rutinas</span>
-              <strong>{nido.summary.routines}</strong>
-              <small>Tareas semanales.</small>
-            </article>
-            <article className="admin-metric">
-              <span>Listas de compras</span>
-              <strong>{nido.summary.shoppingLists}</strong>
-              <small>Carritos compartidos.</small>
-            </article>
-          </section>
-        </>
-      )}
+            <AdminSection title="Eventos más frecuentes" kicker="Ventana seleccionada">
+              <AdminBars
+                label="Eventos CareMe"
+                empty="Aún no hay eventos registrados en esta ventana."
+                items={careme.summary.eventsByName.map((item) => ({
+                  label: careMeEventLabel(item.name),
+                  value: item.count
+                }))}
+              />
+            </AdminSection>
+          </div>
+        ) : (
+          <div className="admin-board admin-board--nido">
+            {!nido.ok ? (
+              <AdminNotice
+                tone="error"
+                title="No se pudo conectar con Nido"
+                body="Verifique NIDO_API_URL, que el servicio esté en ejecución y que NIDO_ADMIN_ANALYTICS_KEY coincida con ADMIN_ANALYTICS_KEY de Nido."
+              />
+            ) : null}
+
+            {isLaunchEmpty(nido.ok, nido.summary.registeredUsers, nido.summary.households) ? (
+              <AdminNotice
+                tone="empty"
+                title="Todavía no hay hogares"
+                body="Cuando se instale la APK de Nido, aparecerán usuarios, hogares y actividad de los módulos."
+              />
+            ) : null}
+
+            <p className="admin-window">
+              {range} · {apkPublishedLabel(nidoApk.available)} · {nidoVersion}
+            </p>
+
+            <AdminSection title="Indicadores" kicker="Nido">
+              <AdminKpis
+                label="KPIs Nido"
+                items={[
+                  {
+                    label: "Usuarios registrados",
+                    value: nido.summary.registeredUsers,
+                    hint: "Cuentas totales en la API."
+                  },
+                  {
+                    label: "Altas en la ventana",
+                    value: nido.summary.registeredUsersInRange,
+                    hint: "Registros nuevos en estos días."
+                  },
+                  {
+                    label: "Hogares",
+                    value: nido.summary.households,
+                    hint: "Casas creadas."
+                  },
+                  {
+                    label: "Miembros activos",
+                    value: nido.summary.activeMemberships,
+                    hint: "Personas dentro de un hogar."
+                  }
+                ]}
+              />
+            </AdminSection>
+
+            <AdminSection title="Actividad de módulos" kicker="Operación del hogar">
+              <AdminBars
+                label="Módulos Nido"
+                empty="Aún no hay actividad de módulos."
+                items={[
+                  {
+                    label: "Invitaciones",
+                    value: nido.summary.invitations,
+                    hint: "Invites creados (todos los estados).",
+                    accent: "#4F8F6E"
+                  },
+                  {
+                    label: "Gastos",
+                    value: nido.summary.expenses,
+                    hint: "Egresos mensuales cargados.",
+                    accent: "#C9A227"
+                  },
+                  {
+                    label: "Rutinas",
+                    value: nido.summary.routines,
+                    hint: "Tareas semanales.",
+                    accent: "#4A7FB5"
+                  },
+                  {
+                    label: "Listas de compras",
+                    value: nido.summary.shoppingLists,
+                    hint: "Carritos compartidos.",
+                    accent: "#C45C4A"
+                  }
+                ]}
+              />
+            </AdminSection>
+          </div>
+        )}
+      </main>
     </div>
   );
 }

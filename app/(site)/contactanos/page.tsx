@@ -16,7 +16,7 @@ export default function ContactPage() {
         <h1>Contactanos</h1>
         <p className="lead">
           Consultas sobre productos, una propuesta comercial o soporte. CareMe y Nido están en{" "}
-          {publicRelease.label} para Android. La APK está próxima a publicarse en cada ficha.{" "}
+          {publicRelease.label} para Android. La APK se descarga desde cada ficha.{" "}
           {publicRelease.ios}.
         </p>
 
@@ -86,7 +86,7 @@ export default function ContactPage() {
           <p className="section-label">Android</p>
           <h2 className="section-title">{publicRelease.label}</h2>
           <p className="section-lead">
-            La APK está próxima a publicarse en cada ficha de producto. {publicRelease.ios}.
+            La APK se descarga en cada ficha de producto. {publicRelease.ios}.
           </p>
           <div className="hero-actions hero-actions--center">
             <Link href="/productos/careme#descargar" className="btn btn-primary">

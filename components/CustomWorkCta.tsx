@@ -3,10 +3,11 @@ import { customWorkMailto } from "../lib/site";
 
 type CustomWorkCtaProps = {
   id?: string;
+  showContact?: boolean;
 };
 
 /** Bloque para consultar desarrollo de sitios web y aplicaciones a medida. */
-export function CustomWorkCta({ id = "servicios" }: CustomWorkCtaProps) {
+export function CustomWorkCta({ id = "servicios", showContact = true }: CustomWorkCtaProps) {
   return (
     <section className="container section" id={id}>
       <p className="section-label">Servicios</p>
@@ -19,9 +20,11 @@ export function CustomWorkCta({ id = "servicios" }: CustomWorkCtaProps) {
         <a href={customWorkMailto()} className="btn btn-primary">
           Consultar
         </a>
-        <Link href="/contactanos" className="btn btn-ghost">
-          Contacto
-        </Link>
+        {showContact ? (
+          <Link href="/contactanos" className="btn btn-ghost">
+            Contacto
+          </Link>
+        ) : null}
       </div>
     </section>
   );

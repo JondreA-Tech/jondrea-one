@@ -4,6 +4,7 @@
   overflow: hidden;
   min-height: calc(100svh - var(--header-h));
   padding-bottom: 4.5rem;
+  font-family: "Poppins", sans-serif;
 }
 
 .site-shell:has(.product-shell) .site-footer {
@@ -62,6 +63,32 @@
   padding: 3.5rem 0 2.4rem;
 }
 
+.product-brand-title,
+.product-title,
+.product-kicker,
+.product-feature-card h3,
+.product-shell .approach-item__title,
+.product-shell .section-title {
+  font-family: "Inter", sans-serif;
+}
+
+.product-label,
+.product-lead,
+.product-hero-nav,
+.product-feature-card p,
+.product-install-steps,
+.product-shell .section-lead,
+.product-shell .section-label,
+.product-shell .approach-list > li > span:not(.approach-item__title) {
+  font-family: "Poppins", sans-serif;
+}
+
+.product-shell .btn {
+  font-family: "Inter", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
 .product-shell .product-hero-logo {
   width: min(168px, 42vw);
   height: auto;
@@ -72,22 +99,30 @@
 
 .product-brand-title {
   margin: 0;
-  font-size: clamp(2.25rem, 5vw, 3.4rem);
-  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.6rem);
+  font-weight: 800;
   letter-spacing: -0.04em;
-  line-height: 1.08;
+  line-height: 1.07;
 }
 
 .product-kicker {
   margin: 0.35rem 0 0;
-  font-size: clamp(1.15rem, 2.4vw, 1.45rem);
-  font-weight: 600;
+  font-size: clamp(1.2rem, 2.4vw, 1.65rem);
+  font-weight: 700;
   letter-spacing: -0.03em;
+  line-height: 1.15;
 }
 
 .product-hero .product-lead {
   margin-top: 0.85rem;
   font-size: clamp(1rem, 1.35vw, 1.1rem);
+  line-height: 1.6;
+  letter-spacing: -0.015em;
+}
+
+.product-hero-nav {
+  margin: 1.15rem 0 0;
+  font-size: 0.95rem;
 }
 
 .product-actions {
@@ -104,6 +139,10 @@
 
 .product-shell .product-pills {
   justify-content: center;
+}
+
+.product-shell .product-pills li {
+  font-family: "Inter", sans-serif;
 }
 
 .product-block {
@@ -123,7 +162,7 @@
 }
 
 .product-title {
-  margin: 0 auto 1.15rem;
+  margin: 0 auto 1.35rem;
   font-size: 30px;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -137,6 +176,7 @@
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7;
+  letter-spacing: -0.01em;
   text-align: center;
 }
 
@@ -169,13 +209,14 @@
 
 .product-feature-card h3 {
   margin: 0 0 0.4rem;
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
 .product-feature-card p {
   margin: 0;
-  font-size: 0.95rem;
+  font-size: 15px;
   line-height: 1.55;
 }
 
@@ -211,8 +252,10 @@
   margin-top: 0.45rem;
 }
 
-.product-shell .hero-actions--center {
+.product-cta-action {
+  display: flex;
   justify-content: center;
+  margin-top: 1.35rem;
 }
 
 @media (max-width: 720px) {

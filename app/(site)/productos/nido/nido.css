@@ -1,7 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap");
-
 .product-shell--nido {
-  font-family: var(--font-nido);
   color: var(--nido-text);
   background:
     radial-gradient(900px 420px at 12% -8%, rgba(196, 107, 58, 0.16), transparent 55%),
@@ -35,26 +32,22 @@
 }
 
 .product-shell--nido .product-brand-title {
-  font-family: var(--font-nido);
   color: var(--nido-primary);
 }
 
 .product-shell--nido .product-label {
   color: var(--nido-primary);
   border: 1px solid var(--nido-primary);
-  font-family: var(--font-nido);
 }
 
 .product-shell--nido .product-title,
 .product-shell--nido .section-title {
-  font-family: var(--font-nido);
   color: var(--nido-text);
 }
 
 .product-shell--nido .product-lead,
 .product-shell--nido .section-lead,
 .product-shell--nido .product-install-steps {
-  font-family: var(--font-nido);
   color: var(--nido-muted);
 }
 
@@ -62,15 +55,10 @@
   border-color: var(--nido-border);
   background: var(--nido-surface);
   color: var(--nido-muted);
-  font-family: var(--font-nido);
 }
 
 .product-shell--nido .btn {
-  font-family: var(--font-nido);
-  font-weight: 600;
-  font-size: 1rem;
   border-radius: var(--nido-radius-md);
-  min-height: 48px;
 }
 
 .product-shell--nido .btn-primary {
@@ -113,12 +101,10 @@
 }
 
 .product-shell--nido .product-feature-card h3 {
-  font-family: var(--font-nido);
   color: var(--nido-text);
 }
 
 .product-shell--nido .product-feature-card p {
-  font-family: var(--font-nido);
   color: var(--nido-muted);
 }
 
@@ -127,12 +113,10 @@
 }
 
 .product-shell--nido .approach-item__title {
-  font-family: var(--font-nido);
   color: var(--nido-text);
 }
 
 .product-shell--nido .approach-list > li > span:not(.approach-item__title) {
-  font-family: var(--font-nido);
   color: var(--nido-muted);
 }
 
@@ -180,12 +164,10 @@
 .product-shell--nido .section p.section-label {
   color: var(--nido-primary);
   border-color: var(--nido-primary);
-  font-family: var(--font-nido);
 }
 
 .product-shell--nido .section p.section-lead {
   color: var(--nido-muted);
-  font-family: var(--font-nido);
 }
 
 .product-shell--nido .inline-link {

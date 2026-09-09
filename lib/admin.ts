@@ -179,3 +179,31 @@ export async function getNidoSummary(searchParams?: SearchParams) {
 export function isLaunchEmpty(ok: boolean, registeredUsers: number, activity: number) {
   return ok && registeredUsers === 0 && activity === 0;
 }
+
+/** Rango de fechas en español (Argentina). */
+export function formatAdminRange(from: string, to: string) {
+  const start = new Date(from).toLocaleDateString("es-AR");
+  const end = new Date(to).toLocaleDateString("es-AR");
+  return `${start} – ${end}`;
+}
+
+/** Ancho de barra 0–100 relativo a un total. */
+export function barPercent(value: number, total: number) {
+  if (total <= 0) {
+    return 0;
+  }
+  return Math.max(value > 0 ? 6 : 0, Math.min(100, Math.round((value / total) * 100)));
+}
+
+/** Porcentaje entero 0–100. */
+export function ratioPercent(part: number, total: number) {
+  if (total <= 0) {
+    return 0;
+  }
+  return Math.round((part / total) * 100);
+}
+
+/** Etiqueta de publicación del APK en el panel. */
+export function apkPublishedLabel(available: boolean) {
+  return available ? "APK publicada" : "APK pendiente";
+}

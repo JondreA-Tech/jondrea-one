@@ -1,31 +1,35 @@
+import type { Metadata } from "next";
+import Link from "next/link";
 import { JondreaLogo } from "../../../components/JondreaLogo";
+import { firstParam } from "../../../lib/admin";
 
-type SearchParams = Record<string, string | string[] | undefined>;
+export const metadata: Metadata = {
+  title: "Ingreso"
+};
 
-/** Devuelve el primer valor de un search param. */
-function firstParam(value: string | string[] | undefined) {
-  return Array.isArray(value) ? value[0] : value;
-}
-
-/** Login del panel admin JondreA. */
+/** Login del panel interno de JondreA. */
 export default async function AdminLoginPage({
   searchParams
 }: {
-  searchParams?: Promise<SearchParams>;
+  searchParams?: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const params = searchParams ? await searchParams : undefined;
   const nextPath = firstParam(params?.next) ?? "/admin";
   const hasError = firstParam(params?.error) === "1";
 
   return (
-    <div className="admin-shell">
-      <div className="admin-card">
+    <div className="admin-login">
+      <div className="admin-aurora" aria-hidden="true">
+        <span className="admin-orb admin-orb--a" />
+        <span className="admin-orb admin-orb--b" />
+      </div>
+      <div className="admin-login__card">
         <JondreaLogo size="sm" />
-        <span className="eyebrow" style={{ marginTop: "1rem" }}>
-          Panel interno
-        </span>
+        <p className="admin-kicker">Panel interno</p>
         <h1>Ingreso administrador</h1>
-        <p>Métricas de uso de CareMe y Nido cuando se publican las APKs.</p>
+        <p className="admin-login__lead">
+          Métricas de uso de CareMe y Nido a partir de las APKs publicadas.
+        </p>
         <form method="post" action="/admin/login/submit" className="admin-form">
           <input type="hidden" name="next" value={nextPath} />
           <label>
@@ -36,11 +40,16 @@ export default async function AdminLoginPage({
             Contraseña
             <input name="password" type="password" autoComplete="current-password" required />
           </label>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary admin-form__submit">
             Entrar
           </button>
-          {hasError ? <p className="admin-error">Credenciales inválidas. Vuelva a intentarlo.</p> : null}
+          {hasError ? (
+            <p className="admin-error">Credenciales inválidas. Vuelva a intentarlo.</p>
+          ) : null}
         </form>
+        <Link href="/" className="admin-login__back">
+          Volver al sitio
+        </Link>
       </div>
     </div>
   );

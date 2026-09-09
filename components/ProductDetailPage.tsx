@@ -52,22 +52,26 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
         <ProductBrandTitle product={product} />
         {product.kicker ? <p className="product-kicker rise rise-delay-1">{product.kicker}</p> : null}
         <p className="product-lead rise rise-delay-2">{product.headline}</p>
-        <div className="product-actions rise rise-delay-3">
-          <ApkDownloadLink
-            apk={apk}
-            className="btn btn-primary"
-            label={`Descargar ${publicRelease.label}`}
-          />
-          <Link href="/productos" className="btn btn-ghost">
-            Volver a productos
-          </Link>
-        </div>
+        {apk.available ? (
+          <div className="product-actions rise rise-delay-3">
+            <ApkDownloadLink
+              apk={apk}
+              className="btn btn-primary"
+              label={`Descargar ${publicRelease.label}`}
+            />
+          </div>
+        ) : null}
         <ul className="product-pills rise rise-delay-3" aria-label="Disponibilidad">
           <li>{product.category}</li>
           <li>{publicRelease.label}</li>
           <li>{apk.available ? "Descarga para Android" : publicRelease.apkPendingCta}</li>
           <li>{publicRelease.ios}</li>
         </ul>
+        <p className="product-hero-nav rise rise-delay-3">
+          <Link href="/productos" className="inline-link">
+            Volver a productos
+          </Link>
+        </p>
       </section>
 
       <section className="container product-block">
@@ -117,11 +121,20 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
             {publicRelease.ios}.
           </p>
           {apk.available ? (
-            <ol className="product-install-steps">
-              {apkInstallSteps.map((step) => (
-                <li key={step}>{step}</li>
-              ))}
-            </ol>
+            <>
+              <ol className="product-install-steps">
+                {apkInstallSteps.map((step) => (
+                  <li key={step}>{step}</li>
+                ))}
+              </ol>
+              <div className="product-cta-action">
+                <ApkDownloadLink
+                  apk={apk}
+                  className="btn btn-primary"
+                  label={`Descargar ${publicRelease.label}`}
+                />
+              </div>
+            </>
           ) : (
             <p className="product-lead">
               Para consultas:{" "}
@@ -131,20 +144,10 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
               .
             </p>
           )}
-          <div className="hero-actions hero-actions--center">
-            <ApkDownloadLink
-              apk={apk}
-              className="btn btn-primary"
-              label={`Descargar ${publicRelease.label}`}
-            />
-            <Link href="/productos" className="btn btn-ghost">
-              Ver productos
-            </Link>
-          </div>
         </div>
       </section>
 
-      <CustomWorkCta />
+      <CustomWorkCta showContact={false} />
     </div>
   );
 }

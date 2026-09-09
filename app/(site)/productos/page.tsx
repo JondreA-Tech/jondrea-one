@@ -23,8 +23,8 @@ export default function ProductsPage() {
           Nuestros <span className="hero-break">productos.</span>
         </h1>
         <p className="lead">
-          CareMe y Nido se encuentran en {publicRelease.label} para Android. La APK está próxima a
-          publicarse en cada ficha. {publicRelease.ios}.
+          CareMe y Nido se encuentran en {publicRelease.label} para Android. La APK se descarga
+          desde cada ficha. {publicRelease.ios}.
         </p>
         <div className="hero-actions">
           <Link href="/productos/careme" className="btn btn-primary">
@@ -47,7 +47,7 @@ export default function ProductsPage() {
           <h2 className="section-title">{publicRelease.label}</h2>
           <p className="section-lead">
             La versión, la disponibilidad de la APK y las indicaciones de instalación están en la
-            ficha de cada producto. La APK está próxima a publicarse. {publicRelease.ios}.
+            ficha de cada producto. {publicRelease.ios}.
           </p>
           <div className="hero-actions hero-actions--center">
             <Link href="/productos/careme#descargar" className="btn btn-primary">

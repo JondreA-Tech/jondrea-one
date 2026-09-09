@@ -80,8 +80,8 @@ export default function AboutPage() {
           <p className="section-label">Siguiente paso</p>
           <h2 className="section-title">Conocer los productos o escribirnos</h2>
           <p className="section-lead">
-            La APK de cada aplicación está próxima a publicarse en su ficha. Para un proyecto a
-            medida, el correo es{" "}
+            La APK de cada aplicación se descarga en su ficha. Para un proyecto a medida, el
+            correo es{" "}
             <a className="inline-link" href={`mailto:${site.contact.email}`}>
               {site.contact.email}
             </a>
