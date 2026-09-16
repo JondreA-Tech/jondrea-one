@@ -8,10 +8,11 @@ import { getProduct } from "../../../lib/products";
 import { publicRelease } from "../../../lib/release";
 
 export const metadata: Metadata = {
-  title: "Productos"
+  title: "Productos",
+  description: `CareMe y Nido en ${publicRelease.label} para Android. La APK se descarga en cada ficha.`
 };
 
-/** Listado de productos: misma estructura de secciones que el inicio. */
+/** Índice de productos: cada ficha concentra descarga e instalación. */
 export default function ProductsPage() {
   const careme = getProduct("careme");
   const nido = getProduct("nido");
@@ -23,8 +24,8 @@ export default function ProductsPage() {
           Nuestros <span className="hero-break">productos.</span>
         </h1>
         <p className="lead">
-          CareMe y Nido se encuentran en {publicRelease.label} para Android. La APK se descarga
-          desde cada ficha. {publicRelease.ios}.
+          CareMe y Nido, {publicRelease.label} para Android. Instalación y detalle en cada ficha.{" "}
+          {publicRelease.ios}.
         </p>
         <div className="hero-actions">
           <Link href="/productos/careme" className="btn btn-primary">
@@ -40,25 +41,6 @@ export default function ProductsPage() {
       {nido ? <ProductSpotlight product={nido} apk={getNidoApk()} /> : null}
 
       <CustomWorkCta />
-
-      <section className="container section section--cta">
-        <div className="cta-band">
-          <p className="section-label">Android</p>
-          <h2 className="section-title">{publicRelease.label}</h2>
-          <p className="section-lead">
-            La versión, la disponibilidad de la APK y las indicaciones de instalación están en la
-            ficha de cada producto. {publicRelease.ios}.
-          </p>
-          <div className="hero-actions hero-actions--center">
-            <Link href="/productos/careme#descargar" className="btn btn-primary">
-              CareMe
-            </Link>
-            <Link href="/productos/nido#descargar" className="btn btn-ghost">
-              Nido
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

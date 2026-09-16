@@ -140,7 +140,10 @@
 }
 
 .product-shell--careme .product-cta .product-lead,
-.product-shell--careme .product-cta .product-install-steps {
+.product-shell--careme .product-cta .product-install-steps,
+.product-shell--careme .product-cta .product-changelog,
+.product-shell--careme .product-cta .product-apk-facts,
+.product-shell--careme .product-cta .product-cta-kicker {
   color: rgba(15, 23, 42, 0.78);
 }
 

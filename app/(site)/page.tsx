@@ -24,11 +24,11 @@ export default function HomePage() {
         </h1>
         <p className="lead rise rise-delay-2">{site.description}</p>
         <div className="hero-actions rise rise-delay-3">
-          <Link href="/productos" className="btn btn-primary">
-            Ver productos
+          <Link href="/productos/careme" className="btn btn-primary">
+            CareMe
           </Link>
-          <Link href="/#servicios" className="btn btn-ghost">
-            Consultar un proyecto
+          <Link href="/productos/nido" className="btn btn-ghost">
+            Nido
           </Link>
         </div>
       </section>
@@ -37,9 +37,8 @@ export default function HomePage() {
         <p className="section-label">Productos</p>
         <h2 className="section-title">CareMe y Nido · {publicRelease.label}</h2>
         <p className="section-lead">
-          CareMe está orientada al bienestar personal. Nido, a la gestión del hogar. Ambas se
-          encuentran en {publicRelease.label} para Android y se descargan desde cada ficha de
-          producto. {publicRelease.ios}.
+          CareMe está orientada al bienestar personal. Nido, a la gestión del hogar. La APK de
+          Android se descarga en cada ficha. {publicRelease.ios}.
         </p>
         <div className="product-grid">
           {products.map((product) => (
@@ -74,25 +73,6 @@ export default function HomePage() {
       </section>
 
       <CustomWorkCta />
-
-      <section className="container section section--cta">
-        <div className="cta-band">
-          <p className="section-label">Android</p>
-          <h2 className="section-title">{publicRelease.label}</h2>
-          <p className="section-lead">
-            La APK de CareMe y de Nido ya puede descargarse en cada ficha de producto.{" "}
-            {publicRelease.ios}.
-          </p>
-          <div className="hero-actions hero-actions--center">
-            <Link href="/productos/careme#descargar" className="btn btn-primary">
-              CareMe
-            </Link>
-            <Link href="/productos/nido#descargar" className="btn btn-ghost">
-              Nido
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

@@ -39,6 +39,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# conteo local de descargas de APK
+/data/apk-downloads.json
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

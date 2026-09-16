@@ -7,7 +7,7 @@ export const nidoRelease = {
   apkPath: "/downloads/nido.apk",
   changelog: [
     "Versión beta para Android",
-    "Hogar, miembros, gastos, rutinas y compras",
+    "Hogar, miembros, gastos, rutinas, compras y viajes",
     "Invitaciones y configuración del plan"
   ]
 } as const;

@@ -4,6 +4,23 @@ export type SearchParams = Record<string, string | string[] | undefined>;
 
 export type ProductKey = "careme" | "nido";
 
+export type FunnelSlice = {
+  signup: number;
+  futureSelfSaved: number;
+  firstCheckin: number;
+  weeklyOpened: number;
+  conversionSignupToFutureSelf: number;
+  conversionFutureSelfToCheckin: number;
+  conversionCheckinToWeekly: number;
+};
+
+export type CareMeDayPoint = {
+  date: string;
+  events: number;
+  activeUsers: number;
+  signups: number;
+};
+
 export type CareMeSummary = {
   days: number;
   from: string;
@@ -13,15 +30,14 @@ export type CareMeSummary = {
   totalEvents: number;
   activeUsers: number;
   eventsByName: Array<{ name: string; count: number }>;
-  funnel: {
-    signup: number;
-    futureSelfSaved: number;
-    firstCheckin: number;
-    weeklyOpened: number;
-    conversionSignupToFutureSelf: number;
-    conversionFutureSelfToCheckin: number;
-    conversionCheckinToWeekly: number;
-  };
+  byDay?: CareMeDayPoint[];
+  funnel: FunnelSlice & { cohort?: FunnelSlice };
+};
+
+export type NidoDayPoint = {
+  date: string;
+  signups: number;
+  households: number;
 };
 
 export type NidoSummary = {
@@ -31,11 +47,19 @@ export type NidoSummary = {
   registeredUsers: number;
   registeredUsersInRange: number;
   households: number;
+  householdsInRange?: number;
   activeMemberships: number;
   invitations: number;
+  invitationsInRange?: number;
   expenses: number;
+  expensesInRange?: number;
   routines: number;
+  routinesInRange?: number;
   shoppingLists: number;
+  shoppingListsInRange?: number;
+  trips?: number;
+  tripsInRange?: number;
+  byDay?: NidoDayPoint[];
 };
 
 export type ApiHealth = {
@@ -86,6 +110,7 @@ export function emptyCareMeSummary(searchParams?: SearchParams): CareMeSummary {
     totalEvents: 0,
     activeUsers: 0,
     eventsByName: [],
+    byDay: [],
     funnel: {
       signup: 0,
       futureSelfSaved: 0,
@@ -93,7 +118,16 @@ export function emptyCareMeSummary(searchParams?: SearchParams): CareMeSummary {
       weeklyOpened: 0,
       conversionSignupToFutureSelf: 0,
       conversionFutureSelfToCheckin: 0,
-      conversionCheckinToWeekly: 0
+      conversionCheckinToWeekly: 0,
+      cohort: {
+        signup: 0,
+        futureSelfSaved: 0,
+        firstCheckin: 0,
+        weeklyOpened: 0,
+        conversionSignupToFutureSelf: 0,
+        conversionFutureSelfToCheckin: 0,
+        conversionCheckinToWeekly: 0
+      }
     }
   };
 }
@@ -112,7 +146,15 @@ export function emptyNidoSummary(searchParams?: SearchParams): NidoSummary {
     invitations: 0,
     expenses: 0,
     routines: 0,
-    shoppingLists: 0
+    shoppingLists: 0,
+    householdsInRange: 0,
+    invitationsInRange: 0,
+    expensesInRange: 0,
+    routinesInRange: 0,
+    shoppingListsInRange: 0,
+    trips: 0,
+    tripsInRange: 0,
+    byDay: []
   };
 }
 
@@ -206,4 +248,12 @@ export function ratioPercent(part: number, total: number) {
 /** Etiqueta de publicación del APK en el panel. */
 export function apkPublishedLabel(available: boolean) {
   return available ? "APK publicada" : "APK pendiente";
+}
+
+/** Funnel de cohorte si la API lo envía; si no, el de ventana. */
+export function resolveCareMeFunnel(summary: CareMeSummary) {
+  if (summary.funnel.cohort) {
+    return { slice: summary.funnel.cohort, isCohort: true };
+  }
+  return { slice: summary.funnel, isCohort: false };
 }

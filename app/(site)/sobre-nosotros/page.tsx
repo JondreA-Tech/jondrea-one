@@ -5,7 +5,8 @@ import { publicRelease } from "../../../lib/release";
 import { site } from "../../../lib/site";
 
 export const metadata: Metadata = {
-  title: "Sobre nosotros"
+  title: "Sobre nosotros",
+  description: "JondreA Tech es un estudio familiar: productos propios (CareMe y Nido) y desarrollo a medida."
 };
 
 /** Página Sobre nosotros. */
@@ -17,8 +18,8 @@ export default function AboutPage() {
           Sobre <span className="hero-break">nosotros.</span>
         </h1>
         <p className="lead">
-          JondreA es un estudio de software. Desarrollamos productos propios —CareMe y Nido— y
-          proyectos a medida para terceros.
+          JondreA Tech es un estudio familiar de software. Producto, diseño e ingeniería están en
+          el mismo equipo. CareMe y Nido son la prueba: se diseñaron, se publicaron y se miden.
         </p>
       </section>
 
@@ -27,50 +28,30 @@ export default function AboutPage() {
           <article className="about-block">
             <h2 className="about-block__title">Quiénes somos</h2>
             <p>
-              Somos un equipo familiar de desarrollo. Producto, diseño e ingeniería trabajan
-              juntos. CareMe y Nido fueron construidos de extremo a extremo por JondreA.
+              Un equipo chico, de extremo a extremo. No separamos “la marca” de “el código”: cada
+              aplicación conserva su identidad y sale como un instalable, no como una lámina.
             </p>
           </article>
           <article className="about-block">
-            <h2 className="about-block__title">Qué buscamos</h2>
+            <h2 className="about-block__title">Productos propios</h2>
             <p>
-              Interfaces claras y productos de uso cotidiano. Si una pantalla no se comprende, no
-              se publica.
+              CareMe acompaña el día hacia un perfil Future You. Nido organiza el hogar
+              compartido. Ambas están en {publicRelease.label} para Android y se descargan en este
+              sitio. {publicRelease.ios}.
             </p>
           </article>
           <article className="about-block">
-            <h2 className="about-block__title">Cómo trabajamos</h2>
+            <h2 className="about-block__title">A medida</h2>
             <p>
-              Prototipamos, validamos y corregimos. Priorizamos una versión instalable frente a
-              presentaciones extensas. {publicRelease.ios}.
+              Tomamos sitios web y aplicaciones con el mismo criterio: un recorrido cotidiano
+              claro, identidad propia y una versión que se pueda abrir. El correo es{" "}
+              <a className="inline-link" href={`mailto:${site.contact.email}`}>
+                {site.contact.email}
+              </a>
+              .
             </p>
           </article>
         </div>
-      </section>
-
-      <section className="container section">
-        <p className="section-label">Cómo trabajamos</p>
-        <h2 className="section-title">
-          El mismo equipo, de extremo a extremo.
-        </h2>
-        <p className="section-lead">
-          Para un desarrollo a medida, el proceso es el de CareMe y Nido: se define el uso, se
-          diseña y se publica.
-        </p>
-        <ol className="approach-list">
-          <li>
-            <span className="approach-item__title">Definición de producto</span>
-            <span>El recorrido diario del usuario determina el alcance, no una lista abierta de funciones.</span>
-          </li>
-          <li>
-            <span className="approach-item__title">Identidad y sistema</span>
-            <span>Cada producto conserva su identidad. El sistema de diseño ordena el crecimiento.</span>
-          </li>
-          <li>
-            <span className="approach-item__title">Ingeniería y publicación</span>
-            <span>Entregamos algo que se puede abrir en el teléfono o en el navegador, y medimos el uso real.</span>
-          </li>
-        </ol>
       </section>
 
       <CustomWorkCta />
@@ -80,19 +61,14 @@ export default function AboutPage() {
           <p className="section-label">Siguiente paso</p>
           <h2 className="section-title">Conocer los productos o escribirnos</h2>
           <p className="section-lead">
-            La APK de cada aplicación se descarga en su ficha. Para un proyecto a medida, el
-            correo es{" "}
-            <a className="inline-link" href={`mailto:${site.contact.email}`}>
-              {site.contact.email}
-            </a>
-            .
+            La APK de cada aplicación se descarga en su ficha.
           </p>
           <div className="hero-actions hero-actions--center">
-            <Link href="/productos" className="btn btn-primary">
-              Ver productos
+            <Link href="/productos/careme" className="btn btn-primary">
+              CareMe
             </Link>
-            <Link href="/contactanos" className="btn btn-ghost">
-              Contactanos
+            <Link href="/productos/nido" className="btn btn-ghost">
+              Nido
             </Link>
           </div>
         </div>

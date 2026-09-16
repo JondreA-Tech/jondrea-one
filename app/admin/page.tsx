@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { AdminBars } from "../../components/admin/AdminBars";
+import { AdminDays, formatDayLabel } from "../../components/admin/AdminDays";
 import { AdminFunnel } from "../../components/admin/AdminFunnel";
 import { AdminKpis } from "../../components/admin/AdminKpis";
 import { AdminNotice } from "../../components/admin/AdminNotice";
@@ -17,9 +18,11 @@ import {
   isLaunchEmpty,
   publishedApkVersion,
   ratioPercent,
+  resolveCareMeFunnel,
   type ProductKey,
   type SearchParams
 } from "../../lib/admin";
+import { downloadCountLabel, readDownloadCounts } from "../../lib/downloadCounts";
 import { getCareMeApk } from "../../lib/caremeRelease";
 import { getNidoApk } from "../../lib/nidoRelease";
 import { getProduct } from "../../lib/products";
@@ -60,6 +63,10 @@ export default async function AdminPage({
     nido.summary.households > 0
       ? (nido.summary.activeMemberships / nido.summary.households).toFixed(1)
       : "0";
+  const caremeFunnel = resolveCareMeFunnel(careme.summary);
+  const downloads = readDownloadCounts();
+  const nidoHouseholdsInRange = nido.summary.householdsInRange ?? 0;
+  const nidoInvitesInRange = nido.summary.invitationsInRange ?? nido.summary.invitations;
 
   return (
     <div className={`admin-app admin-app--${product}`}>
@@ -105,8 +112,9 @@ export default async function AdminPage({
           <p className="admin-kicker">Panel interno</p>
           <h1>Uso de las aplicaciones</h1>
           <p className="admin-lead">
-            Indicadores de CareMe y Nido a partir de las APKs publicadas. Ventana de{" "}
-            {selectedDays} días · {range}.
+            {product === "careme"
+              ? `CareMe: usuarios, eventos y funnel en los últimos ${selectedDays} días · ${range}.`
+              : `Nido: altas y módulos en los últimos ${selectedDays} días · ${range}. Hogares y miembros del encabezado son el total actual.`}
           </p>
         </section>
 
@@ -121,11 +129,17 @@ export default async function AdminPage({
             apiOk={caremeHealth.ok}
             apkAvailable={caremeApk.available}
             apkVersion={caremeVersion}
-            stat={`${careme.summary.registeredUsers} usuarios · ${careme.summary.activeUsers} activos`}
+            stat={
+              careme.ok
+                ? `${careme.summary.registeredUsers} usuarios · ${careme.summary.activeUsers} activos`
+                : "Sin datos de analytics"
+            }
             detail={
-              careme.summary.registeredUsers > 0
-                ? `${caremeActiveRate}% de las cuentas con eventos en la ventana.`
-                : "Sin cuentas registradas todavía."
+              !careme.ok
+                ? "No se pudo leer el summary."
+                : careme.summary.registeredUsers > 0
+                  ? `${caremeActiveRate}% de las cuentas con eventos en la ventana.`
+                  : "Sin cuentas registradas todavía."
             }
           />
           <AdminProductCard
@@ -138,11 +152,17 @@ export default async function AdminPage({
             apiOk={nidoHealth.ok}
             apkAvailable={nidoApk.available}
             apkVersion={nidoVersion}
-            stat={`${nido.summary.registeredUsers} usuarios · ${nido.summary.households} hogares`}
+            stat={
+              nido.ok
+                ? `${nido.summary.registeredUsers} usuarios · ${nido.summary.households} hogares`
+                : "Sin datos de analytics"
+            }
             detail={
-              nido.summary.households > 0
-                ? `${nidoMembersPerHome} miembros activos por hogar.`
-                : "Sin hogares creados todavía."
+              !nido.ok
+                ? "No se pudo leer el summary."
+                : nido.summary.households > 0
+                  ? `${nidoMembersPerHome} miembros activos por hogar.`
+                  : "Sin hogares creados todavía."
             }
           />
         </section>
@@ -166,78 +186,123 @@ export default async function AdminPage({
             ) : null}
 
             <p className="admin-window">
-              {range} · {apkPublishedLabel(caremeApk.available)} · {caremeVersion}
+              {careme.ok ? `${range} · ` : null}
+              {apkPublishedLabel(caremeApk.available)} · {caremeVersion}
+              {` · ${downloadCountLabel(downloads.careme)}`}
             </p>
 
-            <AdminSection title="Indicadores" kicker="CareMe">
-              <AdminKpis
-                label="KPIs CareMe"
-                items={[
-                  {
-                    label: "Usuarios registrados",
-                    value: careme.summary.registeredUsers,
-                    hint: "Cuentas totales en la API."
-                  },
-                  {
-                    label: "Usuarios activos",
-                    value: careme.summary.activeUsers,
-                    hint: "Personas con eventos en la ventana."
-                  },
-                  {
-                    label: "Altas en la ventana",
-                    value: careme.summary.registeredUsersInRange,
-                    hint: "Registros nuevos en estos días."
-                  },
-                  {
-                    label: "Eventos",
-                    value: careme.summary.totalEvents,
-                    hint: "Check-ins, Future You, resumen semanal."
-                  }
-                ]}
-              />
-            </AdminSection>
+            {careme.ok ? (
+              <>
+                <AdminSection title="Indicadores" kicker="CareMe">
+                  <AdminKpis
+                    label="KPIs CareMe"
+                    items={[
+                      {
+                        label: "Usuarios registrados",
+                        value: careme.summary.registeredUsers,
+                        hint: "Cuentas totales en la API."
+                      },
+                      {
+                        label: "Usuarios activos",
+                        value: careme.summary.activeUsers,
+                        hint: "Personas con eventos en la ventana."
+                      },
+                      {
+                        label: "Altas en la ventana",
+                        value: careme.summary.registeredUsersInRange,
+                        hint: "Registros nuevos en estos días."
+                      },
+                      {
+                        label: "Eventos",
+                        value: careme.summary.totalEvents,
+                        hint: "Check-ins, Future You, resumen semanal."
+                      },
+                      {
+                        label: "Descargas del sitio",
+                        value: downloads.careme,
+                        hint: "Clics de descarga de la APK en este sitio."
+                      }
+                    ]}
+                  />
+                </AdminSection>
 
-            <AdminSection title="Funnel de activación" kicker="Del alta al resumen semanal">
-              <AdminFunnel
-                label="Funnel CareMe"
-                steps={[
-                  {
-                    label: "Altas",
-                    value: careme.summary.funnel.signup,
-                    hint: "Usuarios nuevos en la ventana."
-                  },
-                  {
-                    label: "Future You",
-                    value: careme.summary.funnel.futureSelfSaved,
-                    conversion: careme.summary.funnel.conversionSignupToFutureSelf,
-                    hint: "De alta a perfil Future You."
-                  },
-                  {
-                    label: "Primer check-in",
-                    value: careme.summary.funnel.firstCheckin,
-                    conversion: careme.summary.funnel.conversionFutureSelfToCheckin,
-                    hint: "De Future You a check-in."
-                  },
-                  {
-                    label: "Resumen semanal",
-                    value: careme.summary.funnel.weeklyOpened,
-                    conversion: careme.summary.funnel.conversionCheckinToWeekly,
-                    hint: "De check-in a mirar la semana."
+                <AdminSection
+                  title="Funnel de activación"
+                  kicker={
+                    caremeFunnel.isCohort
+                      ? "Cohorte: altas de la ventana y los pasos que completaron después, en orden."
+                      : "Personas distintas por evento en la ventana (no es una cohorte)."
                   }
-                ]}
-              />
-            </AdminSection>
+                >
+                  <AdminFunnel
+                    label="Funnel CareMe"
+                    steps={[
+                      {
+                        label: "Altas",
+                        value: caremeFunnel.slice.signup,
+                        hint: "Usuarios nuevos en la ventana."
+                      },
+                      {
+                        label: "Future You",
+                        value: caremeFunnel.slice.futureSelfSaved,
+                        conversion: caremeFunnel.slice.conversionSignupToFutureSelf,
+                        hint: caremeFunnel.isCohort
+                          ? "De esas altas, quién guardó Future You."
+                          : "Quién guardó Future You en la ventana."
+                      },
+                      {
+                        label: "Check-in",
+                        value: caremeFunnel.slice.firstCheckin,
+                        conversion: caremeFunnel.slice.conversionFutureSelfToCheckin,
+                        hint: caremeFunnel.isCohort
+                          ? "De quienes tienen Future You, quién hizo un check-in."
+                          : "Quién creó un check-in en la ventana."
+                      },
+                      {
+                        label: "Resumen semanal",
+                        value: caremeFunnel.slice.weeklyOpened,
+                        conversion: caremeFunnel.slice.conversionCheckinToWeekly,
+                        hint: caremeFunnel.isCohort
+                          ? "De quienes hicieron check-in, quién abrió la semana."
+                          : "Quién abrió la semana en la ventana."
+                      }
+                    ]}
+                  />
+                </AdminSection>
 
-            <AdminSection title="Eventos más frecuentes" kicker="Ventana seleccionada">
-              <AdminBars
-                label="Eventos CareMe"
-                empty="Aún no hay eventos registrados en esta ventana."
-                items={careme.summary.eventsByName.map((item) => ({
-                  label: careMeEventLabel(item.name),
-                  value: item.count
-                }))}
-              />
-            </AdminSection>
+                {careme.summary.byDay && careme.summary.byDay.length > 0 ? (
+                  <AdminSection title="Actividad por día" kicker="Eventos en la ventana">
+                    <AdminDays
+                      label="Serie diaria CareMe"
+                      empty="Sin actividad diaria."
+                      legend={[
+                        { key: "events", label: "Eventos" },
+                        { key: "signups", label: "Altas" }
+                      ]}
+                      items={careme.summary.byDay.map((point) => ({
+                        date: point.date,
+                        label: formatDayLabel(point.date),
+                        values: [
+                          { key: "events", value: point.events },
+                          { key: "signups", value: point.signups }
+                        ]
+                      }))}
+                    />
+                  </AdminSection>
+                ) : null}
+
+                <AdminSection title="Eventos más frecuentes" kicker="Ventana seleccionada">
+                  <AdminBars
+                    label="Eventos CareMe"
+                    empty="Aún no hay eventos registrados en esta ventana."
+                    items={careme.summary.eventsByName.map((item) => ({
+                      label: careMeEventLabel(item.name),
+                      value: item.count
+                    }))}
+                  />
+                </AdminSection>
+              </>
+            ) : null}
           </div>
         ) : (
           <div className="admin-board admin-board--nido">
@@ -258,69 +323,144 @@ export default async function AdminPage({
             ) : null}
 
             <p className="admin-window">
-              {range} · {apkPublishedLabel(nidoApk.available)} · {nidoVersion}
+              {nido.ok ? `${range} · ` : null}
+              {apkPublishedLabel(nidoApk.available)} · {nidoVersion}
+              {` · ${downloadCountLabel(downloads.nido)}`}
             </p>
 
-            <AdminSection title="Indicadores" kicker="Nido">
-              <AdminKpis
-                label="KPIs Nido"
-                items={[
-                  {
-                    label: "Usuarios registrados",
-                    value: nido.summary.registeredUsers,
-                    hint: "Cuentas totales en la API."
-                  },
-                  {
-                    label: "Altas en la ventana",
-                    value: nido.summary.registeredUsersInRange,
-                    hint: "Registros nuevos en estos días."
-                  },
-                  {
-                    label: "Hogares",
-                    value: nido.summary.households,
-                    hint: "Casas creadas."
-                  },
-                  {
-                    label: "Miembros activos",
-                    value: nido.summary.activeMemberships,
-                    hint: "Personas dentro de un hogar."
-                  }
-                ]}
-              />
-            </AdminSection>
+            {nido.ok ? (
+              <>
+                <AdminSection title="Indicadores" kicker="Nido">
+                  <AdminKpis
+                    label="KPIs Nido"
+                    items={[
+                      {
+                        label: "Usuarios registrados",
+                        value: nido.summary.registeredUsers,
+                        hint: "Total actual de cuentas."
+                      },
+                      {
+                        label: "Altas en la ventana",
+                        value: nido.summary.registeredUsersInRange,
+                        hint: "Registros nuevos en estos días."
+                      },
+                      {
+                        label: "Hogares",
+                        value: nido.summary.households,
+                        hint:
+                          nido.summary.householdsInRange != null
+                            ? `Total actual. ${nido.summary.householdsInRange} creados en la ventana.`
+                            : "Total actual, sin filtrar por la ventana."
+                      },
+                      {
+                        label: "Miembros activos",
+                        value: nido.summary.activeMemberships,
+                        hint: "Total actual de personas en un hogar."
+                      },
+                      {
+                        label: "Descargas del sitio",
+                        value: downloads.nido,
+                        hint: "Clics de descarga de la APK en este sitio."
+                      }
+                    ]}
+                  />
+                </AdminSection>
 
-            <AdminSection title="Actividad de módulos" kicker="Operación del hogar">
-              <AdminBars
-                label="Módulos Nido"
-                empty="Aún no hay actividad de módulos."
-                items={[
-                  {
-                    label: "Invitaciones",
-                    value: nido.summary.invitations,
-                    hint: "Invites creados (todos los estados).",
-                    accent: "#4F8F6E"
-                  },
-                  {
-                    label: "Gastos",
-                    value: nido.summary.expenses,
-                    hint: "Egresos mensuales cargados.",
-                    accent: "#C9A227"
-                  },
-                  {
-                    label: "Rutinas",
-                    value: nido.summary.routines,
-                    hint: "Tareas semanales.",
-                    accent: "#4A7FB5"
-                  },
-                  {
-                    label: "Listas de compras",
-                    value: nido.summary.shoppingLists,
-                    hint: "Carritos compartidos.",
-                    accent: "#C45C4A"
-                  }
-                ]}
-              />
-            </AdminSection>
+                <AdminSection
+                  title="Altas de la ventana"
+                  kicker="Conteos de la ventana, no una cohorte secuencial."
+                >
+                  <AdminFunnel
+                    label="Recorrido Nido"
+                    steps={[
+                      {
+                        label: "Altas",
+                        value: nido.summary.registeredUsersInRange,
+                        hint: "Usuarios nuevos en estos días."
+                      },
+                      {
+                        label: "Hogares",
+                        value: nidoHouseholdsInRange,
+                        conversion: ratioPercent(
+                          nidoHouseholdsInRange,
+                          nido.summary.registeredUsersInRange
+                        ),
+                        hint: "Hogares creados en la misma ventana."
+                      },
+                      {
+                        label: "Invitaciones",
+                        value: nidoInvitesInRange,
+                        conversion: ratioPercent(nidoInvitesInRange, nidoHouseholdsInRange),
+                        hint: "Invitaciones creadas en la ventana."
+                      }
+                    ]}
+                  />
+                </AdminSection>
+
+                <AdminSection
+                  title="Actividad de módulos"
+                  kicker="En la ventana · el total aparece en la pista"
+                >
+                  <AdminBars
+                    label="Módulos Nido"
+                    empty="Aún no hay actividad de módulos."
+                    items={[
+                      {
+                        label: "Invitaciones",
+                        value: nido.summary.invitationsInRange ?? nido.summary.invitations,
+                        hint: `Total: ${nido.summary.invitations}.`,
+                        accent: "#4F8F6E"
+                      },
+                      {
+                        label: "Gastos",
+                        value: nido.summary.expensesInRange ?? nido.summary.expenses,
+                        hint: `Total: ${nido.summary.expenses}.`,
+                        accent: "#C9A227"
+                      },
+                      {
+                        label: "Rutinas",
+                        value: nido.summary.routinesInRange ?? nido.summary.routines,
+                        hint: `Total: ${nido.summary.routines}.`,
+                        accent: "#4A7FB5"
+                      },
+                      {
+                        label: "Listas de compras",
+                        value: nido.summary.shoppingListsInRange ?? nido.summary.shoppingLists,
+                        hint: `Total: ${nido.summary.shoppingLists}.`,
+                        accent: "#C45C4A"
+                      },
+                      {
+                        label: "Viajes",
+                        value: nido.summary.tripsInRange ?? nido.summary.trips ?? 0,
+                        hint: `Total: ${nido.summary.trips ?? 0}.`,
+                        accent: "#6B5E52"
+                      }
+                    ]}
+                  />
+                </AdminSection>
+
+                {nido.summary.byDay && nido.summary.byDay.length > 0 ? (
+                  <AdminSection title="Altas por día" kicker="Cuentas y hogares creados">
+                    <AdminDays
+                      label="Serie diaria Nido"
+                      empty="Sin altas diarias."
+                      legend={[
+                        { key: "signups", label: "Altas" },
+                        { key: "households", label: "Hogares" }
+                      ]}
+                      items={nido.summary.byDay.map((point) => ({
+                        date: point.date,
+                        label: formatDayLabel(point.date),
+                        values: [
+                          { key: "signups", value: point.signups },
+                          { key: "households", value: point.households }
+                        ]
+                      }))}
+                    />
+                  </AdminSection>
+                ) : null}
+              </>
+            ) : null}
           </div>
         )}
       </main>

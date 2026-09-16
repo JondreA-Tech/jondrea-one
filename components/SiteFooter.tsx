@@ -51,6 +51,7 @@ export function SiteFooter() {
             <Link href="/sobre-nosotros">Sobre nosotros</Link>
             <Link href="/productos">Productos</Link>
             <Link href="/contactanos">Contactanos</Link>
+            <Link href="/privacidad">Privacidad</Link>
             <Link href="/#servicios">Servicios a medida</Link>
           </div>
           <div>
@@ -64,7 +65,8 @@ export function SiteFooter() {
       </div>
       <div className="site-footer__legal">
         <p>
-          © {year} {site.copyrightOwner}. Todos los derechos reservados.
+          © {year} {site.copyrightOwner}. Todos los derechos reservados.{" "}
+          <Link href="/privacidad">Privacidad</Link>
         </p>
       </div>
     </footer>

@@ -522,7 +522,7 @@
 
 .admin-kpis {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 0.85rem;
 }
 
@@ -692,6 +692,92 @@
   font-family: "Inter", sans-serif;
   font-weight: 700;
   color: var(--admin-bar-accent, var(--admin-accent));
+}
+
+.admin-days-wrap {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.admin-days__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-text-muted);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.78rem;
+}
+
+.admin-days__legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.admin-days__swatch {
+  width: 8px;
+  height: 12px;
+  border-radius: 99px;
+}
+
+.admin-days {
+  display: flex;
+  gap: 0.45rem;
+  align-items: end;
+  overflow-x: auto;
+  padding-bottom: 0.15rem;
+}
+
+.admin-days__col {
+  flex: 1 0 28px;
+  min-width: 28px;
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+}
+
+.admin-days__stack {
+  width: 100%;
+  height: 88px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 3px;
+  padding: 0.2rem 0;
+}
+
+.admin-days__bar {
+  width: 7px;
+  min-height: 0;
+  border-radius: 99px 99px 2px 2px;
+  background: var(--admin-accent);
+}
+
+.admin-days__bar--events {
+  background: var(--admin-accent);
+}
+
+.admin-days__bar--signups {
+  background: var(--admin-accent-2);
+}
+
+.admin-days__bar--households {
+  background: #c9a227;
+}
+
+.admin-days__col strong {
+  font-family: "Inter", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.admin-days__col span {
+  font-family: "Inter", sans-serif;
+  font-size: 0.62rem;
+  color: var(--color-text-muted);
 }
 
 @media (max-width: 960px) {

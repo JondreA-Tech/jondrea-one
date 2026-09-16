@@ -61,6 +61,11 @@ export const products: Product[] = [
     ],
     capabilities: [
       {
+        title: "Hoy",
+        body: "La pantalla del día: saludo, check-in, mensaje de Future You y el plan breve.",
+        accent: "#A78BFA"
+      },
+      {
         title: "Check-in emocional",
         body: "Registro de ánimo, energía, estrés y foco. El resto del día se organiza a partir de ese estado.",
         accent: "#4DA8FF"
@@ -71,8 +76,13 @@ export const products: Product[] = [
         accent: "#FF7EB6"
       },
       {
-        title: "Plan del día",
-        body: "Un conjunto breve de acciones, adaptado al check-in.",
+        title: "Esencia",
+        body: "En el alta se elige una energía —tranquila, intensa, equilibrada o ambiciosa— que orienta el tono del resto.",
+        accent: "#4DA8FF"
+      },
+      {
+        title: "Áreas de vida",
+        body: "Bienestar, trabajo, estudio, finanzas, alimentación y relaciones, para orientar hábitos y objetivos.",
         accent: "#6C5CE7"
       },
       {
@@ -100,7 +110,7 @@ export const products: Product[] = [
     blurb:
       "Miembros, gastos, rutinas y compras compartidos. La sección Hogar concentra la información del día para todo el grupo.",
     about:
-      "Nido es una aplicación para hogares compartidos. Permite crear un hogar, invitar a quienes conviven y mantener una vista común de la operación diaria: fechas importantes, gastos del mes, rutinas y listas de compras. Admite miembros locales —personas y mascotas— con eventos y vacunas. Quien crea el hogar administra las invitaciones y la configuración del plan.",
+      "Nido es una aplicación para hogares compartidos. Permite crear un hogar, invitar a quienes conviven y mantener una vista común de la operación diaria: fechas importantes, viajes, gastos del mes, rutinas y listas de compras. Admite miembros locales —personas y mascotas— con eventos y vacunas. Quien crea el hogar administra las invitaciones y la configuración del plan.",
     loop: [
       {
         title: "Alta del hogar",
@@ -109,7 +119,7 @@ export const products: Product[] = [
       },
       {
         title: "Hogar",
-        body: "La pantalla central muestra el día: cumpleaños, gastos, rutinas y compras pendientes.",
+        body: "La pantalla central muestra el día: cumpleaños, viajes, gastos, rutinas y compras pendientes.",
         accent: "#D4894A"
       },
       {
@@ -131,8 +141,18 @@ export const products: Product[] = [
       },
       {
         title: "Miembros",
-        body: "Personas, mascotas, invitados, cumpleaños y eventos de cada integrante.",
+        body: "Personas, mascotas, invitados, cumpleaños, eventos y vacunas de cada integrante.",
         accent: "#4F8F6E"
+      },
+      {
+        title: "Invitaciones",
+        body: "Se invita a quienes conviven. El administrador gestiona el acceso al hogar.",
+        accent: "#C46B3A"
+      },
+      {
+        title: "Viajes",
+        body: "Viajes del hogar, con fechas y recordatorios. En Hogar aparece la cuenta regresiva cuando se acerca la salida.",
+        accent: "#6B5E52"
       },
       {
         title: "Gastos",

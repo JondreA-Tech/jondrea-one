@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ApkAvailability } from "../lib/apk";
 import type { Product } from "../lib/products";
 import { publicRelease } from "../lib/release";
+import { ApkDownloadLink } from "./ApkDownloadLink";
 
 type ProductSpotlightProps = {
   product: Product;
@@ -43,17 +44,12 @@ export function ProductSpotlight({ product, apk }: ProductSpotlightProps) {
         <Link href={product.href} className="btn btn-primary">
           Ver {product.name}
         </Link>
-        {apk.available && apk.href ? (
-          <a
-            href={apk.href}
-            className="btn btn-ghost"
-            download={apk.download || undefined}
-          >
-            Descargar {publicRelease.label}
-          </a>
-        ) : (
-          <span className="btn btn-ghost is-disabled">{publicRelease.apkPendingCta}</span>
-        )}
+        <ApkDownloadLink
+          apk={apk}
+          productId={product.id}
+          className="btn btn-ghost"
+          label={`Descargar ${publicRelease.label}`}
+        />
       </div>
     </section>
   );

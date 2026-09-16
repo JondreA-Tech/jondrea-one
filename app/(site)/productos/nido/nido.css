@@ -140,7 +140,10 @@
 }
 
 .product-shell--nido .product-cta .product-lead,
-.product-shell--nido .product-cta .product-install-steps {
+.product-shell--nido .product-cta .product-install-steps,
+.product-shell--nido .product-cta .product-changelog,
+.product-shell--nido .product-cta .product-apk-facts,
+.product-shell--nido .product-cta .product-cta-kicker {
   color: rgba(255, 255, 255, 0.92);
 }
 

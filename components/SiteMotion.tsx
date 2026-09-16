@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const REVEAL_SELECTOR =
-  ".section, .product-block, .product-cta, .about-block, .product-card, .contact-quick__item, .product-feature-card";
+  ".section, .product-block, .product-cta, .about-block, .product-card, .contact-quick__item, .product-feature-card, .product-phones";
 
 /** Activa revelado al entrar en viewport en las páginas públicas. */
 export function SiteMotion() {

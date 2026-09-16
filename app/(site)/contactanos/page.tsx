@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CustomWorkCta } from "../../../components/CustomWorkCta";
 import { publicRelease } from "../../../lib/release";
 import { site } from "../../../lib/site";
@@ -80,24 +79,7 @@ export default function ContactPage() {
       </section>
 
       <CustomWorkCta />
-
-      <section className="container section section--cta">
-        <div className="cta-band">
-          <p className="section-label">Android</p>
-          <h2 className="section-title">{publicRelease.label}</h2>
-          <p className="section-lead">
-            La APK se descarga en cada ficha de producto. {publicRelease.ios}.
-          </p>
-          <div className="hero-actions hero-actions--center">
-            <Link href="/productos/careme#descargar" className="btn btn-primary">
-              CareMe
-            </Link>
-            <Link href="/productos/nido#descargar" className="btn btn-ghost">
-              Nido
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }
+

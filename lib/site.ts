@@ -1,3 +1,5 @@
+import { publicRelease } from "./release";
+
 /** Datos globales del sitio JondreA (editables a mano). */
 export const site = {
   name: "JondreA",
@@ -14,6 +16,11 @@ export const site = {
   copyrightOwner: "JondreA Tech"
 } as const;
 
+/** Origen público del sitio (sitemap, Open Graph y robots). */
+export function siteOrigin() {
+  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+}
+
 /** Asunto y cuerpo para consultar un trabajo a medida. */
 export function customWorkMailto() {
   const subject = encodeURIComponent("Consulta — desarrollo a medida");
@@ -28,6 +35,15 @@ export function productMailto(productName: string) {
   const subject = encodeURIComponent(`Consulta — ${productName}`);
   const body = encodeURIComponent(
     `Hola JondreA,\n\nConsulta sobre ${productName}.\n\nNombre:\nDispositivo:\n\nSaludos.`
+  );
+  return `mailto:${site.contact.email}?subject=${subject}&body=${body}`;
+}
+
+/** Mailto de soporte (error o sugerencia) para una aplicación. */
+export function productSupportMailto(productName: string) {
+  const subject = encodeURIComponent(`Soporte — ${productName}`);
+  const body = encodeURIComponent(
+    `Hola JondreA,\n\nEscribo por un error o una sugerencia sobre ${productName}.\n\nDescripción:\nVersión: ${publicRelease.label}\nDispositivo:\n\nSaludos.`
   );
   return `mailto:${site.contact.email}?subject=${subject}&body=${body}`;
 }

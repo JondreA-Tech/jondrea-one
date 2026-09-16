@@ -1,8 +1,10 @@
+import type { ProductKey } from "../lib/admin";
 import type { ApkAvailability } from "../lib/apk";
 import { publicRelease } from "../lib/release";
 
 type ApkDownloadLinkProps = {
   apk: ApkAvailability;
+  productId: ProductKey;
   className?: string;
   label?: string;
   pendingLabel?: string;
@@ -11,6 +13,7 @@ type ApkDownloadLinkProps = {
 /** Link de descarga de APK o estado pendiente si el archivo aún no está publicado. */
 export function ApkDownloadLink({
   apk,
+  productId,
   className,
   label = "Descargar APK",
   pendingLabel = publicRelease.apkPendingCta
@@ -25,7 +28,7 @@ export function ApkDownloadLink({
   }
 
   return (
-    <a className={className} href={apk.href} download={apk.download || undefined}>
+    <a className={className} href={`/descargas/${productId}`}>
       {label}
     </a>
   );

@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { ProductDetailPage } from "../../../../components/ProductDetailPage";
-import { getCareMeApk } from "../../../../lib/caremeRelease";
+import { caremeRelease, getCareMeApk } from "../../../../lib/caremeRelease";
 import { getProduct } from "../../../../lib/products";
 
 export const metadata: Metadata = {
-  title: "CareMe"
+  title: "CareMe",
+  description:
+    "Acompañamiento diario hacia el perfil Future You. Beta 0.2.0 para Android, descarga en esta ficha."
 };
 
 /** Ficha pública de CareMe. */
@@ -13,5 +15,11 @@ export default function CareMeProductPage() {
   if (!product) {
     return null;
   }
-  return <ProductDetailPage product={product} apk={getCareMeApk()} />;
+  return (
+    <ProductDetailPage
+      product={product}
+      apk={getCareMeApk()}
+      changelog={caremeRelease.changelog}
+    />
+  );
 }

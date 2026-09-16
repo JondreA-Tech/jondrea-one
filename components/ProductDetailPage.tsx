@@ -1,16 +1,18 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import type { ApkAvailability } from "../lib/apk";
-import { apkInstallSteps } from "../lib/apk";
+import { apkInstallSteps, formatApkDate, formatApkSize } from "../lib/apk";
 import type { Product } from "../lib/products";
 import { publicRelease } from "../lib/release";
-import { productMailto, site } from "../lib/site";
+import { productMailto, productSupportMailto, site } from "../lib/site";
 import { ApkDownloadLink } from "./ApkDownloadLink";
 import { CustomWorkCta } from "./CustomWorkCta";
+import { ProductPhoneMockups } from "./ProductPhoneMockups";
 
 type ProductDetailPageProps = {
   product: Product;
   apk: ApkAvailability;
+  changelog: readonly string[];
 };
 
 /** Aplica el acento de módulo o funcionalidad como variable CSS. */
@@ -34,8 +36,25 @@ function ProductBrandTitle({ product }: { product: Product }) {
   return <h1 className="product-brand-title rise">{product.name}</h1>;
 }
 
+/** Datos de archivo e integridad del APK, si están en disco. */
+function ApkFileFacts({ apk }: { apk: ApkAvailability }) {
+  if (!apk.file) {
+    return null;
+  }
+  return (
+    <ul className="product-apk-facts">
+      <li>
+        {formatApkSize(apk.file.sizeBytes)} · actualizado {formatApkDate(apk.file.modifiedAt)}
+      </li>
+      <li className="product-apk-facts__sha">
+        SHA-256 <code>{apk.file.sha256}</code>
+      </li>
+    </ul>
+  );
+}
+
 /** Ficha de producto con identidad visual de la aplicación. */
-export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
+export function ProductDetailPage({ product, apk, changelog }: ProductDetailPageProps) {
   return (
     <div className={`product-shell product-shell--${product.id} theme-${product.id}`}>
       <div className="product-aurora" aria-hidden="true">
@@ -56,6 +75,7 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
           <div className="product-actions rise rise-delay-3">
             <ApkDownloadLink
               apk={apk}
+              productId={product.id}
               className="btn btn-primary"
               label={`Descargar ${publicRelease.label}`}
             />
@@ -73,6 +93,8 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
           </Link>
         </p>
       </section>
+
+      <ProductPhoneMockups productId={product.id} />
 
       <section className="container product-block">
         <p className="product-label">El producto</p>
@@ -122,14 +144,34 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
           </p>
           {apk.available ? (
             <>
+              <ApkFileFacts apk={apk} />
+              {changelog.length > 0 ? (
+                <>
+                  <p className="product-cta-kicker">Esta versión</p>
+                  <ul className="product-changelog">
+                    {changelog.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+              <p className="product-cta-kicker">Instalación</p>
               <ol className="product-install-steps">
                 {apkInstallSteps.map((step) => (
                   <li key={step}>{step}</li>
                 ))}
               </ol>
+              <p className="product-lead product-cta-note">
+                Nota de{" "}
+                <Link className="inline-link" href="/privacidad">
+                  privacidad
+                </Link>
+                .
+              </p>
               <div className="product-cta-action">
                 <ApkDownloadLink
                   apk={apk}
+                  productId={product.id}
                   className="btn btn-primary"
                   label={`Descargar ${publicRelease.label}`}
                 />
@@ -144,6 +186,23 @@ export function ProductDetailPage({ product, apk }: ProductDetailPageProps) {
               .
             </p>
           )}
+        </div>
+      </section>
+
+      <section className="container product-block" id="soporte">
+        <p className="product-label">Soporte</p>
+        <h2 className="product-title">Errores y sugerencias</h2>
+        <p className="product-lead">
+          Si encontró un error o desea recomendar un cambio en {product.name}, puede escribir a{" "}
+          <a className="inline-link" href={productSupportMailto(product.name)}>
+            {site.contact.email}
+          </a>
+          . Conviene indicar versión, dispositivo y una breve descripción.
+        </p>
+        <div className="product-cta-action">
+          <a className="btn btn-ghost" href={productSupportMailto(product.name)}>
+            Enviar correo
+          </a>
         </div>
       </section>
 
