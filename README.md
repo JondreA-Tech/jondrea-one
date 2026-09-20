@@ -1,6 +1,8 @@
-# Jondrea One
+# JondreA One
 
-Sitio corporativo de **Jondrea** (software factory) + panel admin de Nido.
+Sitio corporativo de **JondreA Tech** (software factory) y panel admin de **Nido**.
+
+Un solo producto propio: Nido (hub del hogar + espacio Yo). CareMe se retiró; sus hábitos, objetivos y ánimo viven en Nido.
 
 ## Stack
 
@@ -21,7 +23,7 @@ Abrí [http://localhost:3000](http://localhost:3000).
 
 Admin: [http://localhost:3000/admin](http://localhost:3000/admin) → credenciales de `.env`.
 
-Para métricas de Nido necesitás la API Nido arriba y que `NIDO_ADMIN_ANALYTICS_KEY` coincida con `ADMIN_ANALYTICS_KEY` de la API.
+Para métricas de Nido la API tiene que estar arriba y `NIDO_ADMIN_ANALYTICS_KEY` tiene que coincidir con `ADMIN_ANALYTICS_KEY` de la API. En Render free, al abrir el panel se pega a `/v1/health` para despertar el servicio.
 
 ## Rutas
 
@@ -31,39 +33,35 @@ Para métricas de Nido necesitás la API Nido arriba y que `NIDO_ADMIN_ANALYTICS
 | `/sobre-nosotros` | Sobre nosotros |
 | `/contactanos` | Contacto (email / IG / LinkedIn) |
 | `/productos` | Portfolio |
-| `/productos/nido` | Página de producto Nido |
-| `/admin` | Métricas de Nido |
+| `/productos/nido` | Ficha de Nido (APK, changelog de la beta) |
+| `/privacidad` | Nota de privacidad |
+| `/admin` | Métricas de Nido (Hogar + Yo) |
 
-## Despliegue beta (gratis)
+## Contenido
 
-Branch a desplegar: **`develop`**.
+| Archivo | Qué editar |
+|---------|------------|
+| `lib/site.ts` | Marca, mail, redes |
+| `lib/products.ts` | Copy de Nido |
+| `lib/nidoRelease.ts` | Versión beta y changelog de ficha |
+| `public/nido/screens/` | Capturas de la app en la ficha |
+| `styles/tokens.css` | Color y tipografía |
 
-### Opción A — Vercel (recomendada para Next.js)
+## Despliegue (Vercel)
 
-1. [vercel.com](https://vercel.com) → Import GitHub repo `JondreA-Tech/jondrea-one`
+Branch: **`develop`**.
+
+1. [vercel.com](https://vercel.com) → Import GitHub `JondreA-Tech/jondrea-one`
 2. Framework: Next.js · Branch: `develop`
 3. Env vars:
 
-| Key | Valor beta |
-|-----|------------|
-| `ADMIN_USER` | (elegí uno, no uses `admin` en serio) |
-| `ADMIN_PASSWORD` | (password fuerte) |
-| `NIDO_API_URL` | URL de la API Nido en Render |
-| `NIDO_ADMIN_ANALYTICS_KEY` | el mismo que `ADMIN_ANALYTICS_KEY` en Render Nido |
+| Key | Valor |
+|-----|--------|
+| `ADMIN_USER` | usuario del panel |
+| `ADMIN_PASSWORD` | password fuerte |
+| `NIDO_API_URL` | `https://nido-api-9ccn.onrender.com` (sin `/v1`) |
+| `NIDO_ADMIN_ANALYTICS_KEY` | el mismo que `ADMIN_ANALYTICS_KEY` en Render |
 
-4. Deploy → URL tipo `https://jondrea-one.vercel.app`
-5. Admin: `https://…/admin`
+4. Deploy → admin en `https://…/admin`
 
-### Opción B — Render (mismo stack que la API)
-
-1. [dashboard.render.com](https://dashboard.render.com) → **New → Blueprint**
-2. Repo `jondrea-one`, branch **`develop`**, archivo `render.yaml`
-3. Completar las mismas env vars de la tabla de arriba
-4. Health: `/`
-
-## Personalización rápida
-
-- Marca / tipografía / colores: `styles/tokens.css`
-- Contacto: `lib/site.ts`
-- Productos: `lib/products.ts`
-- Logo tipográfico: `components/JondreaLogo.tsx` (reemplazable)
+El panel muestra altas, hogares, invitaciones aceptadas, módulos de Hogar (eventos, medicación, gastos, rutinas, compras, viajes) y Yo (check-ins, objetivos, hábitos).
