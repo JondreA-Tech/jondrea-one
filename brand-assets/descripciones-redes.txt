@@ -25,6 +25,52 @@ Web: https://jondrea-one.vercel.app
 Pedí acceso: jondreatech@gmail.com
 
 Piezas de feed: C:\JondreA\instagram-beta-020\
+01-jondrea-empresa.png
+02-nido-potencial.png
+03-jondrea-web.png
+04-nido-beta-hogar.png
+05-nido-beta-yo.png
+06-nido-beta-medicacion.png
+
+
+CAPTIONS DEL FEED (una por imagen)
+----------------------------------
+01 empresa — 01-jondrea-empresa.png
+Somos JondreA Tech, un estudio familiar de software.
+Producto, diseño e ingeniería en el mismo equipo. Hacemos páginas web, software a medida y soluciones tecnológicas.
+Escribinos: jondreatech@gmail.com
+https://jondrea-one.vercel.app
+@jondrea.tech
+
+02 Nido — 02-nido-potencial.png
+Nido es el hub de tu hogar, y un espacio solo tuyo.
+Hogar muestra el día del grupo. Yo guarda ánimo, objetivos y hábitos. La medicación te avisa 10 min antes. También rutinas, gastos, compras y viajes.
+Beta abierta 0.2.0 · Android
+https://jondrea-one.vercel.app
+@jondrea.tech
+
+03 web — 03-jondrea-web.png
+Nuestra web ya está online. Landing, productos y contacto, en un solo lugar.
+https://jondrea-one.vercel.app
+@jondrea.tech
+
+04 beta Hogar — 04-nido-beta-hogar.png
+La beta de Nido ya está abierta.
+Hogar es el pulso del día: el ánimo del grupo (solo el emoji), eventos, rutinas, compras y el viaje que se viene.
+https://jondrea-one.vercel.app
+@jondrea.tech
+
+05 beta Yo — 05-nido-beta-yo.png
+En Nido hay un espacio que es solo tuyo.
+Check-in de ánimo, objetivos en hecho o pendiente, y hábitos de lunes a domingo. El resto del hogar no ve el detalle.
+https://jondrea-one.vercel.app
+@jondrea.tech
+
+06 beta medicación — 06-nido-beta-medicacion.png
+Que no se te pase el horario.
+En Nido cargás medicación de personas y mascotas, y te avisamos 10 minutos antes. En Hogar aparece como Salud : Medicamento.
+https://jondrea-one.vercel.app
+@jondrea.tech
 
 
 LINKEDIN (tagline / headline)
