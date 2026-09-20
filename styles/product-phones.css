@@ -39,12 +39,6 @@
   overflow: hidden;
 }
 
-.phone-frame--careme .phone-frame__screen {
-  background: linear-gradient(180deg, #0f172a, #1e293b);
-  color: #f8fafc;
-  font-family: var(--font-careme);
-}
-
 .phone-frame--nido .phone-frame__screen {
   background: linear-gradient(180deg, #f7f3ee, #efe8df);
   color: #2c241b;
@@ -60,10 +54,8 @@
   letter-spacing: -0.02em;
 }
 
-.phone-careme__hi,
 .phone-nido__hi,
-.phone-nido__title,
-.phone-careme__hero {
+.phone-nido__title {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 800;
@@ -71,39 +63,13 @@
   line-height: 1.15;
 }
 
-.phone-careme__hi {
-  font-size: 1.05rem;
-}
-
-.phone-careme__hero {
-  font-size: 1.2rem;
-  margin: 0.25rem 0 0.4rem;
-}
-
-.phone-careme__kicker {
-  margin: 0;
-  color: #ff7eb6;
-  font-size: 0.68rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.phone-careme__sub,
-.phone-nido__date,
-.phone-careme__note {
+.phone-nido__date {
   margin: 0.3rem 0 0;
-  color: #94a3b8;
+  color: #6b5e52;
   font-size: 0.72rem;
   line-height: 1.4;
 }
 
-.phone-nido__date {
-  color: #6b5e52;
-}
-
-.phone-careme__chips,
-.phone-careme__moods,
-.phone-careme__pills,
 .phone-nido__people,
 .phone-nido__week {
   display: flex;
@@ -112,95 +78,27 @@
   margin-top: 0.65rem;
 }
 
-.phone-careme__chips span,
-.phone-careme__pills span,
 .phone-nido__people span {
   padding: 0.28rem 0.5rem;
   border-radius: 999px;
   font-size: 0.68rem;
-  background: #273549;
+  background: #fff;
+  border: 1px solid #e2d6c8;
 }
 
-.phone-careme__pills span.is-on {
-  background: linear-gradient(135deg, #6c5ce7, #ff7eb6);
-}
-
-.phone-careme__moods i {
-  font-style: normal;
-  width: 1.7rem;
-  height: 1.7rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #273549;
-}
-
-.phone-careme__moods i.is-on {
-  outline: 2px solid #6c5ce7;
-}
-
-.phone-careme__title {
-  margin: 0.85rem 0 0.35rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-}
-
-.phone-careme__bubble {
-  margin-top: 0.65rem;
-  padding: 0.6rem 0.7rem;
-  border-radius: 14px;
-  background: linear-gradient(135deg, rgba(108, 92, 231, 0.35), rgba(255, 126, 182, 0.22));
-  font-size: 0.72rem;
-  line-height: 1.4;
-}
-
-.phone-careme__plan,
-.phone-nido__list,
-.phone-careme__week {
+.phone-nido__list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.phone-careme__plan li,
 .phone-nido__list li {
   margin-top: 0.4rem;
   padding: 0.45rem 0.55rem;
   border-radius: 10px;
   font-size: 0.72rem;
-}
-
-.phone-careme__plan li {
-  background: #273549;
-}
-
-.phone-careme__week {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.25rem;
-  height: 88px;
-  margin-top: 0.7rem;
-  align-items: end;
-}
-
-.phone-careme__week li {
-  display: grid;
-  justify-items: center;
-  height: 100%;
-  align-content: end;
-  gap: 0.2rem;
-}
-
-.phone-careme__week span {
-  width: 8px;
-  border-radius: 99px;
-  background: linear-gradient(180deg, #6c5ce7, #4da8ff);
-}
-
-.phone-careme__week em {
-  font-style: normal;
-  font-size: 0.58rem;
-  color: #94a3b8;
+  background: #fff;
+  border: 1px solid #e2d6c8;
 }
 
 .phone-nido__house {
@@ -215,11 +113,6 @@
 .phone-nido__title {
   font-size: 1.1rem;
   margin-top: 0.15rem;
-}
-
-.phone-nido__people span {
-  background: #fff;
-  border: 1px solid #e2d6c8;
 }
 
 .phone-nido__people span.is-pet {
@@ -265,11 +158,6 @@
 .phone-nido__week i.is-on {
   background: #c46b3a;
   color: #fff;
-}
-
-.phone-nido__list li {
-  background: #fff;
-  border: 1px solid #e2d6c8;
 }
 
 .phone-nido__invite {

@@ -1,7 +1,7 @@
 /**
  * Design tokens — JondreA Tech (marca corporativa).
  * Paleta clara profesional: slate + teal (alineada al logo).
- * CareMe usa `.theme-careme` y Nido usa `.theme-nido` (identidad propia).
+ * Nido usa `.theme-nido` (identidad propia).
  */
 :root {
   color-scheme: dark;
@@ -54,29 +54,6 @@
   --shadow-glow: 0 0 0 1px rgba(15, 122, 114, 0.26), 0 10px 28px rgba(15, 23, 42, 0.26);
   --header-bg: rgba(15, 23, 42, 0.88);
   --footer-bg: #111827;
-}
-
-/**
- * Tokens del producto CareMe (solo página /productos/careme).
- */
-.theme-careme {
-  --cm-bg: #0f172a;
-  --cm-bg-end: #1e293b;
-  --cm-surface: #1e293b;
-  --cm-surface-elevated: #273549;
-  --cm-primary: #6c5ce7;
-  --cm-primary-dark: #a78bfa;
-  --cm-secondary: #ff7eb6;
-  --cm-accent: #4da8ff;
-  --cm-success: #2dd4bf;
-  --cm-text: #f8fafc;
-  --cm-muted: #94a3b8;
-  --cm-border: #334155;
-  --cm-gradient: linear-gradient(135deg, #6c5ce7, #ff7eb6);
-  --cm-calm: linear-gradient(135deg, #4da8ff, #2dd4bf);
-  --cm-radius-md: 16px;
-  --cm-radius-lg: 24px;
-  --font-careme: "Poppins", var(--font-body);
 }
 
 /**

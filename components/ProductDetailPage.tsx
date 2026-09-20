@@ -25,14 +25,6 @@ function featureStyle(accent?: string): CSSProperties | undefined {
 
 /** Wordmark alineado a la identidad de cada aplicación. */
 function ProductBrandTitle({ product }: { product: Product }) {
-  if (product.id === "careme") {
-    return (
-      <h1 className="product-brand-title rise">
-        <span className="product-brand-title__care">Care</span>
-        <span className="product-brand-title__me">Me</span>
-      </h1>
-    );
-  }
   return <h1 className="product-brand-title rise">{product.name}</h1>;
 }
 

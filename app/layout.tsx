@@ -56,7 +56,6 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           :root {
             --font-display: var(--font-display-loaded), ${display.style.fontFamily};
             --font-body: var(--font-body-loaded), ${body.style.fontFamily};
-            --font-careme: var(--font-body);
             --font-nido: var(--font-nido-loaded), ${nido.style.fontFamily};
           }
         `}</style>

@@ -28,7 +28,7 @@ export default async function AdminLoginPage({
         <p className="admin-kicker">Panel interno</p>
         <h1>Ingreso administrador</h1>
         <p className="admin-login__lead">
-          Métricas de uso de CareMe y Nido a partir de las APKs publicadas.
+          Métricas de uso de Nido a partir de la APK publicada.
         </p>
         <form method="post" action="/admin/login/submit" className="admin-form">
           <input type="hidden" name="next" value={nextPath} />

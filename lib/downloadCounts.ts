@@ -8,7 +8,7 @@ const STORE_PATH = path.join(process.cwd(), "data", "apk-downloads.json");
 
 /** Conteos en cero cuando el archivo no existe o no se puede leer. */
 function emptyCounts(): DownloadCounts {
-  return { careme: 0, nido: 0 };
+  return { nido: 0 };
 }
 
 /** Lee las descargas registradas de las APKs en este sitio. */
@@ -19,7 +19,6 @@ export function readDownloadCounts(): DownloadCounts {
     }
     const parsed = JSON.parse(readFileSync(STORE_PATH, "utf8")) as Partial<DownloadCounts>;
     return {
-      careme: Number(parsed.careme) || 0,
       nido: Number(parsed.nido) || 0
     };
   } catch {

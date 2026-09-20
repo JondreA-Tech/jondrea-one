@@ -3,7 +3,7 @@ import Link from "next/link";
 type AdminProductCardProps = {
   href: string;
   active: boolean;
-  theme: "careme" | "nido";
+  theme: "nido";
   name: string;
   category: string;
   logoSrc?: string;

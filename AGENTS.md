@@ -7,8 +7,8 @@
 
 ## Scope
 
-Sitio corporativo Next.js de Jondrea (landing + `/admin` multi-producto).
-La app CareMe (API Nest + mobile Expo) vive en el sibling `jondrea-careme`.
+Sitio corporativo Next.js de Jondrea (landing + `/admin` de Nido).
+La app Nido (API Nest + mobile Expo) vive en el sibling correspondiente.
 
 ## Non-negotiables
 
@@ -21,7 +21,7 @@ La app CareMe (API Nest + mobile Expo) vive en el sibling `jondrea-careme`.
    - Preferir motion sutil; evitar ruido decorativo.
 
 3. **Do not break existing logic**
-   - Preservar rutas públicas, `/admin` protegido y el fetch server-side a CareMe analytics.
+   - Preservar rutas públicas, `/admin` protegido y el fetch server-side a Nido analytics.
    - Preferir cambios aditivos y localizados.
 
 4. **Method documentation (required)**
@@ -39,5 +39,5 @@ La app CareMe (API Nest + mobile Expo) vive en el sibling `jondrea-careme`.
 ## Env (server-only)
 
 - `ADMIN_USER` / `ADMIN_PASSWORD` — login `/admin`
-- `CAREME_API_URL` — base Nest (sin `/v1`)
-- `CAREME_ADMIN_ANALYTICS_KEY` — debe coincidir con `ADMIN_ANALYTICS_KEY` de CareMe
+- `NIDO_API_URL` — base Nest (sin `/v1`)
+- `NIDO_ADMIN_ANALYTICS_KEY` — debe coincidir con `ADMIN_ANALYTICS_KEY` de Nido

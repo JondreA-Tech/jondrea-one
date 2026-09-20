@@ -1,4 +1,4 @@
-/** Release pública compartida de CareMe y Nido. */
+/** Release pública compartida de Nido. */
 export const publicRelease = {
   channel: "Beta",
   versionName: "0.2.0",

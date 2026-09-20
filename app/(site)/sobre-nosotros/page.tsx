@@ -6,7 +6,7 @@ import { site } from "../../../lib/site";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros",
-  description: "JondreA Tech es un estudio familiar: productos propios (CareMe y Nido) y desarrollo a medida."
+  description: "JondreA Tech es un estudio familiar: producto propio (Nido) y desarrollo a medida."
 };
 
 /** Página Sobre nosotros. */
@@ -19,7 +19,7 @@ export default function AboutPage() {
         </h1>
         <p className="lead">
           JondreA Tech es un estudio familiar de software. Producto, diseño e ingeniería están en
-          el mismo equipo. CareMe y Nido son la prueba: se diseñaron, se publicaron y se miden.
+          el mismo equipo. Nido es la prueba: se diseñó, se publicó y se mide.
         </p>
       </section>
 
@@ -35,9 +35,8 @@ export default function AboutPage() {
           <article className="about-block">
             <h2 className="about-block__title">Productos propios</h2>
             <p>
-              CareMe acompaña el día hacia un perfil Future You. Nido organiza el hogar
-              compartido. Ambas están en {publicRelease.label} para Android y se descargan en este
-              sitio. {publicRelease.ios}.
+              Nido organiza el hogar compartido. Está en {publicRelease.label} para Android y se
+              descarga en este sitio. {publicRelease.ios}.
             </p>
           </article>
           <article className="about-block">
@@ -59,16 +58,16 @@ export default function AboutPage() {
       <section className="container section section--cta">
         <div className="cta-band">
           <p className="section-label">Siguiente paso</p>
-          <h2 className="section-title">Conocer los productos o escribirnos</h2>
+          <h2 className="section-title">Conocer Nido o escribirnos</h2>
           <p className="section-lead">
-            La APK de cada aplicación se descarga en su ficha.
+            La APK se descarga en su ficha.
           </p>
           <div className="hero-actions hero-actions--center">
-            <Link href="/productos/careme" className="btn btn-primary">
-              CareMe
-            </Link>
-            <Link href="/productos/nido" className="btn btn-ghost">
+            <Link href="/productos/nido" className="btn btn-primary">
               Nido
+            </Link>
+            <Link href="/contactanos" className="btn btn-ghost">
+              Contacto
             </Link>
           </div>
         </div>

@@ -2,37 +2,7 @@ import { publicRelease } from "./release";
 
 export type SearchParams = Record<string, string | string[] | undefined>;
 
-export type ProductKey = "careme" | "nido";
-
-export type FunnelSlice = {
-  signup: number;
-  futureSelfSaved: number;
-  firstCheckin: number;
-  weeklyOpened: number;
-  conversionSignupToFutureSelf: number;
-  conversionFutureSelfToCheckin: number;
-  conversionCheckinToWeekly: number;
-};
-
-export type CareMeDayPoint = {
-  date: string;
-  events: number;
-  activeUsers: number;
-  signups: number;
-};
-
-export type CareMeSummary = {
-  days: number;
-  from: string;
-  to: string;
-  registeredUsers: number;
-  registeredUsersInRange: number;
-  totalEvents: number;
-  activeUsers: number;
-  eventsByName: Array<{ name: string; count: number }>;
-  byDay?: CareMeDayPoint[];
-  funnel: FunnelSlice & { cohort?: FunnelSlice };
-};
+export type ProductKey = "nido";
 
 export type NidoDayPoint = {
   date: string;
@@ -67,12 +37,6 @@ export type ApiHealth = {
   label: string;
 };
 
-const CAREME_EVENT_LABELS: Record<string, string> = {
-  future_self_saved: "Future You guardado",
-  checkin_created: "Check-in creado",
-  weekly_screen_opened: "Resumen semanal abierto"
-};
-
 /** Primer valor de un search param. */
 export function firstParam(value: string | string[] | undefined) {
   return Array.isArray(value) ? value[0] : value;
@@ -93,8 +57,8 @@ export function buildSummaryQuery(searchParams?: SearchParams) {
   return params.toString();
 }
 
-/** Summary CareMe vacío cuando la API no responde. */
-export function emptyCareMeSummary(searchParams?: SearchParams): CareMeSummary {
+/** Ventana de fechas por defecto a partir de days. */
+function defaultWindow(searchParams?: SearchParams) {
   const days = Number(firstParam(searchParams?.days) ?? 7);
   const now = new Date();
   const from = new Date(now);
@@ -104,41 +68,17 @@ export function emptyCareMeSummary(searchParams?: SearchParams): CareMeSummary {
   return {
     days: Number.isNaN(days) ? 7 : days,
     from: from.toISOString(),
-    to: now.toISOString(),
-    registeredUsers: 0,
-    registeredUsersInRange: 0,
-    totalEvents: 0,
-    activeUsers: 0,
-    eventsByName: [],
-    byDay: [],
-    funnel: {
-      signup: 0,
-      futureSelfSaved: 0,
-      firstCheckin: 0,
-      weeklyOpened: 0,
-      conversionSignupToFutureSelf: 0,
-      conversionFutureSelfToCheckin: 0,
-      conversionCheckinToWeekly: 0,
-      cohort: {
-        signup: 0,
-        futureSelfSaved: 0,
-        firstCheckin: 0,
-        weeklyOpened: 0,
-        conversionSignupToFutureSelf: 0,
-        conversionFutureSelfToCheckin: 0,
-        conversionCheckinToWeekly: 0
-      }
-    }
+    to: now.toISOString()
   };
 }
 
 /** Summary Nido vacío cuando la API no responde. */
 export function emptyNidoSummary(searchParams?: SearchParams): NidoSummary {
-  const base = emptyCareMeSummary(searchParams);
+  const window = defaultWindow(searchParams);
   return {
-    days: base.days,
-    from: base.from,
-    to: base.to,
+    days: window.days,
+    from: window.from,
+    to: window.to,
     registeredUsers: 0,
     registeredUsersInRange: 0,
     households: 0,
@@ -158,11 +98,6 @@ export function emptyNidoSummary(searchParams?: SearchParams): NidoSummary {
   };
 }
 
-/** Etiqueta en español de un evento de CareMe. */
-export function careMeEventLabel(name: string) {
-  return CAREME_EVENT_LABELS[name] ?? name.replaceAll("_", " ");
-}
-
 /** Versión de APK publicada en el sitio, por producto. */
 export function publishedApkVersion(_product: ProductKey) {
   void _product;
@@ -176,25 +111,6 @@ export async function fetchApiHealth(apiBase: string, label: string): Promise<Ap
     return { ok: response.ok, label };
   } catch {
     return { ok: false, label };
-  }
-}
-
-/** Obtiene el summary de analytics de CareMe (server-side + admin key). */
-export async function getCareMeSummary(searchParams?: SearchParams) {
-  const apiBase = process.env.CAREME_API_URL ?? "http://localhost:3001";
-  const adminKey = process.env.CAREME_ADMIN_ANALYTICS_KEY ?? "";
-  const query = buildSummaryQuery(searchParams);
-  try {
-    const response = await fetch(`${apiBase}/v1/analytics/events/summary?${query}`, {
-      cache: "no-store",
-      headers: adminKey ? { "x-admin-key": adminKey } : {}
-    });
-    if (!response.ok) {
-      return { summary: emptyCareMeSummary(searchParams), ok: false as const };
-    }
-    return { summary: (await response.json()) as CareMeSummary, ok: true as const };
-  } catch {
-    return { summary: emptyCareMeSummary(searchParams), ok: false as const };
   }
 }
 
@@ -248,12 +164,4 @@ export function ratioPercent(part: number, total: number) {
 /** Etiqueta de publicación del APK en el panel. */
 export function apkPublishedLabel(available: boolean) {
   return available ? "APK publicada" : "APK pendiente";
-}
-
-/** Funnel de cohorte si la API lo envía; si no, el de ventana. */
-export function resolveCareMeFunnel(summary: CareMeSummary) {
-  if (summary.funnel.cohort) {
-    return { slice: summary.funnel.cohort, isCohort: true };
-  }
-  return { slice: summary.funnel, isCohort: false };
 }

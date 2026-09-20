@@ -56,9 +56,7 @@ export function SiteFooter() {
           </div>
           <div>
             <p className="site-footer__label">Productos</p>
-            <Link href="/productos/careme">CareMe</Link>
             <Link href="/productos/nido">Nido</Link>
-            <Link href="/productos/careme#descargar">Descargar CareMe</Link>
             <Link href="/productos/nido#descargar">Descargar Nido</Link>
           </div>
         </div>

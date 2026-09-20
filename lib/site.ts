@@ -6,7 +6,7 @@ export const site = {
   legalName: "JondreA Tech",
   tagline: "Productos digitales y desarrollo a medida.",
   description:
-    "JondreA desarrolla productos digitales propios y soluciones a medida. CareMe y Nido se encuentran en Beta 0.2.0 para Android y se descargan desde cada ficha de producto.",
+    "JondreA desarrolla productos digitales propios y soluciones a medida. Nido se encuentra en Beta 0.2.0 para Android y se descarga desde su ficha de producto.",
   contact: {
     email: "jondreatech@gmail.com",
     instagram: "https://instagram.com/jondrea.tech",

@@ -1,6 +1,6 @@
 # Jondrea One
 
-Sitio corporativo de **Jondrea** (software factory) + panel admin multi-producto.
+Sitio corporativo de **Jondrea** (software factory) + panel admin de Nido.
 
 ## Stack
 
@@ -21,7 +21,7 @@ Abrí [http://localhost:3000](http://localhost:3000).
 
 Admin: [http://localhost:3000/admin](http://localhost:3000/admin) → credenciales de `.env`.
 
-Para métricas de CareMe necesitás la API CareMe arriba y que `CAREME_ADMIN_ANALYTICS_KEY` coincida con `ADMIN_ANALYTICS_KEY` de la API.
+Para métricas de Nido necesitás la API Nido arriba y que `NIDO_ADMIN_ANALYTICS_KEY` coincida con `ADMIN_ANALYTICS_KEY` de la API.
 
 ## Rutas
 
@@ -31,9 +31,8 @@ Para métricas de CareMe necesitás la API CareMe arriba y que `CAREME_ADMIN_ANA
 | `/sobre-nosotros` | Sobre nosotros |
 | `/contactanos` | Contacto (email / IG / LinkedIn) |
 | `/productos` | Portfolio |
-| `/productos/careme` | Página de producto CareMe |
 | `/productos/nido` | Página de producto Nido |
-| `/admin` | Métricas CareMe + placeholder Nido |
+| `/admin` | Métricas de Nido |
 
 ## Despliegue beta (gratis)
 
@@ -49,8 +48,8 @@ Branch a desplegar: **`develop`**.
 |-----|------------|
 | `ADMIN_USER` | (elegí uno, no uses `admin` en serio) |
 | `ADMIN_PASSWORD` | (password fuerte) |
-| `CAREME_API_URL` | `https://careme-api-ftob.onrender.com` |
-| `CAREME_ADMIN_ANALYTICS_KEY` | el mismo que `ADMIN_ANALYTICS_KEY` en Render CareMe |
+| `NIDO_API_URL` | URL de la API Nido en Render |
+| `NIDO_ADMIN_ANALYTICS_KEY` | el mismo que `ADMIN_ANALYTICS_KEY` en Render Nido |
 
 4. Deploy → URL tipo `https://jondrea-one.vercel.app`
 5. Admin: `https://…/admin`

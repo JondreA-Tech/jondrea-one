@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { CustomWorkCta } from "../../../components/CustomWorkCta";
 import { publicRelease } from "../../../lib/release";
 import { site } from "../../../lib/site";
 
 export const metadata: Metadata = {
   title: "Privacidad",
-  description: `Cómo JondreA trata los datos del sitio, de CareMe y de Nido en ${publicRelease.label}.`
+  description: `Cómo JondreA trata los datos del sitio y de Nido en ${publicRelease.label}.`
 };
 
 /** Nota breve de privacidad para el sitio y las aplicaciones en beta. */
@@ -15,8 +14,8 @@ export default function PrivacyPage() {
       <section className="container page-hero">
         <h1>Privacidad</h1>
         <p className="lead">
-          JondreA Tech publica CareMe y Nido en {publicRelease.label}. Esta nota describe qué datos
-          se usan y para qué, con el alcance de una etapa beta.
+          JondreA Tech publica Nido en {publicRelease.label}. Esta nota describe qué datos se usan
+          y para qué, con el alcance de una etapa beta.
         </p>
       </section>
 
@@ -25,16 +24,8 @@ export default function PrivacyPage() {
           <article className="about-block">
             <h2 className="about-block__title">Sitio</h2>
             <p>
-              El sitio corporativo sirve información de producto y las APKs. El correo de contacto
+              El sitio corporativo sirve información de producto y la APK. El correo de contacto
               es {site.contact.email}. No se vende esa información a terceros.
-            </p>
-          </article>
-          <article className="about-block">
-            <h2 className="about-block__title">CareMe</h2>
-            <p>
-              La aplicación necesita una cuenta para funcionar. Guarda el perfil Future You, los
-              check-ins y el seguimiento de hábitos u objetivos, para mostrar el plan del día y el
-              resumen semanal. Esos datos no se usan para publicidad.
             </p>
           </article>
           <article className="about-block">

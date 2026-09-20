@@ -24,21 +24,21 @@ export default function HomePage() {
         </h1>
         <p className="lead rise rise-delay-2">{site.description}</p>
         <div className="hero-actions rise rise-delay-3">
-          <Link href="/productos/careme" className="btn btn-primary">
-            CareMe
-          </Link>
-          <Link href="/productos/nido" className="btn btn-ghost">
+          <Link href="/productos/nido" className="btn btn-primary">
             Nido
+          </Link>
+          <Link href="/productos" className="btn btn-ghost">
+            Ver productos
           </Link>
         </div>
       </section>
 
       <section className="container section">
         <p className="section-label">Productos</p>
-        <h2 className="section-title">CareMe y Nido · {publicRelease.label}</h2>
+        <h2 className="section-title">Nido · {publicRelease.label}</h2>
         <p className="section-lead">
-          CareMe está orientada al bienestar personal. Nido, a la gestión del hogar. La APK de
-          Android se descarga en cada ficha. {publicRelease.ios}.
+          Nido organiza la gestión del hogar compartido. La APK de Android se descarga en su ficha.{" "}
+          {publicRelease.ios}.
         </p>
         <div className="product-grid">
           {products.map((product) => (

@@ -1,12 +1,11 @@
 import { NextResponse } from "next/server";
 import type { ProductKey } from "../../../lib/admin";
 import { incrementDownloadCount } from "../../../lib/downloadCounts";
-import { getCareMeApk } from "../../../lib/caremeRelease";
 import { getNidoApk } from "../../../lib/nidoRelease";
 
 /** Convierte el segmento de URL en producto válido. */
 function asProductKey(value: string): ProductKey | null {
-  if (value === "careme" || value === "nido") {
+  if (value === "nido") {
     return value;
   }
   return null;
@@ -22,7 +21,7 @@ export async function GET(
     return new NextResponse("No encontrado", { status: 404 });
   }
 
-  const apk = product === "careme" ? getCareMeApk() : getNidoApk();
+  const apk = getNidoApk();
   if (!apk.available || !apk.href) {
     return new NextResponse("APK no publicada", { status: 404 });
   }

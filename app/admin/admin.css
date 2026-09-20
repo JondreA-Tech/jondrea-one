@@ -338,12 +338,6 @@
   transform: translateY(-4px);
 }
 
-.admin-product--careme:hover,
-.admin-product--careme.is-active {
-  border-color: rgba(108, 92, 231, 0.5);
-  box-shadow: 0 14px 34px rgba(108, 92, 231, 0.18), var(--shadow-soft);
-}
-
 .admin-product--nido:hover,
 .admin-product--nido.is-active {
   border-color: rgba(196, 107, 58, 0.5);
@@ -374,10 +368,6 @@
   object-fit: contain;
   border-radius: 12px;
   padding: 0.3rem;
-}
-
-.admin-product--careme .admin-product__logo {
-  background: #0f172a;
 }
 
 .admin-product--nido .admin-product__logo {
@@ -452,17 +442,8 @@
   gap: 1.5rem;
 }
 
-.admin-app--careme .admin-orb--b {
-  background: rgba(255, 126, 182, 0.14);
-}
-
 .admin-app--nido .admin-orb--b {
   background: rgba(196, 107, 58, 0.16);
-}
-
-.admin-board--careme {
-  --admin-accent: #6c5ce7;
-  --admin-accent-2: #ff7eb6;
 }
 
 .admin-board--nido {

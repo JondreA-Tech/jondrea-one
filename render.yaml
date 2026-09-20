@@ -20,7 +20,7 @@ services:
         sync: false
       - key: ADMIN_PASSWORD
         sync: false
-      - key: CAREME_API_URL
+      - key: NIDO_API_URL
         sync: false
-      - key: CAREME_ADMIN_ANALYTICS_KEY
+      - key: NIDO_ADMIN_ANALYTICS_KEY
         sync: false

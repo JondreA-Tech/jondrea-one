@@ -1,5 +1,5 @@
 export type ProductStatus = "apk" | "development";
-export type ProductTheme = "careme" | "nido";
+export type ProductTheme = "nido";
 
 export type ProductCapability = {
   title: string;
@@ -27,90 +27,15 @@ export type Product = {
 /** Catálogo de productos mostrados en la landing. */
 export const products: Product[] = [
   {
-    id: "careme",
-    name: "CareMe",
-    shortName: "CareMe",
-    category: "Bienestar personal",
-    kicker: "Future You",
-    headline: "Acompañamiento diario hacia el perfil Future You.",
-    blurb:
-      "Check-in emocional, hábitos, objetivos y un plan breve alineado al perfil Future You. El producto acompaña el avance diario, sin un enfoque punitivo.",
-    about:
-      "CareMe es una aplicación de bienestar y crecimiento personal. El recorrido del día comienza con un check-in —ánimo, energía, estrés y foco—, continúa con un plan de pocas acciones y se sostiene con hábitos, objetivos y un resumen semanal. Future You es el perfil de la persona hacia la que se desea avanzar: la aplicación envía mensajes con ese tono. El enfoque no es punitivo ni está orientado a rachas de productividad.",
-    loop: [
-      {
-        title: "Check-in",
-        body: "Se registra el estado del día en pocos pasos.",
-        accent: "#4DA8FF"
-      },
-      {
-        title: "Plan",
-        body: "La aplicación propone entre una y tres acciones, según ese estado.",
-        accent: "#6C5CE7"
-      },
-      {
-        title: "Hábitos y objetivos",
-        body: "El progreso se marca en el día, sin penalizaciones.",
-        accent: "#2DD4BF"
-      },
-      {
-        title: "Resumen semanal",
-        body: "Se revisa la continuidad de la semana para ajustar el rumbo.",
-        accent: "#FF7EB6"
-      }
-    ],
-    capabilities: [
-      {
-        title: "Hoy",
-        body: "La pantalla del día: saludo, check-in, mensaje de Future You y el plan breve.",
-        accent: "#A78BFA"
-      },
-      {
-        title: "Check-in emocional",
-        body: "Registro de ánimo, energía, estrés y foco. El resto del día se organiza a partir de ese estado.",
-        accent: "#4DA8FF"
-      },
-      {
-        title: "Future You",
-        body: "Definición del perfil a futuro. CareMe envía mensajes con ese tono, o con textos configurados por el usuario.",
-        accent: "#FF7EB6"
-      },
-      {
-        title: "Esencia",
-        body: "En el alta se elige una energía —tranquila, intensa, equilibrada o ambiciosa— que orienta el tono del resto.",
-        accent: "#4DA8FF"
-      },
-      {
-        title: "Áreas de vida",
-        body: "Bienestar, trabajo, estudio, finanzas, alimentación y relaciones, para orientar hábitos y objetivos.",
-        accent: "#6C5CE7"
-      },
-      {
-        title: "Hábitos y objetivos",
-        body: "Seguimiento diario del progreso, sin rankings ni indicadores de fracaso.",
-        accent: "#2DD4BF"
-      },
-      {
-        title: "Resumen semanal",
-        body: "Una lectura de la continuidad de la semana, para corregir sin juicio.",
-        accent: "#A78BFA"
-      }
-    ],
-    status: "apk",
-    href: "/productos/careme",
-    accent: "#6C5CE7",
-    logoSrc: "/logo-careme.png"
-  },
-  {
     id: "nido",
     name: "Nido",
     shortName: "Nido",
     category: "Gestión del hogar",
     headline: "La organización del hogar, en un solo lugar.",
     blurb:
-      "Miembros, gastos, rutinas y compras compartidos. La sección Hogar concentra la información del día para todo el grupo.",
+      "Miembros, gastos, rutinas y compras compartidos. En Hogar está el día del grupo; en Yo, el ánimo, los objetivos y los hábitos personales.",
     about:
-      "Nido es una aplicación para hogares compartidos. Permite crear un hogar, invitar a quienes conviven y mantener una vista común de la operación diaria: fechas importantes, viajes, gastos del mes, rutinas y listas de compras. Admite miembros locales —personas y mascotas— con eventos y vacunas. Quien crea el hogar administra las invitaciones y la configuración del plan.",
+      "Nido es una aplicación para hogares compartidos. Permite crear un hogar, invitar a quienes conviven y mantener una vista común de la operación diaria: fechas importantes, viajes, gastos del mes, rutinas y listas de compras. Cada persona tiene un espacio Yo —objetivos, hábitos y estado de ánimo— que no ven los demás; el emoji de ánimo sí se refleja en Hogar. Admite miembros locales —personas y mascotas— con eventos, vacunas y medicación. Quien crea el hogar administra las invitaciones y la configuración del plan.",
     loop: [
       {
         title: "Alta del hogar",
@@ -141,8 +66,13 @@ export const products: Product[] = [
       },
       {
         title: "Miembros",
-        body: "Personas, mascotas, invitados, cumpleaños, eventos y vacunas de cada integrante.",
+        body: "Personas, mascotas, invitados, cumpleaños, eventos, vacunas y medicación de cada integrante.",
         accent: "#4F8F6E"
+      },
+      {
+        title: "Yo",
+        body: "Ánimo del día, objetivos y hábitos personales. Solo vos los ves; el hogar solo ve el emoji.",
+        accent: "#C46B3A"
       },
       {
         title: "Invitaciones",
