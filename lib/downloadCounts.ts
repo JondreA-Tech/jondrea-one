@@ -31,11 +31,15 @@ export function downloadCountLabel(count: number) {
   return count === 1 ? "1 descarga en el sitio" : `${count} descargas en el sitio`;
 }
 
-/** Suma una descarga del producto y persiste el total. */
+/** Suma una descarga. Si el disco no es escribible (Vercel), no interrumpe la descarga. */
 export function incrementDownloadCount(product: ProductKey): DownloadCounts {
   const next = readDownloadCounts();
   next[product] += 1;
-  mkdirSync(path.dirname(STORE_PATH), { recursive: true });
-  writeFileSync(STORE_PATH, `${JSON.stringify(next)}\n`, "utf8");
+  try {
+    mkdirSync(path.dirname(STORE_PATH), { recursive: true });
+    writeFileSync(STORE_PATH, `${JSON.stringify(next)}\n`, "utf8");
+  } catch {
+    return next;
+  }
   return next;
 }
