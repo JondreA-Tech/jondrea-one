@@ -1331,13 +1331,13 @@ input {
   margin-top: 1.5rem;
 }
 
-.about-block__title {
+h2.about-block__title {
   margin: 0 0 1rem;
   color: #22b6a8;
   font-family: "Poppins", sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 500;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
@@ -1345,6 +1345,9 @@ input {
   padding: 0.42rem 0.75rem;
   border: 1px solid #22b6a8;
   border-radius: 999px;
+  white-space: nowrap;
+  width: max-content;
+  max-width: 100%;
 }
 
 @media (max-width: 900px) {

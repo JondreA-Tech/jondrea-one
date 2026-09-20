@@ -18,7 +18,7 @@ export const site = {
 
 /** Origen público del sitio (sitemap, Open Graph y robots). */
 export function siteOrigin() {
-  return process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+  return process.env.NEXT_PUBLIC_SITE_URL ?? "https://jondrea-one.vercel.app";
 }
 
 /** Asunto y cuerpo para consultar un trabajo a medida. */

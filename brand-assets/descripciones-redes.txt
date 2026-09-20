@@ -1,23 +1,30 @@
 JondreA Tech — Copy redes sociales
 =================================
 
+WEB
+---
+https://jondrea-one.vercel.app
+
+
 INSTAGRAM (bio)
 ---------------
-Software factory · Productos digitales con identidad propia
-Nido · hub del hogar + Yo
-Beta Android
-✉️ jondreatech@gmail.com
+Software factory · Nido, el hub de tu hogar
+Beta Android 0.2.0
+jondrea-one.vercel.app
+jondreatech@gmail.com
 
 
 INSTAGRAM (descripción / about ampliada)
 ----------------------------------------
-JondreA Tech diseña y construye productos digitales con foco en experiencia real.
+JondreA Tech diseña productos digitales con identidad propia.
 
-Hoy en beta (solo Android):
-• Nido — hub del hogar (miembros, gastos, rutinas, compras, viajes)
-  y un espacio Yo (ánimo, objetivos y hábitos). El grupo solo ve el emoji.
+Hoy: Nido, el hub de tu hogar. Armás el grupo, invitás a quienes conviven y Hogar muestra el día: miembros, ánimo (solo el emoji), eventos, medicación, rutinas, gastos, compras y viajes. Yo guarda ánimo, objetivos y hábitos; el detalle no lo ve el resto.
 
-Pedí acceso escribiendo a jondreatech@gmail.com
+Beta 0.2.0 en Android. iOS próximamente.
+Web: https://jondrea-one.vercel.app
+Pedí acceso: jondreatech@gmail.com
+
+Piezas de feed: C:\JondreA\instagram-beta-020\
 
 
 LINKEDIN (tagline / headline)
@@ -35,7 +42,7 @@ Nuestro producto actual:
 Está en beta, por el momento solo disponible en Android. Para pedir acceso escribinos a jondreatech@gmail.com.
 
 Instagram: @jondrea.tech
-Web: (tu dominio)
+Web: https://jondrea-one.vercel.app
 
 
 ASSETS EN ESTA CARPETA
