@@ -8,7 +8,7 @@ import { publicRelease } from "../../../lib/release";
 
 export const metadata: Metadata = {
   title: "Productos",
-  description: `Nido en ${publicRelease.label} para Android. La APK se descarga en su ficha.`
+  description: `Nido: hogar compartido y espacio Yo. ${publicRelease.label} para Android.`
 };
 
 /** Índice de productos: cada ficha concentra descarga e instalación. */

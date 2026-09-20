@@ -6,7 +6,7 @@ import { getNidoApk, nidoRelease } from "../../../../lib/nidoRelease";
 export const metadata: Metadata = {
   title: "Nido",
   description:
-    "La organización del hogar, en un solo lugar. Beta 0.2.0 para Android, descarga en esta ficha."
+    "El hub del hogar y un espacio Yo para ánimo, objetivos y hábitos. Beta 0.2.0 para Android."
 };
 
 /** Ficha pública de Nido. */

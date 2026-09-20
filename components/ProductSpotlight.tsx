@@ -33,7 +33,7 @@ export function ProductSpotlight({ product, apk }: ProductSpotlightProps) {
         <li>{publicRelease.ios}</li>
       </ul>
       <ol className="approach-list">
-        {product.capabilities.slice(0, 4).map((item) => (
+        {product.capabilities.slice(0, 6).map((item) => (
           <li key={item.title}>
             <span className="approach-item__title">{item.title}</span>
             <span>{item.body}</span>

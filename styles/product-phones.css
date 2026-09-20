@@ -7,6 +7,10 @@
   justify-items: center;
 }
 
+.product-phones__row--gallery {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .phone-frame {
   margin: 0;
   width: 100%;
@@ -43,6 +47,18 @@
   background: linear-gradient(180deg, #f7f3ee, #efe8df);
   color: #2c241b;
   font-family: var(--font-nido);
+}
+
+.phone-frame__screen--photo {
+  padding: 0;
+  min-height: 0;
+}
+
+.phone-frame__screen--photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
 }
 
 .phone-frame figcaption {
@@ -180,5 +196,10 @@
     max-width: 280px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .product-phones__row--gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: none;
   }
 }

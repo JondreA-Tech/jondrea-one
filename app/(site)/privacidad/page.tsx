@@ -32,8 +32,10 @@ export default function PrivacyPage() {
             <h2 className="about-block__title">Nido</h2>
             <p>
               Nido guarda la cuenta, el hogar y lo que el grupo carga: miembros (personas o
-              mascotas), invitaciones, gastos, rutinas y listas de compras. El administrador del
-              hogar gestiona quién participa. Tampoco se usa para publicidad.
+              mascotas), invitaciones, eventos, medicación, gastos, rutinas, viajes y listas de
+              compras. Objetivos, hábitos y el detalle del ánimo son solo de cada usuario; el hogar
+              ve el emoji del día. El administrador gestiona quién participa. No se usa para
+              publicidad.
             </p>
           </article>
           <article className="about-block">

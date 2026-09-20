@@ -501,6 +501,11 @@
   border-style: dashed;
 }
 
+.admin-notice--waking {
+  border-color: rgba(34, 182, 168, 0.4);
+  background: rgba(34, 182, 168, 0.1);
+}
+
 .admin-kpis {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -747,6 +752,14 @@
 
 .admin-days__bar--households {
   background: #c9a227;
+}
+
+.admin-days__bar--checkins {
+  background: #c46b3a;
+}
+
+.admin-days__bar--habits {
+  background: #4a7fb5;
 }
 
 .admin-days__col strong {

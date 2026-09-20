@@ -37,7 +37,7 @@ export default function HomePage() {
         <p className="section-label">Productos</p>
         <h2 className="section-title">Nido · {publicRelease.label}</h2>
         <p className="section-lead">
-          Nido organiza la gestión del hogar compartido. La APK de Android se descarga en su ficha.{" "}
+          El hub del hogar y un espacio personal. La APK de Android se descarga en su ficha.{" "}
           {publicRelease.ios}.
         </p>
         <div className="product-grid">

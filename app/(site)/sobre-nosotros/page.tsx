@@ -35,8 +35,9 @@ export default function AboutPage() {
           <article className="about-block">
             <h2 className="about-block__title">Productos propios</h2>
             <p>
-              Nido organiza el hogar compartido. Está en {publicRelease.label} para Android y se
-              descarga en este sitio. {publicRelease.ios}.
+              Nido es el producto propio: hub del hogar y espacio Yo (ánimo, objetivos y hábitos).
+              Está en {publicRelease.label} para Android y se descarga en este sitio.{" "}
+              {publicRelease.ios}.
             </p>
           </article>
           <article className="about-block">

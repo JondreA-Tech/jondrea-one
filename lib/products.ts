@@ -30,58 +30,63 @@ export const products: Product[] = [
     id: "nido",
     name: "Nido",
     shortName: "Nido",
-    category: "Gestión del hogar",
-    headline: "La organización del hogar, en un solo lugar.",
+    category: "Hogar y bienestar",
+    headline: "El hub del hogar, y un espacio solo tuyo.",
     blurb:
-      "Miembros, gastos, rutinas y compras compartidos. En Hogar está el día del grupo; en Yo, el ánimo, los objetivos y los hábitos personales.",
+      "Hogar comparte el día del grupo: miembros, gastos, rutinas, compras y viajes. Yo guarda ánimo, objetivos y hábitos personales. El resto del hogar solo ve el emoji.",
     about:
-      "Nido es una aplicación para hogares compartidos. Permite crear un hogar, invitar a quienes conviven y mantener una vista común de la operación diaria: fechas importantes, viajes, gastos del mes, rutinas y listas de compras. Cada persona tiene un espacio Yo —objetivos, hábitos y estado de ánimo— que no ven los demás; el emoji de ánimo sí se refleja en Hogar. Admite miembros locales —personas y mascotas— con eventos, vacunas y medicación. Quien crea el hogar administra las invitaciones y la configuración del plan.",
+      "Nido es la aplicación para quienes conviven. Se crea un hogar, se invita a las personas y queda una vista común del día: cumpleaños, eventos, medicación, vacunas, viajes y lo que hay que comprar o pagar. Cada cuenta tiene un espacio Yo —ánimo, objetivos y hábitos— que no ven los demás; el emoji de ánimo sí aparece en Hogar, para que el grupo sepa cómo está cada uno. Admite personas y mascotas locales. Quien crea el hogar administra invitaciones y el plan.",
     loop: [
       {
         title: "Alta del hogar",
-        body: "Se crea el hogar, se define un nombre y se invita a quienes conviven.",
+        body: "Se crea el grupo, se elige un nombre y se invita a quienes conviven.",
         accent: "#C46B3A"
       },
       {
         title: "Hogar",
-        body: "La pantalla central muestra el día: cumpleaños, viajes, gastos, rutinas y compras pendientes.",
+        body: "La pantalla del día: ánimo de cada uno, cumpleaños, agenda, gastos, rutinas y compras.",
         accent: "#D4894A"
       },
       {
-        title: "Módulos",
-        body: "Desde ahí se accede a miembros, gastos, rutinas o compras, según la tarea.",
-        accent: "#4A7FB5"
+        title: "Yo",
+        body: "Desde Hogar se entra al espacio personal: check-in de ánimo, objetivos y hábitos. Solo vos los ves.",
+        accent: "#C46B3A"
       },
       {
-        title: "Uso compartido",
-        body: "Todos los integrantes ven la misma información. El administrador gestiona invitaciones y el plan.",
+        title: "Miembros",
+        body: "Personas, mascotas e invitados. Cada ficha tiene edad, signo, eventos, vacunas y medicación.",
         accent: "#4F8F6E"
       }
     ],
     capabilities: [
       {
         title: "Hogar",
-        body: "Resumen del día. Consulta rápida, sin formularios: si es necesario actuar, se abre el módulo correspondiente.",
+        body: "Resumen del día. El avatar de cada cuenta muestra el emoji de ánimo. Desde ahí se entra a Yo.",
         accent: "#D4894A"
       },
       {
-        title: "Miembros",
-        body: "Personas, mascotas, invitados, cumpleaños, eventos, vacunas y medicación de cada integrante.",
-        accent: "#4F8F6E"
-      },
-      {
         title: "Yo",
-        body: "Ánimo del día, objetivos y hábitos personales. Solo vos los ves; el hogar solo ve el emoji.",
+        body: "Ánimo del día, objetivos y hábitos personales. El hogar no ve el detalle: solo el emoji.",
         accent: "#C46B3A"
       },
       {
-        title: "Invitaciones",
-        body: "Se invita a quienes conviven. El administrador gestiona el acceso al hogar.",
+        title: "Miembros",
+        body: "Dueño, invitados, personas y mascotas locales. Cumpleaños, signo, edad y etapa de vida.",
+        accent: "#4F8F6E"
+      },
+      {
+        title: "Eventos",
+        body: "Salud, trabajo, entretenimiento y estudio, con icono por categoría y recordatorios.",
+        accent: "#4A7FB5"
+      },
+      {
+        title: "Medicación",
+        body: "Dosis, frecuencia (diaria, semanal o única) y aviso. Para personas y mascotas.",
         accent: "#C46B3A"
       },
       {
         title: "Viajes",
-        body: "Viajes del hogar, con fechas y recordatorios. En Hogar aparece la cuenta regresiva cuando se acerca la salida.",
+        body: "Fechas y cuenta regresiva en Hogar cuando se acerca la salida.",
         accent: "#6B5E52"
       },
       {
@@ -91,13 +96,18 @@ export const products: Product[] = [
       },
       {
         title: "Rutinas",
-        body: "Tareas que se repiten en la semana, con los días correspondientes.",
+        body: "Tareas compartidas de la semana, distintas de los hábitos personales de Yo.",
         accent: "#4A7FB5"
       },
       {
         title: "Compras",
         body: "Listas compartidas, en unidades o en kilos.",
         accent: "#C45C4A"
+      },
+      {
+        title: "Invitaciones",
+        body: "Se invita a quienes conviven. El administrador gestiona el acceso.",
+        accent: "#C46B3A"
       }
     ],
     status: "apk",

@@ -8,6 +8,8 @@ export type NidoDayPoint = {
   date: string;
   signups: number;
   households: number;
+  checkins?: number;
+  habitCompletions?: number;
 };
 
 export type NidoSummary = {
@@ -19,16 +21,48 @@ export type NidoSummary = {
   households: number;
   householdsInRange?: number;
   activeMemberships: number;
+  localMembers?: number;
+  localMembersPerson?: number;
+  localMembersPet?: number;
+  localMembersInRange?: number;
   invitations: number;
   invitationsInRange?: number;
+  invitationsAccepted?: number;
+  invitationsAcceptedInRange?: number;
+  invitationsPending?: number;
   expenses: number;
   expensesInRange?: number;
   routines: number;
   routinesInRange?: number;
+  routineCompletions?: number;
+  routineCompletionsInRange?: number;
   shoppingLists: number;
   shoppingListsInRange?: number;
   trips?: number;
   tripsInRange?: number;
+  memberEvents?: number;
+  memberEventsInRange?: number;
+  memberEventsSchool?: number;
+  memberEventsSchoolInRange?: number;
+  petVaccinations?: number;
+  petVaccinationsInRange?: number;
+  medications?: number;
+  medicationsInRange?: number;
+  medicationsActive?: number;
+  goals?: number;
+  goalsInRange?: number;
+  habits?: number;
+  habitsInRange?: number;
+  habitCompletions?: number;
+  habitCompletionsInRange?: number;
+  dailyCheckins?: number;
+  dailyCheckinsInRange?: number;
+  usersWithCheckinInRange?: number;
+  usersWithCheckinToday?: number;
+  usersWithActivityInRange?: number;
+  returningUsersInRange?: number;
+  pushTokens?: number;
+  usersWithPushToken?: number;
   byDay?: NidoDayPoint[];
 };
 
@@ -82,18 +116,50 @@ export function emptyNidoSummary(searchParams?: SearchParams): NidoSummary {
     registeredUsers: 0,
     registeredUsersInRange: 0,
     households: 0,
-    activeMemberships: 0,
-    invitations: 0,
-    expenses: 0,
-    routines: 0,
-    shoppingLists: 0,
     householdsInRange: 0,
+    activeMemberships: 0,
+    localMembers: 0,
+    localMembersPerson: 0,
+    localMembersPet: 0,
+    localMembersInRange: 0,
+    invitations: 0,
     invitationsInRange: 0,
+    invitationsAccepted: 0,
+    invitationsAcceptedInRange: 0,
+    invitationsPending: 0,
+    expenses: 0,
     expensesInRange: 0,
+    routines: 0,
     routinesInRange: 0,
+    routineCompletions: 0,
+    routineCompletionsInRange: 0,
+    shoppingLists: 0,
     shoppingListsInRange: 0,
     trips: 0,
     tripsInRange: 0,
+    memberEvents: 0,
+    memberEventsInRange: 0,
+    memberEventsSchool: 0,
+    memberEventsSchoolInRange: 0,
+    petVaccinations: 0,
+    petVaccinationsInRange: 0,
+    medications: 0,
+    medicationsInRange: 0,
+    medicationsActive: 0,
+    goals: 0,
+    goalsInRange: 0,
+    habits: 0,
+    habitsInRange: 0,
+    habitCompletions: 0,
+    habitCompletionsInRange: 0,
+    dailyCheckins: 0,
+    dailyCheckinsInRange: 0,
+    usersWithCheckinInRange: 0,
+    usersWithCheckinToday: 0,
+    usersWithActivityInRange: 0,
+    returningUsersInRange: 0,
+    pushTokens: 0,
+    usersWithPushToken: 0,
     byDay: []
   };
 }

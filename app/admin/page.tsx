@@ -3,6 +3,7 @@ import { AdminBars } from "../../components/admin/AdminBars";
 import { AdminDays, formatDayLabel } from "../../components/admin/AdminDays";
 import { AdminFunnel } from "../../components/admin/AdminFunnel";
 import { AdminKpis } from "../../components/admin/AdminKpis";
+import { AdminNidoWake } from "../../components/admin/AdminNidoWake";
 import { AdminNotice } from "../../components/admin/AdminNotice";
 import { AdminProductCard } from "../../components/admin/AdminProductCard";
 import { AdminSection } from "../../components/admin/AdminSection";
@@ -50,6 +51,8 @@ export default async function AdminPage({
   const downloads = readDownloadCounts();
   const nidoHouseholdsInRange = nido.summary.householdsInRange ?? 0;
   const nidoInvitesInRange = nido.summary.invitationsInRange ?? nido.summary.invitations;
+  const nidoAcceptedInRange = nido.summary.invitationsAcceptedInRange ?? 0;
+  const s = nido.summary;
 
   return (
     <div className="admin-app admin-app--nido">
@@ -95,8 +98,8 @@ export default async function AdminPage({
           <p className="admin-kicker">Panel interno</p>
           <h1>Uso de Nido</h1>
           <p className="admin-lead">
-            Nido: altas y módulos en los últimos {selectedDays} días · {range}. Hogares y miembros
-            del encabezado son el total actual.
+            Control de Nido en los últimos {selectedDays} días · {range}. Totales de encabezado son
+            el stock actual; las barras usan la ventana.
           </p>
         </section>
 
@@ -127,11 +130,13 @@ export default async function AdminPage({
         </section>
 
         <div className="admin-board admin-board--nido">
-          {!nido.ok ? (
+          {!nidoHealth.ok ? <AdminNidoWake /> : null}
+
+          {nidoHealth.ok && !nido.ok ? (
             <AdminNotice
               tone="error"
-              title="No se pudo conectar con Nido"
-              body="Verifique NIDO_API_URL, que el servicio esté en ejecución y que NIDO_ADMIN_ANALYTICS_KEY coincida con ADMIN_ANALYTICS_KEY de Nido."
+              title="Nido está en línea, pero no se pudieron leer las métricas"
+              body="Revisá que NIDO_ADMIN_ANALYTICS_KEY coincida con ADMIN_ANALYTICS_KEY de la API."
             />
           ) : null}
 
@@ -151,32 +156,44 @@ export default async function AdminPage({
 
           {nido.ok ? (
             <>
-              <AdminSection title="Indicadores" kicker="Nido">
+              <AdminSection title="Indicadores" kicker="Stock actual">
                 <AdminKpis
                   label="KPIs Nido"
                   items={[
                     {
-                      label: "Usuarios registrados",
-                      value: nido.summary.registeredUsers,
-                      hint: "Total actual de cuentas."
-                    },
-                    {
-                      label: "Altas en la ventana",
-                      value: nido.summary.registeredUsersInRange,
-                      hint: "Registros nuevos en estos días."
+                      label: "Usuarios",
+                      value: s.registeredUsers,
+                      hint: `${s.registeredUsersInRange} altas en la ventana.`
                     },
                     {
                       label: "Hogares",
-                      value: nido.summary.households,
-                      hint:
-                        nido.summary.householdsInRange != null
-                          ? `Total actual. ${nido.summary.householdsInRange} creados en la ventana.`
-                          : "Total actual, sin filtrar por la ventana."
+                      value: s.households,
+                      hint: `${nidoHouseholdsInRange} creados en la ventana.`
                     },
                     {
-                      label: "Miembros activos",
-                      value: nido.summary.activeMemberships,
-                      hint: "Total actual de personas en un hogar."
+                      label: "Cuentas en hogares",
+                      value: s.activeMemberships,
+                      hint: `${s.localMembers ?? 0} miembros locales (${s.localMembersPet ?? 0} mascotas).`
+                    },
+                    {
+                      label: "Activos en la ventana",
+                      value: s.usersWithActivityInRange ?? 0,
+                      hint: "Check-in, hábito, rutina o push. No es un login."
+                    },
+                    {
+                      label: "Recurrentes",
+                      value: s.returningUsersInRange ?? 0,
+                      hint: "Cuentas anteriores a la ventana que volvieron a usarla."
+                    },
+                    {
+                      label: "Ánimo hoy",
+                      value: s.usersWithCheckinToday ?? 0,
+                      hint: `${s.usersWithCheckinInRange ?? 0} personas con check-in en la ventana.`
+                    },
+                    {
+                      label: "Push",
+                      value: s.usersWithPushToken ?? 0,
+                      hint: `${s.pushTokens ?? 0} tokens registrados.`
                     },
                     {
                       label: "Descargas del sitio",
@@ -189,92 +206,141 @@ export default async function AdminPage({
 
               <AdminSection
                 title="Altas de la ventana"
-                kicker="Conteos de la ventana, no una cohorte secuencial."
+                kicker="Conteos paralelos, no una cohorte secuencial."
               >
                 <AdminFunnel
                   label="Recorrido Nido"
                   steps={[
                     {
                       label: "Altas",
-                      value: nido.summary.registeredUsersInRange,
+                      value: s.registeredUsersInRange,
                       hint: "Usuarios nuevos en estos días."
                     },
                     {
                       label: "Hogares",
                       value: nidoHouseholdsInRange,
-                      conversion: ratioPercent(
-                        nidoHouseholdsInRange,
-                        nido.summary.registeredUsersInRange
-                      ),
+                      conversion: ratioPercent(nidoHouseholdsInRange, s.registeredUsersInRange),
                       hint: "Hogares creados en la misma ventana."
                     },
                     {
                       label: "Invitaciones",
                       value: nidoInvitesInRange,
                       conversion: ratioPercent(nidoInvitesInRange, nidoHouseholdsInRange),
-                      hint: "Invitaciones creadas en la ventana."
+                      hint: "Invitaciones creadas."
+                    },
+                    {
+                      label: "Aceptadas",
+                      value: nidoAcceptedInRange,
+                      conversion: ratioPercent(nidoAcceptedInRange, nidoInvitesInRange),
+                      hint: `${s.invitationsPending ?? 0} pendientes en total.`
                     }
                   ]}
                 />
               </AdminSection>
 
-              <AdminSection
-                title="Actividad de módulos"
-                kicker="En la ventana · el total aparece en la pista"
-              >
+              <AdminSection title="Hogar" kicker="En la ventana · el total aparece en la pista">
                 <AdminBars
-                  label="Módulos Nido"
-                  empty="Aún no hay actividad de módulos."
+                  label="Módulos del hogar"
+                  empty="Aún no hay actividad de hogar."
                   items={[
                     {
-                      label: "Invitaciones",
-                      value: nido.summary.invitationsInRange ?? nido.summary.invitations,
-                      hint: `Total: ${nido.summary.invitations}.`,
+                      label: "Eventos",
+                      value: s.memberEventsInRange ?? 0,
+                      hint: `Total: ${s.memberEvents ?? 0}. Estudio: ${s.memberEventsSchoolInRange ?? 0} en ventana.`,
                       accent: "#4F8F6E"
                     },
                     {
+                      label: "Medicación",
+                      value: s.medicationsInRange ?? 0,
+                      hint: `${s.medicationsActive ?? 0} activas · total ${s.medications ?? 0}.`,
+                      accent: "#C46B3A"
+                    },
+                    {
                       label: "Gastos",
-                      value: nido.summary.expensesInRange ?? nido.summary.expenses,
-                      hint: `Total: ${nido.summary.expenses}.`,
+                      value: s.expensesInRange ?? s.expenses,
+                      hint: `Total: ${s.expenses}.`,
                       accent: "#C9A227"
                     },
                     {
-                      label: "Rutinas",
-                      value: nido.summary.routinesInRange ?? nido.summary.routines,
-                      hint: `Total: ${nido.summary.routines}.`,
+                      label: "Rutinas hechas",
+                      value: s.routineCompletionsInRange ?? 0,
+                      hint: `${s.routines} rutinas definidas.`,
                       accent: "#4A7FB5"
                     },
                     {
                       label: "Listas de compras",
-                      value: nido.summary.shoppingListsInRange ?? nido.summary.shoppingLists,
-                      hint: `Total: ${nido.summary.shoppingLists}.`,
+                      value: s.shoppingListsInRange ?? s.shoppingLists,
+                      hint: `Total: ${s.shoppingLists}.`,
                       accent: "#C45C4A"
                     },
                     {
                       label: "Viajes",
-                      value: nido.summary.tripsInRange ?? nido.summary.trips ?? 0,
-                      hint: `Total: ${nido.summary.trips ?? 0}.`,
+                      value: s.tripsInRange ?? s.trips ?? 0,
+                      hint: `Total: ${s.trips ?? 0}.`,
                       accent: "#6B5E52"
+                    },
+                    {
+                      label: "Vacunas",
+                      value: s.petVaccinationsInRange ?? 0,
+                      hint: `Total: ${s.petVaccinations ?? 0}.`,
+                      accent: "#E8A0B5"
                     }
                   ]}
                 />
               </AdminSection>
 
-              {nido.summary.byDay && nido.summary.byDay.length > 0 ? (
-                <AdminSection title="Altas por día" kicker="Cuentas y hogares creados">
+              <AdminSection title="Yo" kicker="Personal · no lo ve el resto del hogar">
+                <AdminBars
+                  label="Bienestar personal"
+                  empty="Nadie usó Yo todavía."
+                  items={[
+                    {
+                      label: "Check-ins",
+                      value: s.dailyCheckinsInRange ?? 0,
+                      hint: `${s.usersWithCheckinInRange ?? 0} personas · ${s.dailyCheckins ?? 0} en total.`,
+                      accent: "#C46B3A"
+                    },
+                    {
+                      label: "Objetivos",
+                      value: s.goalsInRange ?? 0,
+                      hint: `Total: ${s.goals ?? 0}.`,
+                      accent: "#4F8F6E"
+                    },
+                    {
+                      label: "Hábitos",
+                      value: s.habitsInRange ?? 0,
+                      hint: `Total: ${s.habits ?? 0}.`,
+                      accent: "#4A7FB5"
+                    },
+                    {
+                      label: "Hábitos cumplidos",
+                      value: s.habitCompletionsInRange ?? 0,
+                      hint: `Marcas en la ventana · total ${s.habitCompletions ?? 0}.`,
+                      accent: "#D4894A"
+                    }
+                  ]}
+                />
+              </AdminSection>
+
+              {s.byDay && s.byDay.length > 0 ? (
+                <AdminSection title="Uso por día" kicker="Altas, hogares, ánimo y hábitos">
                   <AdminDays
                     label="Serie diaria Nido"
-                    empty="Sin altas diarias."
+                    empty="Sin actividad diaria."
                     legend={[
                       { key: "signups", label: "Altas" },
-                      { key: "households", label: "Hogares" }
+                      { key: "households", label: "Hogares" },
+                      { key: "checkins", label: "Ánimo" },
+                      { key: "habits", label: "Hábitos" }
                     ]}
-                    items={nido.summary.byDay.map((point) => ({
+                    items={s.byDay.map((point) => ({
                       date: point.date,
                       label: formatDayLabel(point.date),
                       values: [
                         { key: "signups", value: point.signups },
-                        { key: "households", value: point.households }
+                        { key: "households", value: point.households },
+                        { key: "checkins", value: point.checkins ?? 0 },
+                        { key: "habits", value: point.habitCompletions ?? 0 }
                       ]
                     }))}
                   />

@@ -6,9 +6,12 @@ export const nidoRelease = {
   versionName: publicRelease.versionName,
   apkPath: "/downloads/nido.apk",
   changelog: [
-    "Versión beta para Android",
-    "Hogar, miembros, gastos, rutinas, compras y viajes",
-    "Invitaciones y configuración del plan"
+    "Espacio Yo: ánimo, objetivos y hábitos personales",
+    "El emoji de ánimo se ve en Hogar; el detalle no",
+    "Medicación para personas y mascotas",
+    "Eventos con icono por categoría; Escuela pasa a Estudio",
+    "Ficha de miembro con edad, signo y cumpleaños (dueño e invitados)",
+    "Hogar, gastos, rutinas, compras y viajes"
   ]
 } as const;
 

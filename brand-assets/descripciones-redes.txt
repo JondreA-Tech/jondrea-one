@@ -4,7 +4,8 @@ JondreA Tech — Copy redes sociales
 INSTAGRAM (bio)
 ---------------
 Software factory · Productos digitales con identidad propia
-Nido · Beta Android
+Nido · hub del hogar + Yo
+Beta Android
 ✉️ jondreatech@gmail.com
 
 
@@ -13,7 +14,8 @@ INSTAGRAM (descripción / about ampliada)
 JondreA Tech diseña y construye productos digitales con foco en experiencia real.
 
 Hoy en beta (solo Android):
-• Nido — el hub de tu hogar: miembros, gastos, rutinas y compras
+• Nido — hub del hogar (miembros, gastos, rutinas, compras, viajes)
+  y un espacio Yo (ánimo, objetivos y hábitos). El grupo solo ve el emoji.
 
 Pedí acceso escribiendo a jondreatech@gmail.com
 
@@ -28,7 +30,7 @@ LINKEDIN (About)
 JondreA Tech es una software factory que diseña y construye productos digitales con identidad propia.
 
 Nuestro producto actual:
-• Nido — hub familiar compartido: miembros, gastos, rutinas y compras en un solo lugar.
+• Nido — hub familiar compartido y espacio personal (Yo): ánimo, objetivos y hábitos. El resto del hogar solo ve el emoji del día.
 
 Está en beta, por el momento solo disponible en Android. Para pedir acceso escribinos a jondreatech@gmail.com.
 
@@ -36,12 +38,12 @@ Instagram: @jondrea.tech
 Web: (tu dominio)
 
 
-ASSETS EN ESTA CARPETA (actualizados)
--------------------------------------
+ASSETS EN ESTA CARPETA
+----------------------
 avatar-jondrea-social.png → Foto de perfil Instagram / LinkedIn (cuadrado)
 header-jondrea-social.png → Portada / banner Instagram + LinkedIn (16:9)
 logo-jondrea.png          → Logo empresa horizontal (wordmark)
 logo-jondrea-mark.png     → Monograma JA (mismo que avatar)
 favicon-jondrea.png       → Favicon / icono app
-logo-nido.png             → Logo Nido nuevo (también en /public para la landing)
+logo-nido.png             → Logo Nido (también en /public para la landing)
 logo-nido-original.png    → Backup logo Nido anterior
