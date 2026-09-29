@@ -170,25 +170,76 @@ export function publishedApkVersion(_product: ProductKey) {
   return publicRelease.label;
 }
 
+/** Tope del health en el render del panel, para no colgar la página si Render está dormido. */
+export const NIDO_PAGE_HEALTH_TIMEOUT_MS = 8_000;
+
+/** Tope del health que despierta Render: el arranque en frío supera el minuto. */
+export const NIDO_WAKE_TIMEOUT_MS = 100_000;
+
+export type NidoWakeReason = "unconfigured" | "timeout" | "http" | "network";
+
+export type NidoHealthPing = {
+  ok: boolean;
+  reason?: NidoWakeReason;
+  status?: number;
+};
+
+/** Base de la API Nido, sin barra final ni sufijo /v1. */
+export function nidoApiBase() {
+  const raw = process.env.NIDO_API_URL ?? "http://localhost:3002";
+  return raw.replace(/\/+$/, "").replace(/\/v1$/i, "");
+}
+
+/** True si la base apunta a esta máquina. */
+export function isLocalNidoApi(apiBase: string) {
+  try {
+    const hostname = new URL(apiBase).hostname;
+    return hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1";
+  } catch {
+    return false;
+  }
+}
+
+/** True si el fallo del fetch fue por corte de tiempo. */
+function isTimeoutError(error: unknown) {
+  return error instanceof Error && (error.name === "TimeoutError" || error.name === "AbortError");
+}
+
+/** GET /v1/health con tope de espera. En Vercel, localhost se informa sin pegarle. */
+export async function pingNidoHealth(apiBase: string, timeoutMs: number): Promise<NidoHealthPing> {
+  if (process.env.VERCEL === "1" && isLocalNidoApi(apiBase)) {
+    return { ok: false, reason: "unconfigured" };
+  }
+  try {
+    const response = await fetch(`${apiBase}/v1/health`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(timeoutMs)
+    });
+    if (!response.ok) {
+      return { ok: false, reason: "http", status: response.status };
+    }
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, reason: isTimeoutError(error) ? "timeout" : "network" };
+  }
+}
+
 /** Health GET /v1/health de una API Nest. */
 export async function fetchApiHealth(apiBase: string, label: string): Promise<ApiHealth> {
-  try {
-    const response = await fetch(`${apiBase}/v1/health`, { cache: "no-store" });
-    return { ok: response.ok, label };
-  } catch {
-    return { ok: false, label };
-  }
+  const ping = await pingNidoHealth(apiBase, NIDO_PAGE_HEALTH_TIMEOUT_MS);
+  return { ok: ping.ok, label };
 }
 
 /** Obtiene el summary operativo de Nido (server-side + admin key). */
 export async function getNidoSummary(searchParams?: SearchParams) {
-  const apiBase = process.env.NIDO_API_URL ?? "http://localhost:3002";
+  const apiBase = nidoApiBase();
   const adminKey = process.env.NIDO_ADMIN_ANALYTICS_KEY ?? "";
   const query = buildSummaryQuery(searchParams);
   try {
     const response = await fetch(`${apiBase}/v1/analytics/summary?${query}`, {
       cache: "no-store",
-      headers: adminKey ? { "x-admin-key": adminKey } : {}
+      headers: adminKey ? { "x-admin-key": adminKey } : {},
+      signal: AbortSignal.timeout(NIDO_PAGE_HEALTH_TIMEOUT_MS)
     });
     if (!response.ok) {
       return { summary: emptyNidoSummary(searchParams), ok: false as const };

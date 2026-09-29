@@ -15,6 +15,7 @@ import {
   formatAdminRange,
   getNidoSummary,
   isLaunchEmpty,
+  nidoApiBase,
   publishedApkVersion,
   ratioPercent,
   type SearchParams
@@ -33,7 +34,7 @@ export default async function AdminPage({
 }) {
   const params = searchParams ? await searchParams : undefined;
   const selectedDays = firstParam(params?.days) ?? "7";
-  const nidoUrl = process.env.NIDO_API_URL ?? "http://localhost:3002";
+  const nidoUrl = nidoApiBase();
   const nidoProduct = getProduct("nido");
   const nidoApk = getNidoApk();
   const nidoVersion = publishedApkVersion("nido");
