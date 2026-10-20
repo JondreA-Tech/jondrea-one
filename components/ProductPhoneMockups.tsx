@@ -1,6 +1,4 @@
-type ProductPhoneMockupsProps = {
-  productId: "nido";
-};
+import Image from "next/image";
 
 const NIDO_SHOTS = [
   { src: "/nido/screens/nido-hogar.png", label: "Hogar", alt: "Pantalla Hogar de Nido con el día del grupo y el ánimo de cada miembro." },
@@ -11,23 +9,16 @@ const NIDO_SHOTS = [
   { src: "/nido/screens/nido-rutinas.png", label: "Rutinas y compras", alt: "Rutinas del día y listas de compras del hogar." }
 ] as const;
 
-/** Marco de teléfono para una captura de Nido. */
-function PhoneShot({
-  src,
-  label,
-  alt
-}: {
-  src: string;
-  label: string;
-  alt: string;
-}) {
+/** Presenta una captura real con opción de ampliarla en otra pestaña. */
+function PhoneShot({ src, label, alt }: { src: string; label: string; alt: string }) {
   return (
     <figure className="phone-frame phone-frame--nido">
       <div className="phone-frame__bezel">
-        <div className="phone-frame__notch" aria-hidden />
+        <div className="phone-frame__notch" aria-hidden="true" />
         <div className="phone-frame__screen phone-frame__screen--photo">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt={alt} />
+          <a href={src} target="_blank" rel="noopener noreferrer" aria-label={`Ampliar captura de ${label} (abre otra pestaña)`}>
+            <Image src={src} alt={alt} width={780} height={1688} sizes="(max-width: 700px) 45vw, 200px" />
+          </a>
         </div>
       </div>
       <figcaption>{label}</figcaption>
@@ -35,20 +26,17 @@ function PhoneShot({
   );
 }
 
-/** Galería de pantallas de Nido. */
-export function ProductPhoneMockups({ productId }: ProductPhoneMockupsProps) {
-  void productId;
+/** Galería de pantallas reales de Nido, separada del arte conceptual. */
+export function ProductPhoneMockups() {
   return (
-    <section className="container product-block product-phones" aria-label="Pantallas de la aplicación">
-      <p className="product-label">La aplicación</p>
-      <h2 className="product-title">Así se ve Nido</h2>
-      <p className="product-lead">
-        Hogar para el grupo, Yo para lo personal, y los módulos del día a día.
-      </p>
+    <section id="pantallas" className="container product-block nido-section product-phones" aria-labelledby="nido-screens-title">
+      <div className="nido-intro">
+        <p className="product-label">La app, por dentro</p>
+        <h2 id="nido-screens-title">Así se organiza tu día.</h2>
+        <p>Capturas reales de la aplicación en desarrollo. La interfaz puede cambiar antes del lanzamiento. Podés ampliar cada imagen para ver el detalle.</p>
+      </div>
       <div className="product-phones__row product-phones__row--gallery">
-        {NIDO_SHOTS.map((shot) => (
-          <PhoneShot key={shot.src} src={shot.src} label={shot.label} alt={shot.alt} />
-        ))}
+        {NIDO_SHOTS.map((shot) => <PhoneShot key={shot.src} {...shot} />)}
       </div>
     </section>
   );

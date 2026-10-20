@@ -39,23 +39,23 @@ export const products: Product[] = [
       "Nido es la aplicación para quienes conviven. Se crea un hogar, se invita a las personas y queda una vista común del día: cumpleaños, eventos, medicación, vacunas, viajes y lo que hay que comprar o pagar. Cada cuenta tiene un espacio Yo —ánimo, objetivos y hábitos— que no ven los demás; el emoji de ánimo sí aparece en Hogar, para que el grupo sepa cómo está cada uno. Admite personas y mascotas locales. Quien crea el hogar administra invitaciones y el plan.",
     loop: [
       {
-        title: "Alta del hogar",
-        body: "Se crea el grupo, se elige un nombre y se invita a quienes conviven.",
+        title: "Creá tu hogar",
+        body: "Elegí un nombre y armá el espacio compartido de quienes conviven.",
         accent: "#C46B3A"
       },
       {
-        title: "Hogar",
-        body: "La pantalla del día: ánimo de cada uno, cumpleaños, agenda, gastos, rutinas y compras.",
+        title: "Sumá a quienes conviven",
+        body: "Invitá a otras personas y agregá las fichas de personas y mascotas del hogar.",
         accent: "#D4894A"
       },
       {
-        title: "Yo",
-        body: "Desde Hogar se entra al espacio personal: check-in de ánimo, objetivos y hábitos. Solo vos los ves.",
+        title: "Organicen el día",
+        body: "Consulten gastos, rutinas, compras, notas y eventos desde una misma app.",
         accent: "#C46B3A"
       },
       {
-        title: "Miembros",
-        body: "Personas, mascotas e invitados. Cada ficha tiene edad, signo, eventos, vacunas y medicación.",
+        title: "Hacé lugar para vos",
+        body: "Entrá a Yo desde Hogar para registrar tu ánimo y acompañar tus objetivos y hábitos.",
         accent: "#4F8F6E"
       }
     ],
@@ -72,43 +72,48 @@ export const products: Product[] = [
       },
       {
         title: "Miembros",
-        body: "Dueño, invitados, personas y mascotas locales. Cumpleaños, signo, edad y etapa de vida.",
+        body: "Personas y mascotas del hogar, con sus fichas, cumpleaños e información compartida.",
         accent: "#4F8F6E"
       },
       {
         title: "Eventos",
-        body: "Salud, trabajo, entretenimiento y estudio, con icono por categoría y recordatorios.",
+        body: "Agenda de salud, trabajo, entretenimiento y estudio, con categorías y recordatorios.",
         accent: "#4A7FB5"
       },
       {
-        title: "Medicación",
-        body: "Dosis, frecuencia (diaria, semanal o única) y aviso. Para personas y mascotas.",
+        title: "Medicación y vacunas",
+        body: "Dosis, frecuencia y avisos de medicación. También, registro de vacunas de las mascotas.",
         accent: "#C46B3A"
       },
       {
         title: "Viajes",
-        body: "Fechas y cuenta regresiva en Hogar cuando se acerca la salida.",
+        body: "Fechas de los viajes del hogar y cuenta regresiva cuando se acerca la salida.",
         accent: "#6B5E52"
       },
       {
         title: "Gastos",
-        body: "Ingreso mensual, cuotas (restan X de Y) y registro del pago del mes.",
+        body: "Ingreso mensual, gastos recurrentes y cuotas. Registrá los pagos para mantener el resumen al día.",
         accent: "#C9A227"
       },
       {
         title: "Rutinas",
-        body: "Tareas compartidas de la semana, distintas de los hábitos personales de Yo.",
+        body: "Tareas compartidas de la semana y registro de lo que se hizo cada día.",
         accent: "#4A7FB5"
       },
       {
         title: "Compras",
-        body: "Listas compartidas, en unidades o en kilos.",
+        body: "Listas de compras compartidas con cantidades para organizar lo que hace falta.",
         accent: "#C45C4A"
       },
       {
         title: "Invitaciones",
-        body: "Se invita a quienes conviven. El administrador gestiona el acceso.",
+        body: "Invitaciones para quienes conviven. La persona que administra el hogar gestiona el acceso.",
         accent: "#C46B3A"
+      },
+      {
+        title: "Notas del hogar",
+        body: "Un lugar para los avisos y mensajes cortos que necesitan tener a mano en casa.",
+        accent: "#6B5E52"
       }
     ],
     status: "development",
