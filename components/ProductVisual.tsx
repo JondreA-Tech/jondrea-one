@@ -2,48 +2,20 @@ import Image from "next/image";
 import type { ProductTheme } from "../lib/products";
 import "../styles/product-preview.css";
 
-/** Visual compartido entre el catálogo y las fichas, con su procedencia visible. */
+/** Muestra el arte de cada producto sin confundirlo con una interfaz de la aplicación. */
 export function ProductVisual({ productId, compact = false }: { productId: ProductTheme; compact?: boolean }) {
-  if (productId === "nido") {
-    return <figure className="project-visual project-visual--compact project-visual--nido">
-      <Image src="/nido/screens/nido-hogar.png" alt="Pantalla Hogar de Nido con el día del grupo." width={360} height={780} sizes="360px" />
-      <figcaption>Nido · Hogar compartido y espacio personal</figcaption>
-    </figure>;
-  }
-  if (productId === "escaparg") {
-    return (
-      <figure className={`project-visual ${compact ? "project-visual--compact" : ""}`}>
-        <Image src="/productos/escaparg/el-experimento-portada.webp"
-          alt="Arte promocional de El Experimento: la cápsula X-17 en un laboratorio iluminado."
-          width={1280} height={720} sizes={compact ? "(max-width: 900px) 100vw, 360px" : "(max-width: 900px) 100vw, 1120px"} />
-        <figcaption>El Experimento · Arte promocional original</figcaption>
-      </figure>
-    );
-  }
+  if (productId === "careme") return null;
+  const nido = productId === "nido";
   return (
-    <figure className={`project-visual careme-concept ${compact ? "project-visual--compact" : ""}`}>
-      <div className="careme-concept__canvas">
-        <div className="careme-concept__goal">
-          <span className="concept-eyebrow">Mi objetivo profesional</span>
-          <strong>Dar mi próximo paso</strong>
-          <span className="concept-detail">Un objetivo. Pequeñas acciones.</span>
-        </div>
-        <div className="careme-concept__mission">
-          <span className="concept-eyebrow">Misiones de la semana</span>
-          {compact ? <strong>Prepará · Ensayá · Revisá</strong> : <>
-            <span><b aria-hidden="true">01</b> Preparar mi presentación</span>
-            <span><b aria-hidden="true">02</b> Contar un proyecto</span>
-            <span><b aria-hidden="true">03</b> Practicar una entrevista</span>
-          </>}
-        </div>
-        <div className="careme-concept__practice">
-          <span className="concept-eyebrow">Práctica con IA</span>
-          <strong>{compact ? "Entrevista con IA" : "“Contame sobre vos”"}</strong>
-          <span className="concept-wave" aria-hidden="true">▂ ▄ ▆ ▃ ▇ ▅ ▂ ▆ ▄ ▂</span>
-          <span className="concept-detail">Ensayá · Revisá · Volvé a intentar</span>
-        </div>
-      </div>
-      <figcaption>Vista conceptual · No representa una interfaz implementada</figcaption>
+    <figure className={`project-visual${compact ? " project-visual--compact" : ""}`}>
+      <Image
+        src={nido ? "/productos/nido/hogar-conceptual.webp" : "/productos/escaparg/el-experimento-portada.webp"}
+        alt={nido ? "Ilustración conceptual de Nido: un hogar compartido con espacios para convivir y para uno mismo." : "Arte promocional de El Experimento: la cápsula X-17 en un laboratorio iluminado."}
+        width={1440}
+        height={810}
+        sizes={compact ? "(max-width: 700px) 100vw, 550px" : "(max-width: 900px) 100vw, 1120px"}
+      />
+      <figcaption>{nido ? "Nido · Arte conceptual" : "El Experimento · Arte promocional original"}</figcaption>
     </figure>
   );
 }

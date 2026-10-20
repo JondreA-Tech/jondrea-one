@@ -6,7 +6,7 @@
   overflow: hidden;
   min-height: calc(100svh - var(--header-h));
   padding-bottom: 4.5rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
 }
 
 .site-shell:has(.product-shell) .site-footer {
@@ -71,7 +71,7 @@
 .product-feature-card h3,
 .product-shell .approach-item__title,
 .product-shell .section-title {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
 }
 
 .product-label,
@@ -82,11 +82,11 @@
 .product-shell .section-lead,
 .product-shell .section-label,
 .product-shell .approach-list > li > span:not(.approach-item__title) {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
 }
 
 .product-shell .btn {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.875rem;
   font-weight: 600;
 }
@@ -144,7 +144,7 @@
 }
 
 .product-shell .product-pills li {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
 }
 
 .product-block {
@@ -263,7 +263,7 @@
 .product-cta-kicker {
   margin: 1.25rem auto 0.45rem;
   max-width: 38rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.04em;

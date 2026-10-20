@@ -1,33 +1,28 @@
 import Link from "next/link";
 import { CustomWorkCta } from "../../components/CustomWorkCta";
-import { JondreaLogo } from "../../components/JondreaLogo";
 import { ProductCard } from "../../components/ProductCard";
 import { products } from "../../lib/products";
-import { site } from "../../lib/site";
 
 /** Home corporativa: marca, productos, método y servicios a medida. */
 export default function HomePage() {
   return (
     <>
       <section className="container page-hero page-hero--home">
-        <div className="hero-aurora" aria-hidden="true">
-          <span className="hero-orb hero-orb--a" />
-          <span className="hero-orb hero-orb--b" />
-        </div>
-        <div className="hero-brand rise">
-          <JondreaLogo size="lg" layout="horizontal" />
-        </div>
+        <p className="section-label rise">Software factory · Productos propios</p>
         <h1 className="rise rise-delay-1">
-          Productos digitales
-          <span className="hero-break">con identidad propia.</span>
+          De una idea a un producto
+          <span className="hero-break">que funciona.</span>
         </h1>
-        <p className="lead rise rise-delay-2">{site.description}</p>
+        <p className="lead rise rise-delay-2">
+          Diseñamos y desarrollamos sitios web, aplicaciones y productos digitales.
+          Unimos producto, diseño e ingeniería para resolver necesidades reales.
+        </p>
         <div className="hero-actions rise rise-delay-3">
-          <Link href="/productos/nido" className="btn btn-primary">
-            Nido
+          <Link href="/contactanos" className="btn btn-primary">
+            Conversemos
           </Link>
           <Link href="/productos" className="btn btn-ghost">
-            Ver productos
+            Explorar productos
           </Link>
         </div>
       </section>
@@ -51,8 +46,8 @@ export default function HomePage() {
           Del diseño a la publicación.
         </h2>
         <p className="section-lead">
-          Producto, diseño e ingeniería en el mismo equipo. Definimos el uso cotidiano, construimos
-          y publicamos versiones que se pueden instalar y medir.
+          Definimos el problema, diseñamos la experiencia y construimos el producto.
+          Acompañamos cada etapa con un alcance claro y una base técnica que pueda crecer.
         </p>
         <ol className="approach-list">
           <li>

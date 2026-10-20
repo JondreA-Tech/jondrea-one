@@ -125,7 +125,7 @@ input {
   padding: 0.45rem 0.75rem;
   border-radius: var(--radius-sm);
   color: #e2e8f0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -349,7 +349,7 @@ input {
   padding-top: 0;
   max-width: 28rem;
   color: var(--color-text-muted);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 15px;
   font-weight: 500;
 }
@@ -364,7 +364,7 @@ input {
 
 .site-footer__social a {
   color: var(--color-text-soft);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
   white-space: nowrap;
@@ -427,7 +427,7 @@ input {
   display: block;
   margin-top: 0.55rem;
   color: var(--color-text-soft);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 400;
 }
@@ -442,7 +442,7 @@ input {
 
 .site-footer__label {
   margin: 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.08em;
@@ -459,7 +459,7 @@ input {
   width: min(100% - 2rem, var(--container));
   margin: 0 auto;
   color: var(--color-text-muted);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 500;
   text-align: center;
@@ -483,7 +483,7 @@ input {
 }
 
 .page-hero--home {
-  min-height: calc(100svh - var(--header-h));
+  min-height: 640px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -549,7 +549,7 @@ input {
 @media (max-width: 765px) {
   /* reduce hero min-height slightly on smaller screens so content doesn't feel too spaced */
   .page-hero--home {
-    min-height: calc(85svh - var(--header-h));
+    min-height: 560px;
   }
 }
 
@@ -570,7 +570,7 @@ input {
 
 .page-hero h1 {
   margin: 0.35rem 0 1.1rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2.25rem, 5vw, 3.6rem);
   font-weight: 800;
   line-height: 1.07;
@@ -586,21 +586,21 @@ input {
 .hero-break {
   display: block;
   color: #22b6a8;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
 }
 
 /* Accent for Apps label on products page */
 .text-accent-apps {
   color: #22b6ab;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 800;
 }
 .lead {
   margin: 0;
   max-width: 46rem;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: clamp(1rem, 1.35vw, 1.1rem);
   font-weight: 400;
   line-height: 1.6;
@@ -608,7 +608,7 @@ input {
 }
 
 .btn {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
 }
 
 @media (max-width: 765px) {
@@ -666,7 +666,7 @@ input {
 .section-label {
   margin: 0 auto 1rem;
   color: #22b6a8;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -681,7 +681,7 @@ input {
 
 .section-title {
   margin: 0 auto 1.35rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 700;
   line-height: 1.08;
@@ -698,7 +698,7 @@ input {
   margin: 0 auto;
   max-width: 38rem;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.7;
@@ -712,7 +712,7 @@ input {
 
 .section h2 {
   margin: 0 0 0.75rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 30px;
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -754,11 +754,11 @@ input {
   .page-hero--products,
   .page-hero--about,
   .page-hero--contact {
-    padding-inline-start: 3rem;
+    padding-inline-start: 0;
   }
 
   .page-hero--home {
-    min-height: calc(75svh - var(--header-h));
+    min-height: 600px;
   }
 
   .page-hero--home .hero-actions,
@@ -790,7 +790,7 @@ input {
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 18px;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -812,7 +812,7 @@ input {
 
 .approach-list > li > span:not(.approach-item__title) {
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
   line-height: 1.55;
@@ -860,7 +860,7 @@ input {
   min-height: 46px;
   padding: 0.68rem 1.15rem;
   border-radius: var(--radius-md);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: -0.02em;
@@ -878,14 +878,14 @@ input {
 }
 
 .btn-primary {
-  background: #1c9f94;
+  background: var(--logo-teal);
   color: #ffffff;
   border: none;
   box-shadow: 0 6px 20px rgba(15, 122, 114, 0.22);
 }
 
 .btn-primary:hover {
-  background: #22b6a8;
+  background: #116d65;
   filter: none;
 }
 
@@ -993,7 +993,7 @@ input {
 .about-block p {
   margin: 0;
   color: #CBD5E1;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 14px;
   font-weight: 400;
   line-height: 1.6;
@@ -1069,7 +1069,7 @@ input {
   border: 1px solid var(--color-border);
   background: var(--color-surface);
   color: var(--color-text-muted);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -1083,7 +1083,7 @@ input {
   max-width: 38rem;
   padding-left: 1.2rem;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 1rem;
   line-height: 1.65;
   text-align: left;
@@ -1150,7 +1150,7 @@ input {
 }
 
 .product-card__badge {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -1171,7 +1171,7 @@ input {
 
 .product-card h3 {
   margin: 0.4rem 0 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 25px;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -1181,7 +1181,7 @@ input {
   margin: 0;
   color: var(--color-text-muted);
   flex: 1;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   font-weight: 400;
   line-height: 1.6;
@@ -1195,7 +1195,7 @@ input {
   padding: 0.3rem 0.8rem;
   border: 1px solid transparent;
   border-radius: 10px;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   font-size: 15px;
   letter-spacing: -0.02em;
@@ -1269,18 +1269,20 @@ input {
 }
 
 .contact-quick__meta {
+  min-width: 0;
+  overflow-wrap: anywhere;
   display: flex;
   flex-direction: column;
 }
 
 .contact-primary {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-weight: 700;
   color: #22b6ab;
 }
 
 .contact-sub {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--color-text-muted);
 }
@@ -1289,7 +1291,7 @@ input {
 .contact-ask {
   text-align: center;
   margin-top: 1rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--color-text-muted);
 }
@@ -1306,13 +1308,13 @@ input {
 }
 
 .contact-card h3 {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   margin: 0 0 0.5rem;
 }
 
 .contact-card p {
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 15px;
   color: var(--color-text-muted);
   margin: 0 0 0.5rem;
@@ -1321,7 +1323,7 @@ input {
 .contact-card a {
   color: var(--color-accent);
   font-weight: 700;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   word-break: break-word;
 }
 
@@ -1334,7 +1336,7 @@ input {
 h2.about-block__title {
   margin: 0 0 1rem;
   color: #22b6a8;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-body);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -1467,5 +1469,40 @@ h2.about-block__title {
 
 /* keep a subtle hover effect (slightly stronger) */
 .site-header__cta:hover {
-  background: var(--color-accent) !important;
+  background: #116d65 !important;
+}
+
+/* Jerarquía y ritmo de la presentación corporativa. */
+.page-hero--home .section-label {
+  margin: 0 0 1.5rem;
+  align-self: flex-start;
+}
+
+.page-hero--home h1 {
+  max-width: 1000px;
+  font-size: clamp(2.5rem, 5.2vw, 4.75rem);
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.page-hero--home .lead {
+  max-width: 43rem;
+}
+
+.site-shell :focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 700px) {
+  .page-hero--home .section-label {
+    align-self: center;
+    font-size: .65rem;
+    letter-spacing: .05em;
+  }
+
+  .page-hero--home {
+    min-height: 0;
+    padding-block: 4rem 3rem;
+  }
 }

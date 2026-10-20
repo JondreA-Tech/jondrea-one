@@ -1,54 +1,35 @@
 import Link from "next/link";
-import { EscapargBrand } from "./EscapargBrand";
-import "../styles/escaparg-brand.css";
 import Image from "next/image";
+import { EscapargBrand } from "./EscapargBrand";
 import { ProductVisual } from "./ProductVisual";
 import type { Product } from "../lib/products";
+import "../styles/escaparg-brand.css";
 
-type ProductCardProps = {
-  product: Product;
-};
+type ProductCardProps = { product: Product };
 
-/** Card de producto: con href navega; sin href muestra estado en desarrollo. */
+/** Presenta cada producto con una jerarquía común y navegación solo si está habilitada. */
 export function ProductCard({ product }: ProductCardProps) {
-  const inner = (
+  const href = product.id === "careme" ? null : product.href;
+  const className = `product-card product-card--${product.id}${href ? " product-card--link" : ""}`;
+  const content = (
     <>
-      <div className="product-card__top">
-        {product.id !== "careme" && (product.logoSrc ? (
-          <Image src={product.logoSrc} alt="" width={56} height={56} className="product-card__logo" />
-        ) : (
-          <span
-            className="product-card__avatar"
-            style={{ background: `linear-gradient(135deg, ${product.accent}, transparent)` }}
-            aria-hidden
-          >
-            {product.shortName.slice(0, 2).toUpperCase()}
-          </span>
-        ))}
-        <span
-          className={`product-card__badge ${product.status === "development" ? "is-dev" : "is-live"}`}
-        >
+      <div className="product-card__heading">
+        <div className="product-card__brand">
+          {product.id !== "careme" && product.logoSrc ? (
+            <Image src={product.logoSrc} alt="" width={44} height={44} className="product-card__logo" />
+          ) : null}
+          <h3>{product.id === "escaparg" ? <EscapargBrand /> : product.name}</h3>
+        </div>
+        <span className="product-card__badge is-dev">
           {product.id === "nido" ? "Play Store · Próximamente" : "En desarrollo"}
         </span>
       </div>
       {product.id !== "careme" && <ProductVisual productId={product.id} compact />}
-      <h3>{product.id === "escaparg" ? <EscapargBrand /> : product.name}</h3>
       <p>{product.blurb}</p>
-      {product.href ? (
-        <span className="product-card__cta">{product.cta ?? "Conocer Nido"} →</span>
-      ) : (
-        <span className="product-card__cta is-disabled">Próximamente</span>
-      )}
+      <span className={`product-card__cta${href ? "" : " is-disabled"}`}>
+        {href ? <>{product.cta ?? `Conocer ${product.name}`} <span aria-hidden="true">↗</span></> : "Próximamente"}
+      </span>
     </>
   );
-
-  if (product.href) {
-    return (
-      <Link href={product.href} className={`product-card product-card--link product-card--${product.id}`}>
-        {inner}
-      </Link>
-    );
-  }
-
-  return <article className={`product-card product-card--${product.id}`}>{inner}</article>;
+  return href ? <Link href={href} className={className}>{content}</Link> : <article className={className}>{content}</article>;
 }

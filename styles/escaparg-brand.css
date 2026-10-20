@@ -1,8 +1,8 @@
-.escaparg-brand { display: inline-block; font-family: var(--font-display); font-weight: 750; letter-spacing: .12em; line-height: 1.1; color: var(--color-text); }
+.escaparg-brand { display: inline-block; font-family: var(--font-display); font-weight: 700; letter-spacing: .08em; line-height: 1.1; color: var(--color-text); }
 .escaparg-brand > span { color: #9bcfcf; }
 .product-card--escaparg .product-card__logo { border-radius: 12px; }
 .product-card--escaparg .project-visual { position: relative; }
 .product-card--escaparg .project-visual img { object-position: 45% center; transition: transform var(--duration) var(--ease-out); }
 .product-card--escaparg:hover .project-visual img { transform: scale(1.025); }
-.product-card--escaparg h3 { font-size: 1.45rem; }
+.product-card--escaparg .product-card__brand h3 { font-size: 1.65rem; }
 @media (prefers-reduced-motion: reduce) { .product-card--escaparg .project-visual img { transition: none; transform: none !important; } }

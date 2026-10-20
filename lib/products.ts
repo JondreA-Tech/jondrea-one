@@ -117,31 +117,6 @@ export const products: Product[] = [
     logoSrc: "/logo-nido.png"
   },
   {
-    id: "careme",
-    name: "CareMe",
-    shortName: "CareMe",
-    category: "Desarrollo profesional",
-    headline: "Tu próximo paso profesional empieza con un plan.",
-    blurb: "Convertí tu objetivo profesional en un plan semanal. Avanzá con pequeñas misiones y practicá entrevistas y conversaciones con IA.",
-    about: "CareMe transforma tu objetivo profesional en acciones concretas y te permite practicar entrevistas y conversaciones con IA, con feedback para seguir mejorando.",
-    loop: [
-      { title: "Definí tu objetivo", body: "Contá hacia dónde querés avanzar y cuánto tiempo tenés." },
-      { title: "Construí tu semana", body: "Recibí un plan con pequeñas misiones adaptadas a tu disponibilidad." },
-      { title: "Practicá y ajustá", body: "Ensayá situaciones profesionales, revisá el feedback y decidí cómo continuar." }
-    ],
-    capabilities: [
-      { title: "Future You", body: "Una visión concreta de tu objetivo y cómo reconocer tu progreso." },
-      { title: "Misiones", body: "Acciones pequeñas para avanzar durante la semana." },
-      { title: "Práctica", body: "Presentación profesional, entrevistas conductuales y explicación de proyectos técnicos." },
-      { title: "Feedback", body: "Observaciones basadas en la conversación y repetición de un momento para practicarlo." },
-      { title: "Progreso", body: "XP, niveles y revisión semanal." }
-    ],
-    status: "development",
-    href: "/productos/careme",
-    accent: "#22b6a8",
-    cta: "Conocer CareMe"
-  },
-  {
     id: "escaparg",
     name: "EscapARG",
     shortName: "EscapARG",
@@ -163,6 +138,31 @@ export const products: Product[] = [
     accent: "#22b6a8",
     logoSrc: "/productos/escaparg/logo-escaparg.svg",
     cta: "Descubrir EscapARG"
+  },
+  {
+    id: "careme",
+    name: "CareMe",
+    shortName: "CareMe",
+    category: "Desarrollo profesional",
+    headline: "Tu próximo paso profesional empieza con un plan.",
+    blurb: "Convertí tu objetivo profesional en un plan semanal. Avanzá con pequeñas misiones y practicá entrevistas y conversaciones con IA.",
+    about: "CareMe transforma tu objetivo profesional en acciones concretas y te permite practicar entrevistas y conversaciones con IA, con feedback para seguir mejorando.",
+    loop: [
+      { title: "Definí tu objetivo", body: "Contá hacia dónde querés avanzar y cuánto tiempo tenés." },
+      { title: "Construí tu semana", body: "Recibí un plan con pequeñas misiones adaptadas a tu disponibilidad." },
+      { title: "Practicá y ajustá", body: "Ensayá situaciones profesionales, revisá el feedback y decidí cómo continuar." }
+    ],
+    capabilities: [
+      { title: "Future You", body: "Una visión concreta de tu objetivo y cómo reconocer tu progreso." },
+      { title: "Misiones", body: "Acciones pequeñas para avanzar durante la semana." },
+      { title: "Práctica", body: "Presentación profesional, entrevistas conductuales y explicación de proyectos técnicos." },
+      { title: "Feedback", body: "Observaciones basadas en la conversación y repetición de un momento para practicarlo." },
+      { title: "Progreso", body: "XP, niveles y revisión semanal." }
+    ],
+    status: "development",
+    href: null,
+    accent: "#22b6a8",
+    cta: "Próximamente"
   }
 ];
 

@@ -50,15 +50,8 @@ export const metadata: Metadata = {
 /** Layout raíz: tipografías y estilos globales. */
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es">
-      <body className={`${display.variable} ${body.variable} ${nido.variable}`}>
-        <style>{`
-          :root {
-            --font-display: var(--font-display-loaded), ${display.style.fontFamily};
-            --font-body: var(--font-body-loaded), ${body.style.fontFamily};
-            --font-nido: var(--font-nido-loaded), ${nido.style.fontFamily};
-          }
-        `}</style>
+    <html lang="es" className={`${display.variable} ${body.variable} ${nido.variable}`}>
+      <body>
         {children}
       </body>
     </html>
