@@ -12,7 +12,7 @@ export function ProductCard({ product }: ProductCardProps) {
   const inner = (
     <>
       <div className="product-card__top">
-        {product.logoSrc ? (
+        {product.id !== "careme" && (product.logoSrc ? (
           <Image src={product.logoSrc} alt="" width={56} height={56} className="product-card__logo" />
         ) : (
           <span
@@ -22,14 +22,14 @@ export function ProductCard({ product }: ProductCardProps) {
           >
             {product.shortName.slice(0, 2).toUpperCase()}
           </span>
-        )}
+        ))}
         <span
           className={`product-card__badge ${product.status === "development" ? "is-dev" : "is-live"}`}
         >
           {product.id === "nido" ? "Play Store · Próximamente" : "En desarrollo"}
         </span>
       </div>
-      <ProductVisual productId={product.id} compact />
+      {product.id !== "careme" && <ProductVisual productId={product.id} compact />}
       <h3>{product.name}</h3>
       <p>{product.blurb}</p>
       {product.href ? (
