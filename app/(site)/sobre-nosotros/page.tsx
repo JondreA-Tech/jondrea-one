@@ -58,9 +58,6 @@ export default function AboutPage() {
         <div className="cta-band">
           <p className="section-label">Siguiente paso</p>
           <h2 className="section-title">Conocer Nido o escribirnos</h2>
-          <p className="section-lead">
-            La APK se descarga en su ficha.
-          </p>
           <div className="hero-actions hero-actions--center">
             <Link href="/productos/nido" className="btn btn-primary">
               Nido
