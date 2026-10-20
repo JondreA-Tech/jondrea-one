@@ -3,7 +3,6 @@ import { CustomWorkCta } from "../../components/CustomWorkCta";
 import { JondreaLogo } from "../../components/JondreaLogo";
 import { ProductCard } from "../../components/ProductCard";
 import { products } from "../../lib/products";
-import { publicRelease } from "../../lib/release";
 import { site } from "../../lib/site";
 
 /** Home corporativa: marca, productos, método y servicios a medida. */
@@ -35,10 +34,9 @@ export default function HomePage() {
 
       <section className="container section">
         <p className="section-label">Productos</p>
-        <h2 className="section-title">Nido · {publicRelease.label}</h2>
+        <h2 className="section-title">Ideas que toman forma.</h2>
         <p className="section-lead">
-          El hub del hogar y un espacio personal. La APK de Android se descarga en su ficha.{" "}
-          {publicRelease.ios}.
+          Hogar, desarrollo profesional y misterios en equipo. Conocé lo que estamos construyendo.
         </p>
         <div className="product-grid">
           {products.map((product) => (
@@ -67,7 +65,7 @@ export default function HomePage() {
           </li>
           <li>
             <span className="approach-item__title">Ingeniería y publicación</span>
-            <span>API, aplicación móvil y panel de seguimiento para uso real en etapa beta.</span>
+            <span>Construimos aplicaciones, experiencias web y herramientas de seguimiento para nuestros productos.</span>
           </li>
         </ol>
       </section>

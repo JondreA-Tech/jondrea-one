@@ -6,7 +6,7 @@ export const site = {
   legalName: "JondreA Tech",
   tagline: "Productos digitales y desarrollo a medida.",
   description:
-    "JondreA desarrolla productos digitales propios y soluciones a medida. Nido —hogar compartido y espacio Yo— está en Beta 0.2.0 para Android.",
+    "JondreA desarrolla productos digitales propios y soluciones a medida. Conocé Nido, CareMe y EscapARG: hogar, desarrollo profesional y experiencias cooperativas.",
   contact: {
     email: "jondreatech@gmail.com",
     instagram: "https://instagram.com/jondrea.tech",

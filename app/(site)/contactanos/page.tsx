@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { CustomWorkCta } from "../../../components/CustomWorkCta";
-import { publicRelease } from "../../../lib/release";
 import { site } from "../../../lib/site";
 
 export const metadata: Metadata = {
@@ -14,9 +13,7 @@ export default function ContactPage() {
       <section className="container page-hero page-hero--contact">
         <h1>Contactanos</h1>
         <p className="lead">
-          Consultas sobre productos, una propuesta comercial o soporte. Nido está en{" "}
-          {publicRelease.label} para Android. La APK se descarga desde su ficha.{" "}
-          {publicRelease.ios}.
+          Consultas sobre Nido, CareMe y EscapARG, una propuesta comercial o soporte. Escribinos por nuestros canales de contacto.
         </p>
 
         <div className="contact-quick">

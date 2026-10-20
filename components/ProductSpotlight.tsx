@@ -11,7 +11,7 @@ type ProductSpotlightProps = {
 
 /** Sección de producto con el mismo ritmo que el inicio: label, título, lead y lista. */
 export function ProductSpotlight({ product, apk }: ProductSpotlightProps) {
-  if (!product.href) {
+  if (!product.href || product.id !== "nido") {
     return null;
   }
 

@@ -1,16 +1,11 @@
 import Link from "next/link";
-import { publicRelease } from "../lib/release";
+import Image from "next/image";
+import { ProductVisual } from "./ProductVisual";
 import type { Product } from "../lib/products";
 
 type ProductCardProps = {
   product: Product;
 };
-
-/** Etiqueta de estado visible en la card. */
-function statusLabel(status: Product["status"]) {
-  if (status === "apk") return publicRelease.label;
-  return "En desarrollo";
-}
 
 /** Card de producto: con href navega; sin href muestra estado en desarrollo. */
 export function ProductCard({ product }: ProductCardProps) {
@@ -18,8 +13,7 @@ export function ProductCard({ product }: ProductCardProps) {
     <>
       <div className="product-card__top">
         {product.logoSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={product.logoSrc} alt="" className="product-card__logo" />
+          <Image src={product.logoSrc} alt="" width={56} height={56} className="product-card__logo" />
         ) : (
           <span
             className="product-card__avatar"
@@ -32,13 +26,14 @@ export function ProductCard({ product }: ProductCardProps) {
         <span
           className={`product-card__badge ${product.status === "development" ? "is-dev" : "is-live"}`}
         >
-          {statusLabel(product.status)}
+          {product.id === "nido" ? "Play Store · Próximamente" : "En desarrollo"}
         </span>
       </div>
+      <ProductVisual productId={product.id} compact />
       <h3>{product.name}</h3>
       <p>{product.blurb}</p>
       {product.href ? (
-        <span className="product-card__cta">Ver producto →</span>
+        <span className="product-card__cta">{product.cta ?? "Conocer Nido"} →</span>
       ) : (
         <span className="product-card__cta is-disabled">Próximamente</span>
       )}

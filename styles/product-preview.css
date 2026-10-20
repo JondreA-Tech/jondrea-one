@@ -1,0 +1,58 @@
+/* Extensiones locales que reutilizan los tokens corporativos. */
+.catalog-section { padding-top: 0; }
+.project-visual { margin: 1.5rem 0 0; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-lg); background: var(--gradient-card); }
+.project-visual img { width: 100%; height: auto; }
+.project-visual figcaption { padding: .7rem 1rem; color: var(--color-text-muted); font-size: .75rem; line-height: 1.5; text-align: left; border-top: 1px solid var(--color-border); }
+.project-visual--compact { margin: .5rem 0 0; }
+.project-visual--compact img { aspect-ratio: 16 / 9; object-fit: cover; }
+.careme-concept__canvas { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; padding: clamp(1rem, 3vw, 2rem); }
+.careme-concept__canvas > div { display: flex; flex-direction: column; justify-content: center; gap: .65rem; min-width: 0; padding: 1.25rem; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-bg-elevated); }
+.careme-concept__goal { grid-column: 1 / -1; border-left: 3px solid var(--color-accent) !important; }
+.concept-eyebrow { color: var(--color-accent); font-family: "Inter", sans-serif; font-size: .72rem; letter-spacing: .04em; }
+.careme-concept__canvas strong { font-family: "Inter", sans-serif; font-size: clamp(1rem, 2vw, 1.5rem); }
+.careme-concept__canvas span:not(.concept-eyebrow):not(.concept-wave) { font-size: .85rem; color: var(--color-text-muted); }
+.careme-concept__mission b { color: var(--color-accent); margin-right: .4rem; }
+.concept-wave { color: var(--color-accent); font-size: 1.6rem; letter-spacing: .12em; }
+.project-visual--compact .careme-concept__canvas { gap: .45rem; padding: .65rem; }
+.project-visual--compact .careme-concept__canvas > div { padding: .65rem; gap: .3rem; }
+.project-visual--compact .careme-concept__canvas strong { font-size: .85rem; }
+.project-visual--compact .concept-eyebrow { font-size: .6rem; }
+.project-visual--compact .careme-concept__canvas span:not(.concept-eyebrow):not(.concept-wave) { font-size: .65rem; }
+.project-visual--compact .concept-wave { font-size: 1rem; letter-spacing: 0; }
+.development-product .page-hero { max-width: 900px; }
+.development-product .page-hero h1 { font-size: clamp(2.25rem, 5vw, 4rem); text-wrap: balance; }
+.development-product .product-pills { justify-content: center; }
+.development-product #como-funciona { scroll-margin-top: calc(var(--header-h) + 1rem); }
+.development-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; text-align: left; }
+.product-faq { max-width: 800px; margin: 2rem auto 0; text-align: left; }
+.product-faq details { border-bottom: 1px solid var(--color-border); padding: 1rem 0; }
+.product-faq summary { cursor: pointer; font-family: "Inter", sans-serif; font-weight: 600; padding: .35rem; }
+.product-faq p { padding-inline: .35rem; }
+.development-product :focus-visible, .product-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 5px; }
+@media (max-width: 600px) {
+  .development-grid { grid-template-columns: 1fr; }
+  .careme-concept:not(.project-visual--compact) .careme-concept__canvas { grid-template-columns: 1fr; }
+  .product-card__badge { font-size: .65rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .product-card:hover { transform: none; }
+}
+
+@media (min-width: 1100px) {
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+.product-card > .project-visual { height: 270px; display: flex; flex-direction: column; }
+.product-card > .project-visual > img, .product-card > .project-visual > .careme-concept__canvas { flex: 1; min-height: 0; object-fit: cover; }
+.product-card > .project-visual figcaption { min-height: 54px; font-size: .65rem; }
+.project-visual--nido { background: var(--color-surface-2); }
+.product-card > .project-visual--nido > img { object-fit: contain; padding-top: .75rem; }
+
+.project-visual, .development-product { font-family: "Poppins", sans-serif; }
+.development-product .feature-card h3 { font-family: "Inter", sans-serif; }
+.project-visual figcaption { flex-shrink: 0; }
+.project-visual--compact .concept-detail { display: none; }
+.project-visual--compact .careme-concept__canvas { grid-template-rows: auto minmax(0, 1fr); }
+.page-hero--home { overflow: clip; }
+
+.product-card__avatar { width: 56px; height: 56px; }

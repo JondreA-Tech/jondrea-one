@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { ProductDetailPage } from "../../../../components/ProductDetailPage";
 import { getProduct } from "../../../../lib/products";
-import { getNidoApk, nidoRelease } from "../../../../lib/nidoRelease";
 
 export const metadata: Metadata = {
   title: "Nido",
   description:
-    "El hub del hogar y un espacio Yo para ánimo, objetivos y hábitos. Beta 0.2.0 para Android."
+    "El hub del hogar y un espacio Yo para ánimo, objetivos y hábitos. Próximamente en Play Store."
 };
 
 /** Ficha pública de Nido. */
@@ -16,6 +15,6 @@ export default function NidoProductPage() {
     return null;
   }
   return (
-    <ProductDetailPage product={product} apk={getNidoApk()} changelog={nidoRelease.changelog} />
+    <ProductDetailPage product={product} />
   );
 }

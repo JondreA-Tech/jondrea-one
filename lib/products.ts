@@ -1,5 +1,5 @@
 export type ProductStatus = "apk" | "development";
-export type ProductTheme = "nido";
+export type ProductTheme = "nido" | "careme" | "escaparg";
 
 export type ProductCapability = {
   title: string;
@@ -22,6 +22,7 @@ export type Product = {
   href: string | null;
   accent: string;
   logoSrc?: string;
+  cta?: string;
 };
 
 /** Catálogo de productos mostrados en la landing. */
@@ -110,10 +111,57 @@ export const products: Product[] = [
         accent: "#C46B3A"
       }
     ],
-    status: "apk",
+    status: "development",
     href: "/productos/nido",
     accent: "#C46B3A",
     logoSrc: "/logo-nido.png"
+  },
+  {
+    id: "careme",
+    name: "CareMe",
+    shortName: "CareMe",
+    category: "Desarrollo profesional",
+    headline: "Tu próximo paso profesional empieza con un plan.",
+    blurb: "Convertí tu objetivo profesional en un plan semanal. Avanzá con pequeñas misiones y practicá entrevistas y conversaciones con IA.",
+    about: "CareMe transforma tu objetivo profesional en acciones concretas y te permite practicar entrevistas y conversaciones con IA, con feedback para seguir mejorando.",
+    loop: [
+      { title: "Definí tu objetivo", body: "Contá hacia dónde querés avanzar y cuánto tiempo tenés." },
+      { title: "Construí tu semana", body: "Recibí un plan con pequeñas misiones adaptadas a tu disponibilidad." },
+      { title: "Practicá y ajustá", body: "Ensayá situaciones profesionales, revisá el feedback y decidí cómo continuar." }
+    ],
+    capabilities: [
+      { title: "Future You", body: "Una visión concreta de tu objetivo y cómo reconocer tu progreso." },
+      { title: "Misiones", body: "Acciones pequeñas para avanzar durante la semana." },
+      { title: "Práctica", body: "Presentación profesional, entrevistas conductuales y explicación de proyectos técnicos." },
+      { title: "Feedback", body: "Observaciones basadas en la conversación y repetición de un momento para practicarlo." },
+      { title: "Progreso", body: "XP, niveles y revisión semanal." }
+    ],
+    status: "development",
+    href: "/productos/careme",
+    accent: "#22b6a8",
+    cta: "Conocer CareMe"
+  },
+  {
+    id: "escaparg",
+    name: "EscapARG",
+    shortName: "EscapARG",
+    category: "Escape cooperativo · 2–4 jugadores",
+    headline: "El misterio se resuelve en equipo.",
+    blurb: "Explorá escenarios, conectá pistas y resolvé misterios con tus amigos. Una experiencia de escape cooperativa, directamente en tu navegador.",
+    about: "Reuní a tus amigos, explorá escenarios y conectá las pistas. Cada descubrimiento los acerca a la salida.",
+    loop: [
+      { title: "Explorar", body: "Observar espacios, objetos y documentos." },
+      { title: "Conectar pistas", body: "Relacionar evidencias y poner a prueba ideas." },
+      { title: "Cooperar", body: "Compartir información y coordinar acciones." }
+    ],
+    capabilities: [
+      { title: "El Experimento", body: "Un incidente de contención deja al equipo atrapado en un laboratorio. Restablezcan sus sistemas e investiguen qué ocurrió con X-17." },
+      { title: "El Contacto", body: "La última transmisión de Estación Orión fue: «Obtuvimos respuesta». Investiguen sus instalaciones y descubran qué ocurrió después." }
+    ],
+    status: "development",
+    href: "/productos/escaparg",
+    accent: "#22b6a8",
+    cta: "Conocer el proyecto"
   }
 ];
 

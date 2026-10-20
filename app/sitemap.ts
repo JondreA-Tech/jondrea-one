@@ -8,6 +8,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/",
     "/productos",
     "/productos/nido",
+    "/productos/careme",
+    "/productos/escaparg",
+    "/productos/nido/eliminar-cuenta",
     "/sobre-nosotros",
     "/contactanos",
     "/privacidad"

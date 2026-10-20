@@ -1,18 +1,13 @@
+import Image from "next/image";
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import type { ApkAvailability } from "../lib/apk";
-import { apkInstallSteps, formatApkDate, formatApkSize } from "../lib/apk";
 import type { Product } from "../lib/products";
-import { publicRelease } from "../lib/release";
 import { productMailto, productSupportMailto, site } from "../lib/site";
-import { ApkDownloadLink } from "./ApkDownloadLink";
 import { CustomWorkCta } from "./CustomWorkCta";
 import { ProductPhoneMockups } from "./ProductPhoneMockups";
 
 type ProductDetailPageProps = {
   product: Product;
-  apk: ApkAvailability;
-  changelog: readonly string[];
 };
 
 /** Aplica el acento de módulo o funcionalidad como variable CSS. */
@@ -28,25 +23,8 @@ function ProductBrandTitle({ product }: { product: Product }) {
   return <h1 className="product-brand-title rise">{product.name}</h1>;
 }
 
-/** Datos de archivo e integridad del APK, si están en disco. */
-function ApkFileFacts({ apk }: { apk: ApkAvailability }) {
-  if (!apk.file) {
-    return null;
-  }
-  return (
-    <ul className="product-apk-facts">
-      <li>
-        {formatApkSize(apk.file.sizeBytes)} · actualizado {formatApkDate(apk.file.modifiedAt)}
-      </li>
-      <li className="product-apk-facts__sha">
-        SHA-256 <code>{apk.file.sha256}</code>
-      </li>
-    </ul>
-  );
-}
-
 /** Ficha de producto con identidad visual de la aplicación. */
-export function ProductDetailPage({ product, apk, changelog }: ProductDetailPageProps) {
+export function ProductDetailPage({ product }: ProductDetailPageProps) {
   return (
     <div className={`product-shell product-shell--${product.id} theme-${product.id}`}>
       <div className="product-aurora" aria-hidden="true">
@@ -57,27 +35,13 @@ export function ProductDetailPage({ product, apk, changelog }: ProductDetailPage
 
       <section className="container product-hero">
         {product.logoSrc ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={product.logoSrc} alt="" className="product-hero-logo" />
+          <Image src={product.logoSrc} alt="" width={168} height={168} className="product-hero-logo" />
         ) : null}
         <ProductBrandTitle product={product} />
         {product.kicker ? <p className="product-kicker rise rise-delay-1">{product.kicker}</p> : null}
         <p className="product-lead rise rise-delay-2">{product.headline}</p>
-        {apk.available ? (
-          <div className="product-actions rise rise-delay-3">
-            <ApkDownloadLink
-              apk={apk}
-              productId={product.id}
-              className="btn btn-primary"
-              label={`Descargar ${publicRelease.label}`}
-            />
-          </div>
-        ) : null}
         <ul className="product-pills rise rise-delay-3" aria-label="Disponibilidad">
-          <li>{product.category}</li>
-          <li>{publicRelease.label}</li>
-          <li>{apk.available ? "Descarga para Android" : publicRelease.apkPendingCta}</li>
-          <li>{publicRelease.ios}</li>
+          <li>Play Store · Próximamente</li>
         </ul>
         <p className="product-hero-nav rise rise-delay-3">
           <Link href="/productos" className="inline-link">
@@ -86,7 +50,7 @@ export function ProductDetailPage({ product, apk, changelog }: ProductDetailPage
         </p>
       </section>
 
-      <ProductPhoneMockups productId={product.id} />
+      <ProductPhoneMockups productId="nido" />
 
       <section className="container product-block">
         <p className="product-label">El producto</p>
@@ -126,58 +90,12 @@ export function ProductDetailPage({ product, apk, changelog }: ProductDetailPage
 
       <section className="container product-block" id="descargar">
         <div className="product-cta">
-          <p className="product-label">Android</p>
-          <h2 className="product-title">{publicRelease.label}</h2>
+          <p className="product-label">Play Store</p>
+          <h2 className="product-title">Próximamente</h2>
           <p className="product-lead">
-            {apk.available
-              ? `La versión ${publicRelease.label} para Android ya puede descargarse.`
-              : publicRelease.apkUpcoming}{" "}
-            {publicRelease.ios}.
+            Para consultas:{" "}
+            <a className="inline-link" href={productMailto(product.name)}>{site.contact.email}</a>.
           </p>
-          {apk.available ? (
-            <>
-              <ApkFileFacts apk={apk} />
-              {changelog.length > 0 ? (
-                <>
-                  <p className="product-cta-kicker">Esta versión</p>
-                  <ul className="product-changelog">
-                    {changelog.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </>
-              ) : null}
-              <p className="product-cta-kicker">Instalación</p>
-              <ol className="product-install-steps">
-                {apkInstallSteps.map((step) => (
-                  <li key={step}>{step}</li>
-                ))}
-              </ol>
-              <p className="product-lead product-cta-note">
-                Nota de{" "}
-                <Link className="inline-link" href="/privacidad">
-                  privacidad
-                </Link>
-                .
-              </p>
-              <div className="product-cta-action">
-                <ApkDownloadLink
-                  apk={apk}
-                  productId={product.id}
-                  className="btn btn-primary"
-                  label={`Descargar ${publicRelease.label}`}
-                />
-              </div>
-            </>
-          ) : (
-            <p className="product-lead">
-              Para consultas:{" "}
-              <a className="inline-link" href={productMailto(product.name)}>
-                {site.contact.email}
-              </a>
-              .
-            </p>
-          )}
         </div>
       </section>
 

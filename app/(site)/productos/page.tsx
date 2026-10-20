@@ -1,39 +1,26 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { CustomWorkCta } from "../../../components/CustomWorkCta";
-import { ProductSpotlight } from "../../../components/ProductSpotlight";
-import { getNidoApk } from "../../../lib/nidoRelease";
-import { getProduct } from "../../../lib/products";
-import { publicRelease } from "../../../lib/release";
+import { ProductCard } from "../../../components/ProductCard";
+import { products } from "../../../lib/products";
 
 export const metadata: Metadata = {
   title: "Productos",
-  description: `Nido: hogar compartido y espacio Yo. ${publicRelease.label} para Android.`
+  description: "Conocé Nido, CareMe y EscapARG: los productos digitales que estamos construyendo en JondreA."
 };
 
-/** Índice de productos: cada ficha concentra descarga e instalación. */
+/** Catálogo público con acceso a las fichas de cada producto. */
 export default function ProductsPage() {
-  const nido = getProduct("nido");
-
   return (
     <>
       <section className="container page-hero page-hero--products">
-        <h1>
-          Nuestros <span className="hero-break">productos.</span>
-        </h1>
-        <p className="lead">
-          Nido, {publicRelease.label} para Android. Instalación y detalle en su ficha.{" "}
-          {publicRelease.ios}.
-        </p>
-        <div className="hero-actions">
-          <Link href="/productos/nido" className="btn btn-primary">
-            Nido
-          </Link>
+        <h1>Nuestros <span className="hero-break">productos.</span></h1>
+        <p className="lead">Ideas que toman forma. Conocé nuestros proyectos y lo que estamos construyendo.</p>
+      </section>
+      <section className="container section catalog-section" aria-label="Catálogo de productos">
+        <div className="product-grid">
+          {products.map((product) => <ProductCard key={product.id} product={product} />)}
         </div>
       </section>
-
-      {nido ? <ProductSpotlight product={nido} apk={getNidoApk()} /> : null}
-
       <CustomWorkCta />
     </>
   );

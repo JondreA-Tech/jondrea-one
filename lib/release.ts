@@ -1,9 +1,9 @@
 /** Release pública compartida de Nido. */
 export const publicRelease = {
-  channel: "Beta",
-  versionName: "0.2.0",
-  label: "Beta 0.2.0",
-  apkUpcoming: "La APK para Android está próxima a publicarse en esta página.",
-  apkPendingCta: "APK próxima a publicarse",
+  channel: "Preparación de lanzamiento",
+  versionName: "1.0.0",
+  label: "Nido",
+  apkUpcoming: "Play Store · Próximamente",
+  apkPendingCta: "Play Store · Próximamente",
   ios: "iOS · Próximamente"
 } as const;
