@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { EscapargBrand } from "./EscapargBrand";
+import "../styles/escaparg-brand.css";
 import Image from "next/image";
 import { ProductVisual } from "./ProductVisual";
 import type { Product } from "../lib/products";
@@ -30,7 +32,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </span>
       </div>
       {product.id !== "careme" && <ProductVisual productId={product.id} compact />}
-      <h3>{product.name}</h3>
+      <h3>{product.id === "escaparg" ? <EscapargBrand /> : product.name}</h3>
       <p>{product.blurb}</p>
       {product.href ? (
         <span className="product-card__cta">{product.cta ?? "Conocer Nido"} →</span>

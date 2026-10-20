@@ -13,10 +13,10 @@ export function ProductVisual({ productId, compact = false }: { productId: Produ
   if (productId === "escaparg") {
     return (
       <figure className={`project-visual ${compact ? "project-visual--compact" : ""}`}>
-        <Image src="/productos/escaparg/el-experimento.webp"
-          alt="Captura real de El Experimento: dos personajes exploran el laboratorio."
+        <Image src="/productos/escaparg/el-experimento-portada.webp"
+          alt="Arte promocional de El Experimento: la cápsula X-17 en un laboratorio iluminado."
           width={1280} height={720} sizes={compact ? "(max-width: 900px) 100vw, 360px" : "(max-width: 900px) 100vw, 1120px"} />
-        <figcaption>El Experimento · Captura de una versión en desarrollo</figcaption>
+        <figcaption>El Experimento · Arte promocional original</figcaption>
       </figure>
     );
   }

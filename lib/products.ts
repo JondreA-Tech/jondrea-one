@@ -161,7 +161,8 @@ export const products: Product[] = [
     status: "development",
     href: "/productos/escaparg",
     accent: "#22b6a8",
-    cta: "Conocer el proyecto"
+    logoSrc: "/productos/escaparg/logo-escaparg.svg",
+    cta: "Descubrir EscapARG"
   }
 ];
 
