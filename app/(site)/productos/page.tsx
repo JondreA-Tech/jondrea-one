@@ -13,8 +13,8 @@ export default function ProductsPage() {
   return (
     <>
       <section className="container page-hero page-hero--products">
-        <h1>Nuestros <span className="hero-break">productos.</span></h1>
-        <p className="lead">Ideas que toman forma. Conocé nuestros proyectos y lo que estamos construyendo.</p>
+        <h1>Nuestros productos</h1>
+        <p className="lead">Nido, EscapARG y CareMe son productos que diseñamos y desarrollamos en JondreA.</p>
       </section>
       <section className="container section catalog-section" aria-label="Catálogo de productos">
         <div className="product-grid">

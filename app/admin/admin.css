@@ -11,14 +11,14 @@
 }
 
 .admin-app > .admin-aurora {
-  inset: 48px -12% auto;
+  inset: 48px 0 auto;
   height: 420px;
 }
 
 .admin-kicker {
   margin: 0;
   color: var(--color-accent);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -28,13 +28,13 @@
 .admin-muted {
   margin: 0;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
 }
 
 .admin-aurora {
   position: absolute;
-  inset: -8% -10% auto;
+  inset: -8% 0 auto;
   height: 360px;
   pointer-events: none;
   overflow: hidden;
@@ -95,7 +95,7 @@
 }
 
 .admin-login .admin-aurora {
-  inset: 8% -12% auto;
+  inset: 8% 0 auto;
   height: 70%;
 }
 
@@ -117,7 +117,7 @@
 
 .admin-login__card h1 {
   margin: 0.4rem 0 0.5rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.7rem, 4vw, 2rem);
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -127,7 +127,7 @@
 .admin-login__lead {
   margin: 0;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   line-height: 1.55;
 }
@@ -141,7 +141,7 @@
 .admin-form label {
   display: grid;
   gap: 0.4rem;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.86rem;
   color: var(--color-text-soft);
 }
@@ -172,7 +172,7 @@
 .admin-login__back {
   display: inline-flex;
   margin-top: 1.15rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-text-muted);
@@ -216,7 +216,7 @@
 
 .admin-header__badge {
   flex-shrink: 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -236,7 +236,7 @@
 }
 
 .admin-header__link {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.88rem;
   font-weight: 600;
   color: var(--color-text-muted);
@@ -270,7 +270,7 @@
   padding: 0.38rem 0.8rem;
   border-radius: var(--radius-pill);
   color: var(--color-text-muted);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.82rem;
   font-weight: 700;
   transition: background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
@@ -298,7 +298,7 @@
 
 .admin-hero h1 {
   margin: 0.45rem 0 0.55rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(2rem, 4.2vw, 3rem);
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -310,7 +310,7 @@
   margin: 0;
   max-width: 40rem;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   line-height: 1.6;
 }
@@ -356,7 +356,7 @@
 
 .admin-product__head h2 {
   margin: 0.15rem 0 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -382,7 +382,7 @@
 
 .admin-product__stat {
   margin: 0.15rem 0 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -391,7 +391,7 @@
 .admin-product__detail {
   margin: 0;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.88rem;
   line-height: 1.45;
 }
@@ -400,7 +400,7 @@
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.04em;
@@ -454,7 +454,7 @@
 .admin-window {
   margin: 0;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.9rem;
 }
 
@@ -464,7 +464,7 @@
 
 .admin-section__head h2 {
   margin: 0.35rem 0 0;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -479,7 +479,7 @@
 
 .admin-notice strong {
   display: block;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: -0.02em;
 }
@@ -487,7 +487,7 @@
 .admin-notice p {
   margin: 0.35rem 0 0;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.92rem;
   line-height: 1.5;
 }
@@ -532,14 +532,14 @@
 .admin-kpi span {
   display: block;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.8rem;
 }
 
 .admin-kpi strong {
   display: block;
   margin-top: 0.4rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -550,7 +550,7 @@
   display: block;
   margin-top: 0.45rem;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.78rem;
   line-height: 1.4;
 }
@@ -583,20 +583,20 @@
   border-radius: 50%;
   background: color-mix(in srgb, var(--admin-accent) 18%, transparent);
   color: var(--admin-accent);
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 800;
 }
 
 .admin-funnel__label {
   flex: 1;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.82rem;
   color: var(--color-text-muted);
 }
 
 .admin-funnel__conv {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.7rem;
   font-style: normal;
   font-weight: 700;
@@ -614,7 +614,7 @@
 .admin-funnel__value {
   display: block;
   margin: 0.7rem 0 0.65rem;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.7rem;
   font-weight: 800;
   letter-spacing: -0.04em;
@@ -650,7 +650,7 @@
   display: block;
   margin-top: 0.55rem;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.78rem;
   line-height: 1.4;
 }
@@ -669,13 +669,13 @@
 }
 
 .admin-bar__row strong {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.95rem;
   font-weight: 700;
 }
 
 .admin-bar__row span {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-weight: 700;
   color: var(--admin-bar-accent, var(--admin-accent));
 }
@@ -693,7 +693,7 @@
   padding: 0;
   list-style: none;
   color: var(--color-text-muted);
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.78rem;
 }
 
@@ -712,7 +712,7 @@
 .admin-days {
   display: flex;
   gap: 0.45rem;
-  align-items: end;
+  align-items: flex-end;
   overflow-x: auto;
   padding-bottom: 0.15rem;
 }
@@ -763,13 +763,13 @@
 }
 
 .admin-days__col strong {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.72rem;
   font-weight: 700;
 }
 
 .admin-days__col span {
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-display);
   font-size: 0.62rem;
   color: var(--color-text-muted);
 }
@@ -830,4 +830,22 @@
   .admin-product.is-active {
     transform: none;
   }
+}
+
+.admin-app, .admin-login { font-family: var(--font-display); }
+.admin-app :focus-visible, .admin-login :focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+.admin-switch { grid-template-columns: minmax(0, 1fr); }
+.admin-product, .admin-product.is-active, .admin-product:hover { transform: none; }
+.admin-seg__item { min-height: 40px; display: grid; place-items: center; }
+.admin-kpi strong { font-variant-numeric: tabular-nums; }
+.admin-kpis { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); }
+.admin-orb { animation: none; opacity: .45; }
+.admin-error { color: #fbb7ad; }
+
+@media (max-width: 760px) {
+  .admin-header { position: static; }
+  .admin-header__tools { justify-content: flex-start; }
 }

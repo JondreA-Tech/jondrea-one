@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <section className="container page-hero">
+      <section className="container page-hero legal-hero">
         <h1>Privacidad</h1>
         <p className="lead">
           Esta página explica qué datos usa Nido, de JondreA Tech, para organizar el hogar,
@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         </p>
       </section>
 
-      <section className="container section">
+      <section className="container section legal-content">
         <div className="about-stack">
           <article className="about-block">
             <h2 className="about-block__title">Sitio</h2>

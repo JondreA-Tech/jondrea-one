@@ -3,69 +3,67 @@ import { CustomWorkCta } from "../../components/CustomWorkCta";
 import { ProductCard } from "../../components/ProductCard";
 import { products } from "../../lib/products";
 
-/** Home corporativa: marca, productos, método y servicios a medida. */
+const services = [
+  { title: "Software a medida", text: "Plataformas, portales y herramientas internas que se integran con los sistemas que tu equipo ya usa." },
+  { title: "Sitios web", text: "Sitios corporativos y comerciales, con contenido fácil de encontrar y una experiencia cuidada en cada pantalla." },
+  { title: "Apps móviles", text: "Aplicaciones para iOS y Android. Diseñamos los flujos y preparamos la app para publicarla." }
+];
+
+const process = [
+  { title: "Definimos el alcance", text: "Revisamos quién va a usar el producto, qué necesita resolver y qué conviene incluir en la primera versión." },
+  { title: "Diseñamos y desarrollamos", text: "Probamos los recorridos principales y construimos por etapas que tu equipo puede revisar." },
+  { title: "Preparamos el lanzamiento", text: "Probamos el producto, dejamos el entorno listo y acordamos cómo seguir después de publicar." }
+];
+
+/** Presenta los servicios de JondreA, su forma de trabajo y el catálogo propio. */
 export default function HomePage() {
   return (
     <>
-      <section className="container page-hero page-hero--home">
-        <p className="section-label rise">Software factory · Productos propios</p>
-        <h1 className="rise rise-delay-1">
-          De una idea a un producto
-          <span className="hero-break">que funciona.</span>
-        </h1>
-        <p className="lead rise rise-delay-2">
-          Diseñamos y desarrollamos sitios web, aplicaciones y productos digitales.
-          Unimos producto, diseño e ingeniería para resolver necesidades reales.
+      <section className="container page-hero page-hero--home factory-hero">
+        <p className="factory-eyebrow">Diseño e ingeniería de software</p>
+        <h1>Software a medida para tu empresa</h1>
+        <p className="lead">
+          Diseñamos y desarrollamos productos digitales, sitios web y apps móviles.
+          Trabajamos desde la primera versión y dejamos una base que tu equipo pueda ampliar.
         </p>
-        <div className="hero-actions rise rise-delay-3">
-          <Link href="/contactanos" className="btn btn-primary">
-            Conversemos
-          </Link>
-          <Link href="/productos" className="btn btn-ghost">
-            Explorar productos
-          </Link>
+        <div className="hero-actions">
+          <Link href="/contactanos" className="btn btn-primary">Contanos tu proyecto</Link>
+          <a href="#servicios" className="btn btn-ghost">Ver servicios</a>
         </div>
       </section>
 
-      <section className="container section">
-        <p className="section-label">Productos</p>
-        <h2 className="section-title">Ideas que toman forma.</h2>
-        <p className="section-lead">
-          Hogar, desarrollo profesional y misterios en equipo. Conocé lo que estamos construyendo.
-        </p>
-        <div className="product-grid">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+      <section id="servicios" className="container section factory-section" aria-labelledby="servicios-title">
+        <h2 id="servicios-title">Qué desarrollamos</h2>
+        <div className="factory-services">
+          {services.map((service) => (
+            <article className="feature-card" key={service.title}>
+              <h3>{service.title}</h3>
+              <p>{service.text}</p>
+            </article>
           ))}
         </div>
       </section>
 
-      <section className="container section">
-        <p className="section-label">Cómo trabajamos</p>
-        <h2 className="section-title">
-          Del diseño a la publicación.
-        </h2>
-        <p className="section-lead">
-          Definimos el problema, diseñamos la experiencia y construimos el producto.
-          Acompañamos cada etapa con un alcance claro y una base técnica que pueda crecer.
-        </p>
+      <section className="container section factory-section" aria-labelledby="metodo-title">
+        <h2 id="metodo-title">Cómo trabajamos</h2>
         <ol className="approach-list">
-          <li>
-            <span className="approach-item__title">Definición de producto</span>
-            <span>Establecemos el recorrido diario del usuario antes de ampliar funcionalidades.</span>
-          </li>
-          <li>
-            <span className="approach-item__title">Identidad y sistema</span>
-            <span>Cada aplicación conserva su identidad visual; el sistema de diseño permite escalar con consistencia.</span>
-          </li>
-          <li>
-            <span className="approach-item__title">Ingeniería y publicación</span>
-            <span>Construimos aplicaciones, experiencias web y herramientas de seguimiento para nuestros productos.</span>
-          </li>
+          {process.map((step) => (
+            <li key={step.title}>
+              <span className="approach-item__title">{step.title}</span>
+              <span>{step.text}</span>
+            </li>
+          ))}
         </ol>
       </section>
 
-      <CustomWorkCta />
+      <section className="container section factory-section" aria-labelledby="catalogo-title">
+        <h2 id="catalogo-title">Productos propios</h2>
+        <div className="product-grid">
+          {products.map((product) => <ProductCard key={product.id} product={product} />)}
+        </div>
+      </section>
+
+      <CustomWorkCta id="proyecto" showContact={false} />
     </>
   );
 }

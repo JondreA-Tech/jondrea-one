@@ -6,8 +6,8 @@
 :root {
   color-scheme: dark;
 
-  --font-display: var(--font-display-loaded, "Inter"), system-ui, sans-serif;
-  --font-body: var(--font-body-loaded, "Poppins"), system-ui, sans-serif;
+  --font-display: "Inter Variable", system-ui, sans-serif;
+  --font-body: "Poppins", system-ui, sans-serif;
   --logo-teal: #0f7a72;
 
   /* Palette — slate + teal */
@@ -79,5 +79,5 @@
   --nido-gradient: linear-gradient(135deg, #c46b3a, #d4894a);
   --nido-radius-md: 14px;
   --nido-radius-lg: 20px;
-  --font-nido: var(--font-nido-loaded, "Nunito"), var(--font-body);
+  --font-nido: "Nunito Variable", var(--font-body);
 }

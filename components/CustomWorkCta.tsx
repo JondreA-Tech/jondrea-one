@@ -10,15 +10,13 @@ type CustomWorkCtaProps = {
 export function CustomWorkCta({ id = "servicios", showContact = true }: CustomWorkCtaProps) {
   return (
     <section className="container section" id={id}>
-      <p className="section-label">Servicios</p>
-      <h2 className="section-title">Desarrollo de sitios web y aplicaciones a medida.</h2>
+      <h2 className="section-title">Hablemos de tu proyecto</h2>
       <p className="section-lead">
-        Contanos qué necesitás resolver. Trabajamos en el alcance, el diseño y el desarrollo
-        para llevar tu proyecto a una versión lista para publicar.
+        Contanos qué querés construir, quién lo va a usar y en qué etapa estás.
       </p>
       <div className="hero-actions hero-actions--center">
         <a href={customWorkMailto()} className="btn btn-primary">
-          Consultar
+          Escribirnos
         </a>
         {showContact ? (
           <Link href="/contactanos" className="btn btn-ghost">

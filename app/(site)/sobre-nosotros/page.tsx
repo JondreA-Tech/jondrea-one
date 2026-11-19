@@ -1,73 +1,39 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { CustomWorkCta } from "../../../components/CustomWorkCta";
-import { site } from "../../../lib/site";
 
 export const metadata: Metadata = {
   title: "Sobre nosotros",
-  description: "JondreA Tech es un estudio familiar: producto propio (Nido) y desarrollo a medida."
+  description: "Somos JondreA Tech, un estudio de diseño y desarrollo de software con productos propios."
 };
 
-/** Página Sobre nosotros. */
+/** Presenta al equipo y su forma de encarar proyectos. */
 export default function AboutPage() {
   return (
     <>
       <section className="container page-hero page-hero--about">
-        <h1>
-          Sobre <span className="hero-break">nosotros.</span>
-        </h1>
+        <h1>Sobre JondreA</h1>
         <p className="lead">
-          JondreA Tech es un estudio familiar de software. Producto, diseño e ingeniería están en
-          el mismo equipo. Nido es la prueba: se diseñó, se publicó y se mide.
+          Somos un estudio familiar de software. El mismo equipo trabaja en las decisiones
+          de producto, el diseño y el desarrollo.
         </p>
       </section>
-
-      <section className="container section">
-        <div className="about-stack">
-          <article className="about-block">
-            <h2 className="about-block__title">Quiénes somos</h2>
-            <p>
-              Un equipo chico, de extremo a extremo. No separamos “la marca” de “el código”: cada
-              aplicación conserva su identidad y sale como un instalable, no como una lámina.
-            </p>
+      <section className="container section factory-section" aria-labelledby="trabajo-title">
+        <h2 id="trabajo-title">En qué trabajamos</h2>
+        <div className="factory-services factory-services--two">
+          <article className="feature-card">
+            <h3>Proyectos para empresas</h3>
+            <p>Trabajamos en sitios web, apps móviles y sistemas a medida. Al empezar, acordamos qué debe resolver la primera versión y cómo vamos a revisar los avances.</p>
+            <Link className="inline-link" href="/#servicios">Ver servicios</Link>
           </article>
-          <article className="about-block">
-            <h2 className="about-block__title">Productos propios</h2>
-            <p>
-              Nido reúne el hogar compartido y el espacio Yo (ánimo, objetivos y hábitos).
-              Nido llegará próximamente a Play Store. También estamos construyendo CareMe y EscapARG.
-            </p>
-          </article>
-          <article className="about-block">
-            <h2 className="about-block__title">A medida</h2>
-            <p>
-              Tomamos sitios web y aplicaciones con el mismo criterio: un recorrido cotidiano
-              claro, identidad propia y una versión que se pueda abrir. El correo es{" "}
-              <a className="inline-link" href={`mailto:${site.contact.email}`}>
-                {site.contact.email}
-              </a>
-              .
-            </p>
+          <article className="feature-card">
+            <h3>Productos propios</h3>
+            <p>Diseñamos y desarrollamos Nido, EscapARG y CareMe en JondreA. En el catálogo podés ver cada proyecto y su estado.</p>
+            <Link className="inline-link" href="/productos">Ver productos</Link>
           </article>
         </div>
       </section>
-
-      <CustomWorkCta />
-
-      <section className="container section section--cta">
-        <div className="cta-band">
-          <p className="section-label">Siguiente paso</p>
-          <h2 className="section-title">Conocer Nido o escribirnos</h2>
-          <div className="hero-actions hero-actions--center">
-            <Link href="/productos/nido" className="btn btn-primary">
-              Nido
-            </Link>
-            <Link href="/contactanos" className="btn btn-ghost">
-              Contacto
-            </Link>
-          </div>
-        </div>
-      </section>
+      <CustomWorkCta showContact={false} />
     </>
   );
 }

@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import { CustomWorkCta } from "../../../components/CustomWorkCta";
-import { site } from "../../../lib/site";
+import { customWorkMailto, site } from "../../../lib/site";
 
 export const metadata: Metadata = {
   title: "Contactanos"
@@ -13,9 +12,12 @@ export default function ContactPage() {
       <section className="container page-hero page-hero--contact">
         <h1>Contactanos</h1>
         <p className="lead">
-          Consultas sobre Nido, CareMe y EscapARG, una propuesta comercial o soporte. Escribinos por nuestros canales de contacto.
+          Si tenés un proyecto, contanos qué necesitás y en qué etapa estás. Para consultas sobre nuestros productos, escribinos al mismo correo.
         </p>
 
+        <div className="hero-actions">
+          <a className="btn btn-primary" href={customWorkMailto()}>Escribir sobre un proyecto</a>
+        </div>
         <div className="contact-quick">
           <a
             className="contact-quick__item"
@@ -75,7 +77,6 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <CustomWorkCta />
     </>
   );
 }

@@ -1,15 +1,14 @@
 import { SiteFooter } from "../../components/SiteFooter";
 import { SiteHeader } from "../../components/SiteHeader";
-import { SiteMotion } from "../../components/SiteMotion";
 
 /** Layout marketing: header + footer corporativos. */
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="site-shell" style={{ fontFamily: "var(--font-body)" }}>
+      <a className="site-skip" href="#contenido">Ir al contenido</a>
       <SiteHeader />
-      <main className="site-main">{children}</main>
+      <main id="contenido" className="site-main">{children}</main>
       <SiteFooter />
-      <SiteMotion />
     </div>
   );
 }

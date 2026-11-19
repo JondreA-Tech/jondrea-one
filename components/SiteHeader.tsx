@@ -28,6 +28,7 @@ export function SiteHeader() {
           type="button"
           className="site-header__burger"
           aria-expanded={open}
+          aria-controls="site-navigation"
           aria-label={open ? "Cerrar menú" : "Abrir menú"}
           onClick={() => setOpen((v) => !v)}
         >
@@ -36,7 +37,7 @@ export function SiteHeader() {
           <span />
         </button>
 
-        <nav className={`site-header__nav ${open ? "is-open" : ""}`} aria-label="Principal">
+        <nav id="site-navigation" className={`site-header__nav ${open ? "is-open" : ""}`} aria-label="Principal">
           {NAV.filter((item) => item.href !== "/contactanos").map((item) => {
             const active =
               item.href === "/"
@@ -47,6 +48,7 @@ export function SiteHeader() {
                 key={item.href}
                 href={item.href}
                 className={`site-header__link ${active ? "is-active" : ""}`}
+                aria-current={pathname === item.href ? "page" : undefined}
                 onClick={() => setOpen(false)}
               >
                 {item.label}
@@ -55,6 +57,7 @@ export function SiteHeader() {
           })}
           <Link
             href="/contactanos"
+            aria-current={pathname === "/contactanos" ? "page" : undefined}
             className="btn btn-primary site-header__cta"
             onClick={() => setOpen(false)}
           >

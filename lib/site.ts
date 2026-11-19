@@ -4,9 +4,9 @@ import { publicRelease } from "./release";
 export const site = {
   name: "JondreA",
   legalName: "JondreA Tech",
-  tagline: "Productos digitales y desarrollo a medida.",
+  tagline: "Diseño y desarrollo de software.",
   description:
-    "JondreA desarrolla productos digitales propios y soluciones a medida. Conocé Nido, CareMe y EscapARG: hogar, desarrollo profesional y experiencias cooperativas.",
+    "Diseñamos y desarrollamos productos digitales, sitios web y aplicaciones móviles para empresas. También creamos Nido, EscapARG y CareMe.",
   contact: {
     email: "jondreatech@gmail.com",
     instagram: "https://instagram.com/jondrea.tech",
@@ -25,7 +25,7 @@ export function siteOrigin() {
 export function customWorkMailto() {
   const subject = encodeURIComponent("Consulta — desarrollo a medida");
   const body = encodeURIComponent(
-    `Hola JondreA,\n\nDeseo consultar por el desarrollo de una página web o una aplicación.\n\nDescripción del proyecto:\n\nSaludos.`
+    `Hola JondreA,\n\nQuiero consultar por un proyecto de software.\n\nDescripción del proyecto:\n\nSaludos.`
   );
   return `mailto:${site.contact.email}?subject=${subject}&body=${body}`;
 }

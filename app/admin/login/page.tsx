@@ -26,9 +26,9 @@ export default async function AdminLoginPage({
       <div className="admin-login__card">
         <JondreaLogo size="sm" />
         <p className="admin-kicker">Panel interno</p>
-        <h1>Ingreso administrador</h1>
+        <h1>Ingresar al panel</h1>
         <p className="admin-login__lead">
-          Métricas de uso de Nido a partir de la APK publicada.
+          Métricas de uso y estado del servicio de Nido.
         </p>
         <form method="post" action="/admin/login/submit" className="admin-form">
           <input type="hidden" name="next" value={nextPath} />
@@ -44,7 +44,7 @@ export default async function AdminLoginPage({
             Entrar
           </button>
           {hasError ? (
-            <p className="admin-error">Credenciales inválidas. Vuelva a intentarlo.</p>
+            <p className="admin-error" role="alert">El usuario o la contraseña son incorrectos.</p>
           ) : null}
         </form>
         <Link href="/" className="admin-login__back">

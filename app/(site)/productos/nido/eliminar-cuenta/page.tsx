@@ -12,11 +12,11 @@ export default function DeleteNidoAccountPage() {
   const emailLink = `mailto:${site.contact.email}?subject=${encodeURIComponent("Eliminar mi cuenta de Nido")}`;
   return (
     <>
-      <section className="container page-hero">
+      <section className="container page-hero legal-hero">
         <h1>Eliminar tu cuenta de Nido</h1>
         <p className="lead">Podés solicitar a JondreA Tech que elimine tu cuenta y sus datos aunque ya no tengas instalada la aplicación.</p>
       </section>
-      <section className="container section">
+      <section className="container section legal-content">
         <div className="about-stack">
           <article className="about-block">
             <h2 className="about-block__title">Desde la aplicación</h2>

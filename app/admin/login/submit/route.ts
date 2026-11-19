@@ -25,10 +25,10 @@ export async function POST(request: Request) {
     const errorUrl = new URL("/admin/login", request.url);
     errorUrl.searchParams.set("next", nextPath);
     errorUrl.searchParams.set("error", "1");
-    return NextResponse.redirect(errorUrl);
+    return NextResponse.redirect(errorUrl, 303);
   }
 
-  const response = NextResponse.redirect(new URL(nextPath, request.url));
+  const response = NextResponse.redirect(new URL(nextPath, request.url), 303);
   response.cookies.set(ADMIN_SESSION_COOKIE, ADMIN_SESSION_VALUE, {
     httpOnly: true,
     sameSite: "lax",

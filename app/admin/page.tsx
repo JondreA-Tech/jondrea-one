@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { AdminBars } from "../../components/admin/AdminBars";
 import { AdminDays, formatDayLabel } from "../../components/admin/AdminDays";
-import { AdminFunnel } from "../../components/admin/AdminFunnel";
 import { AdminKpis } from "../../components/admin/AdminKpis";
 import { AdminNidoWake } from "../../components/admin/AdminNidoWake";
 import { AdminNotice } from "../../components/admin/AdminNotice";
@@ -17,7 +16,6 @@ import {
   isLaunchEmpty,
   nidoApiBase,
   publishedApkVersion,
-  ratioPercent,
   type SearchParams
 } from "../../lib/admin";
 import { downloadCountLabel, readDownloadCounts } from "../../lib/downloadCounts";
@@ -99,8 +97,7 @@ export default async function AdminPage({
           <p className="admin-kicker">Panel interno</p>
           <h1>Uso de Nido</h1>
           <p className="admin-lead">
-            Control de Nido en los últimos {selectedDays} días · {range}. Totales de encabezado son
-            el stock actual; las barras usan la ventana.
+            Período consultado: {range}. Los indicadores generales muestran el total acumulado.
           </p>
         </section>
 
@@ -118,11 +115,11 @@ export default async function AdminPage({
             stat={
               nido.ok
                 ? `${nido.summary.registeredUsers} usuarios · ${nido.summary.households} hogares`
-                : "Sin datos de analytics"
+                : "Métricas no disponibles"
             }
             detail={
               !nido.ok
-                ? "No se pudo leer el summary."
+                ? "No pudimos obtener los datos de uso."
                 : nido.summary.households > 0
                   ? `${nidoMembersPerHome} miembros activos por hogar.`
                   : "Sin hogares creados todavía."
@@ -157,19 +154,19 @@ export default async function AdminPage({
 
           {nido.ok ? (
             <>
-              <AdminSection title="Indicadores" kicker="Stock actual">
+              <AdminSection title="Indicadores" kicker="Totales actuales">
                 <AdminKpis
                   label="KPIs Nido"
                   items={[
                     {
                       label: "Usuarios",
                       value: s.registeredUsers,
-                      hint: `${s.registeredUsersInRange} altas en la ventana.`
+                      hint: `${s.registeredUsersInRange} altas en el período.`
                     },
                     {
                       label: "Hogares",
                       value: s.households,
-                      hint: `${nidoHouseholdsInRange} creados en la ventana.`
+                      hint: `${nidoHouseholdsInRange} creados en el período.`
                     },
                     {
                       label: "Cuentas en hogares",
@@ -206,12 +203,12 @@ export default async function AdminPage({
               </AdminSection>
 
               <AdminSection
-                title="Altas de la ventana"
-                kicker="Conteos paralelos, no una cohorte secuencial."
+                title="Altas e invitaciones"
+                kicker="Actividad del período seleccionado"
               >
-                <AdminFunnel
-                  label="Recorrido Nido"
-                  steps={[
+                <AdminKpis
+                  label="Altas e invitaciones del período"
+                  items={[
                     {
                       label: "Altas",
                       value: s.registeredUsersInRange,
@@ -220,26 +217,23 @@ export default async function AdminPage({
                     {
                       label: "Hogares",
                       value: nidoHouseholdsInRange,
-                      conversion: ratioPercent(nidoHouseholdsInRange, s.registeredUsersInRange),
                       hint: "Hogares creados en la misma ventana."
                     },
                     {
                       label: "Invitaciones",
                       value: nidoInvitesInRange,
-                      conversion: ratioPercent(nidoInvitesInRange, nidoHouseholdsInRange),
                       hint: "Invitaciones creadas."
                     },
                     {
                       label: "Aceptadas",
                       value: nidoAcceptedInRange,
-                      conversion: ratioPercent(nidoAcceptedInRange, nidoInvitesInRange),
                       hint: `${s.invitationsPending ?? 0} pendientes en total.`
                     }
                   ]}
                 />
               </AdminSection>
 
-              <AdminSection title="Hogar" kicker="En la ventana · el total aparece en la pista">
+              <AdminSection title="Hogar" kicker="Actividad del período con totales de referencia">
                 <AdminBars
                   label="Módulos del hogar"
                   empty="Aún no hay actividad de hogar."
