@@ -33,7 +33,7 @@ Para métricas de Nido la API tiene que estar arriba y `NIDO_ADMIN_ANALYTICS_KEY
 | `/sobre-nosotros` | Sobre nosotros |
 | `/contactanos` | Contacto (email / IG / LinkedIn) |
 | `/productos` | Portfolio |
-| `/productos/nido` | Ficha de Nido (APK, changelog de la beta) |
+| `/productos/nido` | Ficha de Nido (APK, información de lanzamiento) |
 | `/privacidad` | Nota de privacidad |
 | `/admin` | Métricas de Nido (Hogar + Yo) |
 
@@ -43,7 +43,7 @@ Para métricas de Nido la API tiene que estar arriba y `NIDO_ADMIN_ANALYTICS_KEY
 |---------|------------|
 | `lib/site.ts` | Marca, mail, redes |
 | `lib/products.ts` | Copy de Nido |
-| `lib/nidoRelease.ts` | Versión beta y changelog de ficha |
+| `lib/nidoRelease.ts` | Versión de lanzamiento y cambios de la ficha |
 | `public/nido/screens/` | Capturas de la app en la ficha |
 | `styles/tokens.css` | Color y tipografía |
 

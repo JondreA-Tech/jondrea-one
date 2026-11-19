@@ -27,14 +27,13 @@ export function ProductDetailPage({ product }: ProductDetailPageProps) {
           <p className="product-label">Hogar compartido · Bienestar personal</p>
           <h1>Un hogar en común.<br /><span>Un espacio para vos.</span></h1>
           <p className="nido-hero-lead">
-            Menos cosas por recordar, más espacio para vivir. Nido reúne la organización
-            del hogar y un lugar personal para tus hábitos, objetivos y ánimo.
+            {product.blurb}
           </p>
           <div className="nido-actions">
             <a href="#dos-espacios" className="btn btn-primary">Conocé Nido <span aria-hidden="true">↗</span></a>
             <a href="#pantallas" className="btn btn-ghost">Ver la app</a>
           </div>
-          <p className="nido-availability"><span aria-hidden="true" />Play Store · Próximamente</p>
+          <p className="nido-availability"><span aria-hidden="true" />Nido 1.0.0 · Próximamente en Google Play</p>
         </div>
         <figure className="nido-hero-art">
           <Image src="/productos/nido/hogar-conceptual.webp"
@@ -82,16 +81,23 @@ export function ProductDetailPage({ product }: ProductDetailPageProps) {
         <div className="nido-intro">
           <p className="product-label">Lo cotidiano, en un solo lugar</p>
           <h2 id="nido-features-title">Menos pendientes sueltos.<br />Más claridad para todos.</h2>
-          <p>Estas funcionalidades forman parte de la app en desarrollo. Están pensadas para acompañar la vida real de quienes conviven.</p>
+          <p>Consultá la agenda de la semana, repartí responsabilidades y reutilizá tus compras habituales.</p>
         </div>
         <ul className="nido-features">
-          {capabilities.map((item, index) => (
+          {capabilities.map((item) => (
             <li key={item.title} style={featureStyle(item.accent)}>
-              <span className="nido-feature-index" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
               <h3>{item.title}</h3><p>{item.body}</p>
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="container product-block nido-section" aria-labelledby="nido-plans-title">
+        <div className="nido-intro">
+          <h2 id="nido-plans-title">Gratis y Premium</h2>
+          <p>El plan gratuito incluye la agenda, los cuidados, los gastos, las rutinas, una lista de compras y tu espacio Yo.</p>
+          <p>Premium amplía los cupos del hogar y permite guardar el total gastado en compras y configurar una alerta de saldo bajo. La suscripción está prevista para Google Play.</p>
+        </div>
       </section>
 
       <ProductPhoneMockups />
@@ -111,8 +117,8 @@ export function ProductDetailPage({ product }: ProductDetailPageProps) {
 
       <section id="descargar" className="container product-block nido-section" aria-labelledby="nido-status-title">
         <div className="nido-status">
-          <div><p className="product-label">Estado del producto</p><h2 id="nido-status-title">Nido está preparando<br />su próximo paso.</h2></div>
-          <div><strong>Play Store · Próximamente</strong><p>Estamos trabajando en el lanzamiento para Android. Cuando esté disponible, lo vas a encontrar acá.</p></div>
+          <div><h2 id="nido-status-title">Nido 1.0.0 para Android</h2></div>
+          <div><strong>Próximamente en Google Play</strong><p>El enlace de instalación aparecerá acá cuando termine el proceso de publicación.</p></div>
         </div>
       </section>
 
@@ -122,6 +128,7 @@ export function ProductDetailPage({ product }: ProductDetailPageProps) {
         <p>Si querés saber más, compartir una sugerencia o hacer una consulta, escribinos.</p>
         <div className="nido-actions">
           <a className="btn btn-primary" href={productMailto(product.name)}>Contactar a JondreA</a>
+          <Link className="btn btn-ghost" href="/productos/nido/eliminar-cuenta">Solicitar eliminación de cuenta</Link>
           <Link className="btn btn-ghost" href="/productos">Volver al catálogo</Link>
         </div>
       </section>

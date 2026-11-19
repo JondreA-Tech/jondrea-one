@@ -6,7 +6,7 @@ const NIDO_SHOTS = [
   { src: "/nido/screens/nido-miembros.png", label: "Miembros", alt: "Ficha de miembro con cumpleaños, signo y eventos." },
   { src: "/nido/screens/nido-medicacion.png", label: "Medicación", alt: "Alta de medicación con dosis, frecuencia y recordatorio." },
   { src: "/nido/screens/nido-gastos.png", label: "Gastos", alt: "Gastos del mes con ingreso y cuotas." },
-  { src: "/nido/screens/nido-rutinas.png", label: "Rutinas y compras", alt: "Rutinas del día y listas de compras del hogar." }
+  { src: "/nido/screens/nido-rutinas.png", label: "Rutinas", alt: "Rutinas del día con tareas pendientes y completadas." }
 ] as const;
 
 /** Presenta una captura real con opción de ampliarla en otra pestaña. */
@@ -33,7 +33,7 @@ export function ProductPhoneMockups() {
       <div className="nido-intro">
         <p className="product-label">La app, por dentro</p>
         <h2 id="nido-screens-title">Así se organiza tu día.</h2>
-        <p>Capturas reales de la aplicación en desarrollo. La interfaz puede cambiar antes del lanzamiento. Podés ampliar cada imagen para ver el detalle.</p>
+        <p>Capturas ilustrativas de Nido tomadas antes de la versión 1.0.0. Podés ampliar cada imagen para ver el detalle.</p>
       </div>
       <div className="product-phones__row product-phones__row--gallery">
         {NIDO_SHOTS.map((shot) => <PhoneShot key={shot.src} {...shot} />)}

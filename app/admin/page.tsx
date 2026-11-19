@@ -145,7 +145,7 @@ export default async function AdminPage({
             <AdminNotice
               tone="empty"
               title="Todavía no hay hogares"
-              body="Cuando se instale la APK de Nido, aparecerán usuarios, hogares y actividad de los módulos."
+              body="Los indicadores se actualizan cuando las personas crean cuentas, hogares y usan los módulos de Nido."
             />
           ) : null}
 
@@ -197,9 +197,9 @@ export default async function AdminPage({
                       hint: `${s.pushTokens ?? 0} tokens registrados.`
                     },
                     {
-                      label: "Descargas del sitio",
+                      label: "Clics de APK en la web",
                       value: downloads.nido,
-                      hint: "Clics de descarga de la APK en este sitio."
+                      hint: "Histórico de clics. Las instalaciones de Play se consultan en Play Console."
                     }
                   ]}
                 />
@@ -290,7 +290,24 @@ export default async function AdminPage({
                 />
               </AdminSection>
 
-              <AdminSection title="Yo" kicker="Personal · no lo ve el resto del hogar">
+              <AdminSection title="Adopción de Nido 1.0.0" kicker="Estado actual · independiente del filtro de fechas">
+                {s.productAdoption ? (
+                  <AdminKpis
+                    label="Adopción y acceso Premium"
+                    items={[
+                      { label: "Rutinas asignadas", value: s.productAdoption.assignedRoutines, hint: "Rutinas con responsable activo." },
+                      { label: "Productos categorizados", value: s.productAdoption.categorizedShoppingItems, hint: "Artículos guardados con categoría." },
+                      { label: "Viajes con preparación", value: s.productAdoption.tripsWithPreparation, hint: "Viajes con al menos un pendiente registrado." },
+                      { label: "Hogares con acceso de Play", value: s.productAdoption.householdsWithVerifiedPlayAccess, hint: "Vigencia verificada por el servidor. Las ventas se consultan en Play Console." },
+                      { label: "Hogares con Premium otorgado", value: s.productAdoption.householdsWithGrantedAccess, hint: "Acceso asignado. Puede coincidir con un hogar con compra de Play." }
+                    ]}
+                  />
+                ) : (
+                  <p>La API todavía no devuelve los indicadores de adopción.</p>
+                )}
+              </AdminSection>
+
+              <AdminSection title="Yo" kicker="Conteos agregados de uso">
                 <AdminBars
                   label="Bienestar personal"
                   empty="Nadie usó Yo todavía."

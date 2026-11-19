@@ -63,6 +63,13 @@ export type NidoSummary = {
   returningUsersInRange?: number;
   pushTokens?: number;
   usersWithPushToken?: number;
+  productAdoption?: {
+    assignedRoutines: number;
+    categorizedShoppingItems: number;
+    tripsWithPreparation: number;
+    householdsWithVerifiedPlayAccess: number;
+    householdsWithGrantedAccess: number;
+  };
   byDay?: NidoDayPoint[];
 };
 

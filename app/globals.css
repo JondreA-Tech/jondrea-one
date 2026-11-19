@@ -1458,7 +1458,7 @@ h2.about-block__title {
 
 /* Estilos del panel interno: app/admin/admin.css */
 
-/* Header: make the Contactanos CTA use the visual styles of the "Pedir acceso a la beta" hover state as its base */
+/* Header: make the Contactanos CTA use the visual styles of the "Consultar disponibilidad" hover state as its base */
 .site-header__cta {
   /* base: ghost-hover styles */
   background: var(--color-accent-muted) !important;

@@ -32,11 +32,11 @@ export const products: Product[] = [
     name: "Nido",
     shortName: "Nido",
     category: "Hogar y bienestar",
-    headline: "El hub del hogar, y un espacio solo tuyo.",
+    headline: "Organizá tu hogar. Hacé espacio para vos.",
     blurb:
-      "Hogar comparte el día del grupo: miembros, gastos, rutinas, compras y viajes. Yo guarda ánimo, objetivos y hábitos personales. El resto del hogar solo ve el emoji.",
+      "Coordiná compras, gastos, rutinas y cuidados con quienes conviven. En Yo, registrá objetivos, hábitos y cómo te sentís.",
     about:
-      "Nido es la aplicación para quienes conviven. Se crea un hogar, se invita a las personas y queda una vista común del día: cumpleaños, eventos, medicación, vacunas, viajes y lo que hay que comprar o pagar. Cada cuenta tiene un espacio Yo —ánimo, objetivos y hábitos— que no ven los demás; el emoji de ánimo sí aparece en Hogar, para que el grupo sepa cómo está cada uno. Admite personas y mascotas locales. Quien crea el hogar administra invitaciones y el plan.",
+      "Nido es la aplicación para quienes conviven. Se crea un hogar, se invita a las personas y queda una vista común del día: cumpleaños, eventos, medicación, vacunas, viajes y lo que hay que comprar o pagar. Cada cuenta tiene un espacio Yo —ánimo, objetivos y hábitos— que no ven los demás; el emoji de ánimo sí aparece en Hogar, para que el grupo sepa cómo está cada uno. Admite personas y mascotas locales. La persona que administra el hogar gestiona las invitaciones.",
     loop: [
       {
         title: "Creá tu hogar",
@@ -62,12 +62,12 @@ export const products: Product[] = [
     capabilities: [
       {
         title: "Hogar",
-        body: "Resumen del día. El avatar de cada cuenta muestra el emoji de ánimo. Desde ahí se entra a Yo.",
+        body: "Vista del día y agenda de siete días. Desde Hogar también podés entrar a Yo.",
         accent: "#D4894A"
       },
       {
         title: "Yo",
-        body: "Ánimo del día, objetivos y hábitos personales. El hogar no ve el detalle: solo el emoji.",
+        body: "Objetivos, hábitos y tendencias personales de la semana. El hogar solo ve tu señal actual de ánimo.",
         accent: "#C46B3A"
       },
       {
@@ -82,12 +82,12 @@ export const products: Product[] = [
       },
       {
         title: "Medicación y vacunas",
-        body: "Dosis, frecuencia y avisos de medicación. También, registro de vacunas de las mascotas.",
+        body: "Registrá medicación con varios horarios y recordatorios, y guardá las vacunas de las mascotas.",
         accent: "#C46B3A"
       },
       {
         title: "Viajes",
-        body: "Fechas de los viajes del hogar y cuenta regresiva cuando se acerca la salida.",
+        body: "Guardá las fechas del viaje y prepará la salida con una lista compartida.",
         accent: "#6B5E52"
       },
       {
@@ -97,12 +97,12 @@ export const products: Product[] = [
       },
       {
         title: "Rutinas",
-        body: "Tareas compartidas de la semana y registro de lo que se hizo cada día.",
+        body: "Asigná responsables y registrá lo que ya se hizo en las rutinas de cada día.",
         accent: "#4A7FB5"
       },
       {
         title: "Compras",
-        body: "Listas de compras compartidas con cantidades para organizar lo que hace falta.",
+        body: "Listas compartidas con categorías y cantidades. Reutilizá artículos y, según el cupo, copiá listas.",
         accent: "#C45C4A"
       },
       {
@@ -112,7 +112,7 @@ export const products: Product[] = [
       },
       {
         title: "Notas del hogar",
-        body: "Un lugar para los avisos y mensajes cortos que necesitan tener a mano en casa.",
+        body: "Compartí avisos cortos. Podés ocultar notas o reportar contenido desde la app.",
         accent: "#6B5E52"
       }
     ],
