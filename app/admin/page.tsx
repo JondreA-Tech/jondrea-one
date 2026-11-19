@@ -23,6 +23,7 @@ import { getNidoApk } from "../../lib/nidoRelease";
 import { getProduct } from "../../lib/products";
 
 const PERIOD_OPTIONS = [7, 14, 30];
+const summaryNumber = new Intl.NumberFormat("es-AR");
 
 /** Dashboard admin de Nido. */
 export default async function AdminPage({
@@ -52,6 +53,18 @@ export default async function AdminPage({
   const nidoInvitesInRange = nido.summary.invitationsInRange ?? nido.summary.invitations;
   const nidoAcceptedInRange = nido.summary.invitationsAcceptedInRange ?? 0;
   const s = nido.summary;
+  const dailyActivity = s.byDay ?? [];
+  const summaryLinks = [
+    { id: "estado", label: "Estado de Nido", detail: nidoHealth.ok ? "API en línea" : "API sin respuesta" },
+    ...(nido.ok ? [
+      { id: "indicadores", label: "Indicadores", detail: `${summaryNumber.format(s.registeredUsers)} usuarios en total` },
+      { id: "altas", label: "Altas e invitaciones", detail: `${summaryNumber.format(s.registeredUsersInRange)} altas en el período` },
+      { id: "hogar", label: "Hogar", detail: `${summaryNumber.format(s.households)} hogares en total` },
+      { id: "adopcion", label: "Adopción", detail: s.productAdoption ? "Funciones y accesos" : "Datos no disponibles" },
+      { id: "yo", label: "Yo", detail: `${summaryNumber.format(s.dailyCheckinsInRange ?? 0)} check-ins en el período` },
+      ...(dailyActivity.length > 0 ? [{ id: "uso-diario", label: "Uso por día", detail: "Gráfico de actividad" }] : [])
+    ] : [])
+  ];
 
   return (
     <div className="admin-app admin-app--nido">
@@ -97,11 +110,26 @@ export default async function AdminPage({
           <p className="admin-kicker">Panel interno</p>
           <h1>Uso de Nido</h1>
           <p className="admin-lead">
-            Período consultado: {range}. Los indicadores generales muestran el total acumulado.
+            {nido.ok ? <>Período consultado: {range}.</> : "No se pudieron cargar las métricas."}
           </p>
         </section>
 
-        <section className="admin-switch" aria-label="Producto">
+        <nav id="resumen" className="admin-summary admin-jump-target" tabIndex={-1} aria-labelledby="admin-summary-title">
+          <h2 id="admin-summary-title">Resumen</h2>
+          <ul className="admin-summary__grid">
+            {summaryLinks.map(({ id, label, detail }) => (
+              <li key={id}>
+                <a className="admin-summary__link" href={`#${id}`}>
+                  <strong>{label}</strong>
+                  <span>{detail}</span>
+                  <span className="admin-summary__arrow" aria-hidden="true">↓</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <section id="estado" className="admin-switch admin-jump-target" tabIndex={-1} aria-label="Estado de Nido">
           <AdminProductCard
             href={`/admin?days=${selectedDays}`}
             active
@@ -125,6 +153,7 @@ export default async function AdminPage({
                   : "Sin hogares creados todavía."
             }
           />
+          <a className="admin-summary__back" href="#resumen">↑ Volver al resumen</a>
         </section>
 
         <div className="admin-board admin-board--nido">
@@ -154,7 +183,7 @@ export default async function AdminPage({
 
           {nido.ok ? (
             <>
-              <AdminSection title="Indicadores" kicker="Totales actuales">
+              <AdminSection id="indicadores" title="Indicadores" kicker="Totales actuales">
                 <AdminKpis
                   label="KPIs Nido"
                   items={[
@@ -203,6 +232,7 @@ export default async function AdminPage({
               </AdminSection>
 
               <AdminSection
+                id="altas"
                 title="Altas e invitaciones"
                 kicker="Actividad del período seleccionado"
               >
@@ -233,7 +263,7 @@ export default async function AdminPage({
                 />
               </AdminSection>
 
-              <AdminSection title="Hogar" kicker="Actividad del período con totales de referencia">
+              <AdminSection id="hogar" title="Hogar" kicker="Actividad del período con totales de referencia">
                 <AdminBars
                   label="Módulos del hogar"
                   empty="Aún no hay actividad de hogar."
@@ -284,7 +314,7 @@ export default async function AdminPage({
                 />
               </AdminSection>
 
-              <AdminSection title="Adopción de Nido 1.0.0" kicker="Estado actual · independiente del filtro de fechas">
+              <AdminSection id="adopcion" title="Adopción de Nido 1.0.0" kicker="Estado actual · independiente del filtro de fechas">
                 {s.productAdoption ? (
                   <AdminKpis
                     label="Adopción y acceso Premium"
@@ -301,7 +331,7 @@ export default async function AdminPage({
                 )}
               </AdminSection>
 
-              <AdminSection title="Yo" kicker="Conteos agregados de uso">
+              <AdminSection id="yo" title="Yo" kicker="Conteos agregados de uso">
                 <AdminBars
                   label="Bienestar personal"
                   empty="Nadie usó Yo todavía."
@@ -334,8 +364,8 @@ export default async function AdminPage({
                 />
               </AdminSection>
 
-              {s.byDay && s.byDay.length > 0 ? (
-                <AdminSection title="Uso por día" kicker="Altas, hogares, ánimo y hábitos">
+              {dailyActivity.length > 0 ? (
+                <AdminSection id="uso-diario" title="Uso por día" kicker="Altas, hogares, ánimo y hábitos">
                   <AdminDays
                     label="Serie diaria Nido"
                     empty="Sin actividad diaria."
@@ -345,7 +375,7 @@ export default async function AdminPage({
                       { key: "checkins", label: "Ánimo" },
                       { key: "habits", label: "Hábitos" }
                     ]}
-                    items={s.byDay.map((point) => ({
+                    items={dailyActivity.map((point) => ({
                       date: point.date,
                       label: formatDayLabel(point.date),
                       values: [
